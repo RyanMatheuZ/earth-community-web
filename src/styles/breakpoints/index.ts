@@ -2,8 +2,8 @@ import type { Breakpoint as Devices } from '@mui/material';
 
 type Breakpoint = number | Devices;
 
+// values in pixels
 export const sizes = {
-  // Values in pixels
   mobile: 768,
   tablet: 992,
   laptop: 1200,

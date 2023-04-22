@@ -3,7 +3,7 @@ import { createTheme, Theme } from '@mui/material/styles';
 import { colors } from '../colors';
 import { sizes, down, up, between } from '../breakpoints';
 
-const { primary, secondary, white } = colors;
+const { primary, secondary } = colors;
 const { mobile, tablet, laptop, desktop } = sizes;
 
 export const materialUiTheme = createTheme({
@@ -13,13 +13,18 @@ export const materialUiTheme = createTheme({
     },
     secondary: {
       main: secondary
-    },
-    common: {
-      white
     }
   },
   typography: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Montserrat',
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 600
+    },
+    h2: {
+      fontSize: '1.5rem',
+      fontWeight: 500
+    }
   },
   breakpoints: {
     down,
