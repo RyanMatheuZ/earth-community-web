@@ -17,7 +17,6 @@ const AccountButton: FC = () => {
       open={isOpenSpeedDial}
       icon={isOpenSpeedDial ? <CloseIcon /> : <SpaIcon />}
       onOpen={handleToggleSpeedDial}
-      onClick={handleToggleSpeedDial}
       onClose={handleToggleSpeedDial}
       direction='down'
     >
