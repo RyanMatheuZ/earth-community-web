@@ -1,5 +1,9 @@
-import type IHead from './head';
+import type IAuthContext from './AuthContext';
+import type IHead from './Head';
+import type ISignUp from './SignUp';
 
 export type {
-  IHead
+  IAuthContext,
+  IHead,
+  ISignUp
 };
