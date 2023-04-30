@@ -1,21 +1,26 @@
 import { type FC } from 'react';
 
-import { Container, StyledLink } from './styles';
+import type { ITheme } from '@ts/interfaces';
 
-interface AlreadyHaveAnAccountProps {
+import { Container, Text, StyledLink } from './styles';
+
+interface AlreadyHaveAnAccountProps extends ITheme {
   alreadyHave?: boolean;
 }
 
-const AlreadyHaveAnAccount: FC<AlreadyHaveAnAccountProps> = ({ alreadyHave }) => {
+const AlreadyHaveAnAccount: FC<AlreadyHaveAnAccountProps> = ({ alreadyHave, $themeColor }) => {
   const message = alreadyHave ? 'Ainda não possui' : 'Já possui';
   const href = alreadyHave ? '/sign-up' : '/sign-in';
 
   return (
     <Container>
-      <span>
+      <Text $themeColor={$themeColor}>
         {message}
-      </span>{' '}
-      <StyledLink href={href}>
+      </Text>{' '}
+      <StyledLink
+        $themeColor={$themeColor}
+        href={href}
+      >
         uma conta?
       </StyledLink>
     </Container>

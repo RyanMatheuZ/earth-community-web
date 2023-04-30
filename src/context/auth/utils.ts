@@ -11,5 +11,7 @@ export const unauthenticatedRoutes: string[] = [
 export const authContextDefaultValues: IAuthContext = {
   unauthenticatedRoutes,
   isLoadingSignUp: false,
+  isLoadingSignIn: false,
   handleSignUp: () => Promise.resolve(),
+  handleSignIn: () => Promise.resolve()
 };

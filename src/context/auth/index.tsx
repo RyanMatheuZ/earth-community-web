@@ -1,6 +1,6 @@
 import { useState, useContext, createContext, type FC, type PropsWithChildren } from 'react';
 
-import type { IAuthContext, ISignUp } from '@ts/interfaces';
+import type { IAuthContext, ISignUp, ISignIn } from '@ts/interfaces';
 
 import axiosInstance from '@services/axios';
 
@@ -12,6 +12,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const ENDPOINT = '/auth/user';
 
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
+  const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
 
   const handleSignUp = async (signUpValues: ISignUp) => {
     try {
@@ -34,11 +35,31 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const handleSignIn = async (signInValues: ISignIn) => {
+    try {
+      setIsLoadingSignIn(true);
+      await axiosInstance.post(`${ENDPOINT}/sign-in`, {
+        info: {
+          email: signInValues.email,
+        },
+        security: {
+          password: signInValues.password,
+        }
+      });
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoadingSignIn(false);
+    }
+  };
+
   return (
     <AuthContext.Provider value={{
       unauthenticatedRoutes,
       isLoadingSignUp,
-      handleSignUp
+      isLoadingSignIn,
+      handleSignUp,
+      handleSignIn
     }}
     >
       {children}
