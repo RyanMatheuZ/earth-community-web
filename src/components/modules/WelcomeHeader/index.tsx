@@ -11,7 +11,7 @@ const WelcomeHeader: FC = () => {
   return (
     <header>
       <Container>
-        <Logo />
+        <Logo $themeColor='green' />
         <ElementsOnTheRight>
           <RedirectLinkForDonation />
           <Dropdown />

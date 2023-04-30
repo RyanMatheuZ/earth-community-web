@@ -27,7 +27,10 @@ const Drawer: FC = () => {
 
   return (
     <Container>
-      <Logo showOnlyImage />
+      <Logo
+        showOnlyImage
+        $themeColor='green'
+      />
       <IconButton onClick={handleToggleDrawer}>
         <MenuIcon />
       </IconButton>

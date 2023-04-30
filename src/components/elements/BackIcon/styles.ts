@@ -2,8 +2,12 @@ import styled from 'styled-components';
 
 import { ChevronLeft } from '@mui/icons-material';
 
-const BackIcon = styled(ChevronLeft)`
-  fill: ${({ theme }) => theme.palette.primary.main};
+import type { ITheme } from '@ts/interfaces';
+
+import { resolveTheme } from '@utils/theme';
+
+const BackIcon = styled(ChevronLeft) <ITheme>`
+  fill: ${({ $themeColor }) => resolveTheme({ $themeColor })};
   width: 30px;
   height: 30px;
 `;

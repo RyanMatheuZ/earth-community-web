@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
-  background-color: ${({ theme }) => theme.palette.common.white};
+import type { ITheme } from '@ts/interfaces';
+
+import { resolveTheme } from '@utils/theme';
+
+export const Container = styled.header<ITheme>`
+  background-color: ${({ $themeColor }) => resolveTheme({ $themeColor })};
   border-radius: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

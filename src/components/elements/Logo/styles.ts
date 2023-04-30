@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import { Typography } from '@mui/material';
 
+import type { ITheme } from '@ts/interfaces';
+
+import { resolveTheme } from '@utils/theme';
+
 export const Container = styled.figure`
   display: flex;
   align-items: center;
@@ -11,6 +15,6 @@ export const Container = styled.figure`
 
 export const Title = styled(Typography).attrs({
   variant: 'h1'
-})`
-  color: ${({ theme }) => theme.palette.primary.main};
+}) <ITheme>`
+  color: ${({ $themeColor }) => resolveTheme({ $themeColor })};
 `;

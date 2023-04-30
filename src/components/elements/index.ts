@@ -2,6 +2,8 @@ import AccountButton from './AccountButton';
 import AlreadyHaveAnAccount from './Form/AlreadyHaveAnAccount';
 import BackIcon from './BackIcon/styles';
 import Field from './Form/Field';
+import FormSection from './Form/FormSection';
+import FormTitle from './Form/FormTitle/styles';
 import Image from './Image';
 import Logo from './Logo';
 import MaxWidthContainer from './MaxWidthContainer';
@@ -14,6 +16,8 @@ export {
   AlreadyHaveAnAccount,
   BackIcon,
   Field,
+  FormSection,
+  FormTitle,
   Image,
   Logo,
   MaxWidthContainer,

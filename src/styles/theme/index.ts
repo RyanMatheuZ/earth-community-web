@@ -3,7 +3,7 @@ import { createTheme, Theme } from '@mui/material/styles';
 import { colors } from '../colors';
 import { sizes, down, up, between } from '../breakpoints';
 
-const { primary, secondary } = colors;
+const { primary, secondary, tertiary } = colors;
 const { mobile, tablet, laptop, desktop } = sizes;
 
 export const materialUiTheme = createTheme({
@@ -13,6 +13,9 @@ export const materialUiTheme = createTheme({
     },
     secondary: {
       main: secondary
+    },
+    tertiary: {
+      main: tertiary
     }
   },
   typography: {

@@ -2,19 +2,21 @@ import { type FC } from 'react';
 
 import Image from 'next/image';
 
+import type { ITheme } from '@ts/interfaces';
+
 import { Container, Title } from './styles';
 
-interface LogoProps {
+interface LogoProps extends ITheme {
   showOnlyImage?: boolean;
 }
 
-const Logo: FC<LogoProps> = ({ showOnlyImage = false }) => {
+const Logo: FC<LogoProps> = ({ showOnlyImage, $themeColor }) => {
   const textLogo = 'Earth Community';
 
   return (
     <Container>
       <Image
-        src='/medias/logo.svg'
+        src={`/medias/logo-${$themeColor}.svg`}
         alt={textLogo}
         title={textLogo}
         width='60'
@@ -22,7 +24,7 @@ const Logo: FC<LogoProps> = ({ showOnlyImage = false }) => {
         draggable={false}
       />
       {!showOnlyImage && (
-        <Title>
+        <Title $themeColor={$themeColor}>
           {textLogo}
         </Title>
       )}
