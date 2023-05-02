@@ -7,7 +7,14 @@ import type { ISignIn } from '@ts/interfaces';
 
 import { useAuth } from '@context/auth';
 
-import { AlreadyHaveAnAccount, Field, FormSection, FormTitle, SubmitButton } from '@components/elements';
+import {
+  AlreadyHaveAnAccount,
+  AnotherAuthOption,
+  Field,
+  FormSection,
+  FormTitle,
+  SubmitButton
+} from '@components/elements';
 import { Head } from '@components/meta';
 import { HeaderWithBackButton } from '@components/modules';
 
@@ -70,6 +77,7 @@ const SignIn: NextPage = () => {
               $themeColor='white'
             />
           </form>
+          <AnotherAuthOption $themeColor='white' />
           <AlreadyHaveAnAccount
             alreadyHave
             $themeColor='white'
