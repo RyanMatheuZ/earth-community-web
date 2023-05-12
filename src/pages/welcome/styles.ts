@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 import { Typography } from '@mui/material';
 
-import { MaxWidthContainer } from '@components/elements';
+import { MaxWidthContainer } from '@components/modules';
 
 export const Container = styled.div`
   background: url('/backgrounds/dashed.svg') center center / cover;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 `;
 
 export const Content = styled(MaxWidthContainer)`

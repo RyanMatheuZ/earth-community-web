@@ -1,3 +1,10 @@
+export const formatCPF = (cpf: string): string => {
+  return cpf
+    .replace(/\D/g, '')
+    .slice(0, 11)
+    .replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
+};
+
 export const validateCPF = (cpf: string) => {
   // https://www.geradorcpf.com/javascript-validar-cpf.htm
   cpf = cpf.replace(/[^\d]+/g, '');

@@ -14,8 +14,7 @@ import {
   FormSection,
   FormTitle,
   SubmitButton
-}
-  from '@components/elements';
+} from '@components/elements';
 import { Head } from '@components/meta';
 import { HalfToHalfContainer, HeaderWithBackButton } from '@components/modules';
 
