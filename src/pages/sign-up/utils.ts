@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import type { ISignUp } from '@ts/interfaces';
 
-import * as userSchema from '@utils/validationSchemas/user';
+import { firstName, surname, email, password, confirmPassword } from '@utils/validationSchemas/user';
 
 export const signUpDefaultValues: ISignUp = {
   firstName: '',
@@ -15,7 +15,13 @@ export const signUpDefaultValues: ISignUp = {
 };
 
 export const schema = zodResolver(
-  z.object(userSchema).superRefine(({ password, confirmPassword }, { addIssue }) => {
+  z.object({
+    firstName,
+    surname,
+    email,
+    password,
+    confirmPassword
+  }).superRefine(({ password, confirmPassword }, { addIssue }) => {
     (confirmPassword !== password) && addIssue({
       code: 'custom',
       path: ['confirmPassword'],

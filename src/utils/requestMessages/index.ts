@@ -6,10 +6,10 @@ import { defaultErrorMessage, defaultSuccessMessage } from './messages';
 
 export const catchError = (catchError: unknown) => {
   const error = catchError as IAPIError;
-  showToast(error.response?.data || defaultErrorMessage, 'error');
+  showToast(error.response?.data?.error || defaultErrorMessage, 'error');
 };
 
 export const success = (successResponse: unknown) => {
   const response = successResponse as IAPIError['response'];
-  showToast(response?.data || defaultSuccessMessage, 'success');
+  showToast(response?.data?.message || defaultSuccessMessage, 'success');
 };

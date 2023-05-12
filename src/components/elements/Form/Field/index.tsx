@@ -7,7 +7,9 @@ import { type TextFieldProps } from '@mui/material';
 
 import type { ITheme } from '@ts/interfaces';
 
-import { Container, StyledTextField, ErrorIcon, ErrorMessage } from './styles';
+import { StyledTextField, ErrorMessage } from '@components/elements';
+
+import { Container } from './styles';
 
 type FieldProps = TextFieldProps & {
   control: Control<any, any>;
@@ -41,12 +43,11 @@ const Field: FC<FieldProps> = ({
           )
         }
       />
-      {errors?.[name] && (
-        <ErrorMessage $themeColor={$themeColor}>
-          <ErrorIcon $themeColor={$themeColor} />
-          {errors[name]?.message as string}
-        </ErrorMessage>
-      )}
+      <ErrorMessage
+        $themeColor={$themeColor}
+        errors={errors}
+        name={name}
+      />
     </Container>
   );
 };

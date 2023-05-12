@@ -5,5 +5,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${({ theme }) => theme.spacing(2)};
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 `;

@@ -28,8 +28,8 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           confirmPassword: signUpValues.confirmPassword
         }
       });
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     } finally {
       setIsLoadingSignUp(false);
     }
@@ -46,8 +46,8 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           password: signInValues.password,
         }
       });
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error(error);
     } finally {
       setIsLoadingSignIn(false);
     }

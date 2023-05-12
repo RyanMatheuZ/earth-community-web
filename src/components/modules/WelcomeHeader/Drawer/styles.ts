@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { List, ListItem, Button } from '@mui/material';
 import { Close } from '@mui/icons-material';
 
-import { MaxWidthContainer } from '@components/elements';
+import { MaxWidthContainer } from '@components/modules';
 
 export const Container = styled(MaxWidthContainer)`
   display: flex;

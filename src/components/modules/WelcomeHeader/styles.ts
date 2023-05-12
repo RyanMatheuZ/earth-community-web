@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MaxWidthContainer } from '@components/elements';
+import { MaxWidthContainer } from '@components/modules';
 
 export const Container = styled(MaxWidthContainer)`
   display: flex;

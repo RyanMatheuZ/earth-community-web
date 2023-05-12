@@ -5,7 +5,10 @@ interface IAPIError {
   type?: TErrors;
   displayMessage?: string;
   response?: {
-    data?: string;
+    data?: {
+      error?: string;
+      message?: string;
+    };
   }
 }
 

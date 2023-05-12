@@ -17,6 +17,10 @@ const schema = {
     .string()
     .email('O e-mail deve ser válido!')
     .trim(),
+  cpf: z
+    .string()
+    .nonempty('O CPF é obrigatório!')
+    .trim(),
   password: z
     .string()
     .nonempty('A senha é obrigatória!')
@@ -32,6 +36,7 @@ export const {
   firstName,
   surname,
   email,
+  cpf,
   password,
   confirmPassword
 } = schema;
