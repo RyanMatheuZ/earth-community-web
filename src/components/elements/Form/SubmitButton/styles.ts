@@ -36,6 +36,6 @@ export const StyledButton = styled(Button) <ITheme>`
   &.MuiButtonBase-root.Mui-disabled {
     color: ${({ $themeColor }) => resolveContrastTheme({ $themeColor })};
     background-color: ${({ $themeColor }) => resolveTheme({ $themeColor })};
-    opacity: 0.5;
+    opacity: .5;
   }
 `;

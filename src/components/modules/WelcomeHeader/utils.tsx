@@ -1,37 +1,15 @@
-import { type HTMLAttributeAnchorTarget } from 'react';
+import type { IMediaItems } from '@ts/interfaces';
 
-import { AboutIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from './Dropdown/styles';
+import { socialMedias } from '@utils/datas/socialMedias';
 
-interface DropdownItems {
-  icon: JSX.Element;
-  label: string;
-  path: string;
-  target: HTMLAttributeAnchorTarget;
-}
+import { AboutIcon } from './styles';
 
-export const dropdownItems: DropdownItems[] = [
+export const dropdownItems: ReadonlyArray<IMediaItems> = [
   {
     icon: <AboutIcon />,
     label: 'Sobre',
     path: '/about',
     target: '_self'
   },
-  {
-    icon: <FacebookIcon />,
-    label: 'Facebook',
-    path: 'https://www.facebook.com/',
-    target: '_blank'
-  },
-  {
-    icon: <InstagramIcon />,
-    label: 'Instagram',
-    path: 'https://www.instagram.com/',
-    target: '_blank'
-  },
-  {
-    icon: <LinkedInIcon />,
-    label: 'LinkedIn',
-    path: 'https://www.linkedin.com/',
-    target: '_blank'
-  }
+  ...socialMedias
 ];

@@ -1,30 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { MenuItem, type PaperProps, type PopoverOrigin } from '@mui/material';
-
-import { Info, Facebook, Instagram, LinkedIn } from '@mui/icons-material';
-
-export const baseIconStyles = css`
-  fill: ${({ theme }) => theme.palette.primary.main};
-  width: 20px;
-  height: 20px;
-`;
-
-export const AboutIcon = styled(Info)`
-  ${baseIconStyles};
-`;
-
-export const FacebookIcon = styled(Facebook)`
-  ${baseIconStyles};
-`;
-
-export const InstagramIcon = styled(Instagram)`
-  ${baseIconStyles};
-`;
-
-export const LinkedInIcon = styled(LinkedIn)`
-  ${baseIconStyles};
-`;
 
 export const StyledMenuItem = styled(MenuItem)`
   color: ${({ theme }) => theme.palette.primary.main};
@@ -51,12 +27,12 @@ export const paperProps: PaperProps = {
   elevation: 0,
   sx: {
     overflow: 'visible',
-    filter: 'drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.16))',
+    filter: 'drop-shadow(0px 1px 4px rgba(0, 0, 0, .16))',
     mt: 1.5,
     '& .MuiAvatar-root': {
       width: 32,
       height: 32,
-      ml: -0.5,
+      ml: -.5,
       mr: 1,
     },
     '&:before': {

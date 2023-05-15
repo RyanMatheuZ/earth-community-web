@@ -10,7 +10,7 @@ const baseButtonStyles = css`
   width: 140px;
 
   &.MuiButtonBase-root.Mui-disabled {
-    opacity: 0.5;
+    opacity: .5;
   }
 `;
 

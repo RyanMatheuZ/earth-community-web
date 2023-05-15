@@ -1,5 +1,4 @@
 import { type NextPage } from 'next';
-import { useRouter } from 'next/navigation';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
@@ -27,8 +26,6 @@ import { Container } from './styles';
 const SignUp: NextPage = () => {
   const { handleSignUp, isLoadingSignUp } = useAuth();
 
-  const { back } = useRouter();
-
   const { control, handleSubmit, formState: { errors } } = useForm<ISignUp>({
     mode: 'onChange',
     defaultValues: signUpDefaultValues,
@@ -46,10 +43,7 @@ const SignUp: NextPage = () => {
         description={description}
       />
       <Container>
-        <HeaderWithBackButton
-          handleClickBackButton={back}
-          $themeColor='white'
-        />
+        <HeaderWithBackButton $themeColor='white' />
         <FormSection $themeColor='white'>
           <FormTitle $themeColor='green'>
             Você está prestes a dar o seu primeiro passo em <br /> direção a um futuro sustentável!

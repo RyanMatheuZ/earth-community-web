@@ -51,6 +51,10 @@ export default createGlobalStyle(
       }
     }
 
+    abbr {
+      text-decoration: none;
+    }
+
     figure {
       margin: 0;
     }
