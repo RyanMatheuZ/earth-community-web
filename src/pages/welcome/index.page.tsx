@@ -2,7 +2,7 @@ import { type NextPage } from 'next';
 
 import { AccountButton, Image } from '@components/elements';
 import { Head } from '@components/meta';
-import { WelcomeHeader } from '@components/modules';
+import { Footer, WelcomeHeader } from '@components/modules';
 
 import { title, description } from './head';
 
@@ -51,6 +51,7 @@ const Welcome: NextPage = () => {
             </TextButtonContainer>
           </ButtonContainer>
         </Content>
+        <Footer />
       </Container>
     </>
   );

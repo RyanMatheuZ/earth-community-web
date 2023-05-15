@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 import { MaxWidthContainer } from '@components/modules';
+import { Info } from '@mui/icons-material';
+
+import { baseIconStyles } from '@utils/datas/styles';
 
 export const Container = styled(MaxWidthContainer)`
   display: flex;
@@ -16,4 +19,8 @@ export const Container = styled(MaxWidthContainer)`
 export const ElementsOnTheRight = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const AboutIcon = styled(Info)`
+  ${baseIconStyles};
 `;

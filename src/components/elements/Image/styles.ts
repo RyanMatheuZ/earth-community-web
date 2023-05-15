@@ -10,7 +10,7 @@ interface ContainerProps {
 export const Container = styled.figure <ContainerProps>`
   position: relative;
   object-fit: contain;
-  max-width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
+  max-width: ${({ width }) => width}px;
   width: 100%;
 `;

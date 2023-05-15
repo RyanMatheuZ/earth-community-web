@@ -1,5 +1,4 @@
 import { type NextPage } from 'next';
-import { useRouter } from 'next/navigation';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
@@ -27,8 +26,6 @@ import { Container } from './styles';
 const SignIn: NextPage = () => {
   const { handleSignIn, isLoadingSignIn } = useAuth();
 
-  const { back } = useRouter();
-
   const { control, handleSubmit, formState: { errors } } = useForm<ISignIn>({
     mode: 'onChange',
     defaultValues: signInDefaultValues,
@@ -46,10 +43,7 @@ const SignIn: NextPage = () => {
         description={description}
       />
       <Container>
-        <HeaderWithBackButton
-          handleClickBackButton={back}
-          $themeColor='green'
-        />
+        <HeaderWithBackButton $themeColor='green' />
         <FormSection $themeColor='green'>
           <FormTitle $themeColor='white'>
             Bem-vindo(a) de volta! Entre e continue a trilhar o <br /> caminho da preservação junto conosco!

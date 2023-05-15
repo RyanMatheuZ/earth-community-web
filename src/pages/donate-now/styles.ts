@@ -32,7 +32,6 @@ export const Text = styled(Typography)`
   font-size: 1.35rem;
   font-weight: 500;
   text-shadow: -2px -2px ${({ theme }) => theme.palette.tertiary.main};
-
 `;
 
 export const MessageSection = styled.section`

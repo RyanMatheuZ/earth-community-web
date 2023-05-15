@@ -2,7 +2,6 @@
 import { useState } from 'react';
 
 import { type NextPage } from 'next';
-import { useRouter } from 'next/router';
 
 import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
 
@@ -25,8 +24,6 @@ import { Container, Content, Title, Text, MessageSection, FormSection, StyledFor
 
 const DonateNow: NextPage = () => {
   const [activeStep, setActiveStep] = useState(0);
-
-  const { back } = useRouter();
 
   const { donation, isLoadingDonation, handleCreateDonation } = useDonation();
 
@@ -78,10 +75,7 @@ const DonateNow: NextPage = () => {
         description={description}
       />
       <Container>
-        <HeaderWithBackButton
-          handleClickBackButton={back}
-          $themeColor='white'
-        />
+        <HeaderWithBackButton $themeColor='white' />
         <Content>
           <MessageSection>
             <Title>

@@ -6,9 +6,9 @@ import { IconButton, Menu } from '@mui/material';
 
 import { MenuIcon } from '@components/elements';
 
-import { StyledMenuItem, paperProps, transformOrigin, anchorOrigin } from './styles';
-
 import { dropdownItems } from '../utils';
+
+import { StyledMenuItem, paperProps, transformOrigin, anchorOrigin } from './styles';
 
 const Dropdown: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

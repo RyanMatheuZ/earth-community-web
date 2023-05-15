@@ -6,6 +6,8 @@ import { Drawer as MuiDrawer, IconButton } from '@mui/material';
 
 import { Logo, MenuIcon, RedirectLinkForDonation } from '@components/elements';
 
+import { dropdownItems } from '../utils';
+
 import {
   Container,
   StyledList,
@@ -15,8 +17,6 @@ import {
   CloseDrawerButton,
   CloseIcon
 } from './styles';
-
-import { dropdownItems } from '../utils';
 
 const Drawer: FC = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
