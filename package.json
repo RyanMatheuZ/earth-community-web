@@ -1,6 +1,6 @@
 {
   "name": "earth-community-web",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -26,7 +26,8 @@
     "react-hook-form": "^7.43.9",
     "react-toastify": "^9.1.2",
     "styled-components": "^5.3.9",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@types/node": "18.13.0",
