@@ -4,6 +4,15 @@ const nextConfig = {
     'page.tsx'
   ],
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.freepik.com'
+      },
+    ],
+  },
+
   reactStrictMode: true,
 
   compiler: {

@@ -12,9 +12,11 @@ import Logo from './Logo';
 import MenuIcon from './MenuIcon/styles';
 import RadioButton from './Form/RadioButton';
 import RedirectLinkForDonation from './RedirectLinkForDonation';
+import SearchBar from './SearchBar';
 import Select from './Form/Select';
 import StyledTextField from './StyledTextField/styles';
 import SubmitButton from './Form/SubmitButton';
+import UserPictureProfile from './UserPictureProfile';
 
 export {
   AccountButton,
@@ -31,7 +33,9 @@ export {
   MenuIcon,
   RadioButton,
   RedirectLinkForDonation,
+  SearchBar,
   Select,
   StyledTextField,
-  SubmitButton
+  SubmitButton,
+  UserPictureProfile
 };
