@@ -77,13 +77,17 @@ const Feed: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const handlePrefetchAllPosts = async () => {
     const { data }: AxiosResponse<{ posts: IPost }> = await axiosInstance.get('/post/get-all?perPage=10&page=1');
     return data.posts;
   };
 
   await queryClient.prefetchInfiniteQuery(['all-posts'], handlePrefetchAllPosts);
+
+  res.setHeader(
+    'Cache-Control', `s-maxage=${queryClient.getDefaultOptions().queries?.staleTime}, stale-while-revalidate=120`
+  );
 
   return {
     props: {
