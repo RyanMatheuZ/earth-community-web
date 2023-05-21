@@ -21,7 +21,7 @@ import { title, description } from './head';
 
 import { signInDefaultValues, schema } from './utils';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 const SignIn: NextPage = () => {
   const { handleSignIn, isLoadingSignIn } = useAuth();
@@ -45,7 +45,7 @@ const SignIn: NextPage = () => {
         title={title}
         description={description}
       />
-      <Container>
+      <S.Container>
         <HeaderWithBackButton $themeColor='green' />
         <FormSection $themeColor='green'>
           <FormTitle $themeColor='white'>
@@ -80,7 +80,7 @@ const SignIn: NextPage = () => {
             $themeColor='white'
           />
         </FormSection>
-      </Container>
+      </S.Container>
     </>
   );
 };

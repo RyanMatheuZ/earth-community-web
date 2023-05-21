@@ -1,13 +1,13 @@
 import { type FC } from 'react';
 
-import { QRCode, QRCodeDescription, QRCodeInput } from './styles';
+import * as S from './styles';
 
 const QRCodeSkeleton: FC = () => {
   return (
     <>
-      <QRCode />
-      <QRCodeDescription />
-      <QRCodeInput />
+      <S.QRCode />
+      <S.QRCodeDescription />
+      <S.QRCodeInput />
     </>
   );
 };

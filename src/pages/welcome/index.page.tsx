@@ -6,16 +6,7 @@ import { Footer, WelcomeHeader } from '@components/modules';
 
 import { title, description } from './head';
 
-import {
-  Container,
-  Content,
-  PhraseContainer,
-  SectionContainer,
-  HighlightedText,
-  UnderlinedText,
-  ButtonContainer,
-  TextButtonContainer
-} from './styles';
+import * as S from './styles';
 
 const Welcome: NextPage = () => {
   const descriptionImage = 'Super Heroi - illustration by @Storyset';
@@ -26,15 +17,15 @@ const Welcome: NextPage = () => {
         title={title}
         description={description}
       />
-      <Container>
+      <S.Container>
         <WelcomeHeader />
-        <Content>
-          <SectionContainer>
-            <PhraseContainer>
-              <HighlightedText>Juntos</HighlightedText>, <br />
+        <S.Content>
+          <S.SectionContainer>
+            <S.PhraseContainer>
+              <S.HighlightedText>Juntos</S.HighlightedText>, <br />
               nós podemos <br />
-              <UnderlinedText>restaurar</UnderlinedText> o planeta
-            </PhraseContainer>
+              <S.UnderlinedText>restaurar</S.UnderlinedText> o planeta
+            </S.PhraseContainer>
             <Image
               src='/illustrations/people/superhero.svg'
               alt={descriptionImage}
@@ -43,16 +34,16 @@ const Welcome: NextPage = () => {
               height='335'
               fill
             />
-          </SectionContainer>
-          <ButtonContainer>
+          </S.SectionContainer>
+          <S.ButtonContainer>
             <AccountButton />
-            <TextButtonContainer>
+            <S.TextButtonContainer>
               Começar a mudança...
-            </TextButtonContainer>
-          </ButtonContainer>
-        </Content>
+            </S.TextButtonContainer>
+          </S.ButtonContainer>
+        </S.Content>
         <Footer />
-      </Container>
+      </S.Container>
     </>
   );
 };

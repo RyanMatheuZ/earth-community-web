@@ -9,7 +9,7 @@ import SectionMadeForWho from './SectionMadeForWho';
 
 import { title, description } from './head';
 
-import { Container, HeaderContainer } from './styles';
+import * as S from './styles';
 
 const About: NextPage = () => {
   return (
@@ -18,15 +18,15 @@ const About: NextPage = () => {
         title={title}
         description={description}
       />
-      <Container>
-        <HeaderContainer>
+      <S.Container>
+        <S.HeaderContainer>
           <HeaderWithBackButton $themeColor='green' />
-        </HeaderContainer>
+        </S.HeaderContainer>
         <SectionKnowOurHistory />
         <SectionHowWeApplyOurResources />
         <SectionMadeForWho />
         <Footer />
-      </Container>
+      </S.Container>
     </>
   );
 };

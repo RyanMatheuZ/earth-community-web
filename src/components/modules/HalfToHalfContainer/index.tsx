@@ -1,12 +1,12 @@
 import { type FC, type PropsWithChildren } from 'react';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 const HalfToHalfContainer: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Container>
+    <S.Container>
       {children}
-    </Container>
+    </S.Container>
   );
 };
 

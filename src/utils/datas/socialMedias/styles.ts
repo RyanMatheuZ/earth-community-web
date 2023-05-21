@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 import { Facebook, Instagram, LinkedIn } from '@mui/icons-material';
 
-import { baseIconStyles } from '../styles';
+import * as DataS from '../styles';
 
 export const FacebookIcon = styled(Facebook)`
-  ${baseIconStyles};
+  ${DataS.baseIconStyles};
 `;
 
 export const InstagramIcon = styled(Instagram)`
-  ${baseIconStyles};
+  ${DataS.baseIconStyles};
 `;
 
 export const LinkedInIcon = styled(LinkedIn)`
-  ${baseIconStyles};
+  ${DataS.baseIconStyles};
 `;

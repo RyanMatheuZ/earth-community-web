@@ -2,15 +2,15 @@ import { type FC, type PropsWithChildren } from 'react';
 
 import type { ITheme } from '@ts/interfaces';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 type FormSectionProps = PropsWithChildren & ITheme;
 
 const FormSection: FC<FormSectionProps> = ({ children, $themeColor }) => {
   return (
-    <Container $themeColor={$themeColor} >
+    <S.Container $themeColor={$themeColor} >
       {children}
-    </Container >
+    </S.Container >
   );
 };
 

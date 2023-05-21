@@ -8,8 +8,8 @@ import { copyToClipboard } from '@utils/inputs/copyToClipboard';
 
 import QRCodeSkeleton from '../QRCodeSkeleton';
 
-import { Container, QRCode, QRCodeDescription, QRCodeInput, CopyIcon } from './styles';
-import { StepDescription, StepHighlightedText } from '../styles';
+import * as S from './styles';
+import * as DonateS from '../styles';
 
 interface DonationFinalStepProps {
   donation?: IDonation;
@@ -23,16 +23,16 @@ const DonationFinalStep: FC<DonationFinalStepProps> = ({ donation, isLoadingDona
 
   return (
     <>
-      <StepDescription>
-        <StepHighlightedText>Identificação concluída!</StepHighlightedText> <br />
+      <DonateS.StepDescription>
+        <DonateS.StepHighlightedText>Identificação concluída!</DonateS.StepHighlightedText> <br />
         Agora você pode realizar <br /> sua doação.
-      </StepDescription>
+      </DonateS.StepDescription>
       {isLoadingDonation && (
         <QRCodeSkeleton />
       )}
       {!isLoadingDonation && (
-        <Container>
-          <QRCode
+        <S.Container>
+          <S.QRCode
             src={sourceImage}
             alt={donationDescription}
             title={donationDescription}
@@ -40,20 +40,20 @@ const DonationFinalStep: FC<DonationFinalStepProps> = ({ donation, isLoadingDona
             height={200}
             draggable={false}
           />
-          <QRCodeDescription>
+          <S.QRCodeDescription>
             {donationDescription}
-          </QRCodeDescription>
-          <QRCodeInput
+          </S.QRCodeDescription>
+          <S.QRCodeInput
             defaultValue={qrCode}
             $themeColor='green'
             InputProps={{
               readOnly: true,
               endAdornment: <InputAdornment position='end'>
-                <CopyIcon onClick={() => copyToClipboard(qrCode, 'Código copiado com sucesso!')} />
+                <S.CopyIcon onClick={() => copyToClipboard(qrCode, 'Código copiado com sucesso!')} />
               </InputAdornment>
             }}
           />
-        </Container>
+        </S.Container>
       )}
     </>
   );

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { SectionContainer } from '../styles';
+import * as AboutS from '../styles';
 
-export const StyledSectionContainer = styled(SectionContainer)`
+export const StyledSectionContainer = styled(AboutS.SectionContainer)`
   margin-top: 0;
 
   @media ${({ theme }) => theme.breakpoints.down('laptop')} {

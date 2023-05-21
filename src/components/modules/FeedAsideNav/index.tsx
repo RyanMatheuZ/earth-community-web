@@ -2,13 +2,13 @@ import { type FC } from 'react';
 
 import { FeedNavigationItems } from '@components/modules';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 const FeedAsideNav: FC = () => {
   return (
-    <Container>
+    <S.Container>
       <FeedNavigationItems />
-    </Container>
+    </S.Container>
   );
 };
 

@@ -4,18 +4,18 @@ import type { ITheme } from '@ts/interfaces';
 
 import { AuthOptionsButton } from '@components/elements';
 
-import { Container, StyledDivider, Text } from './styles';
+import * as S from './styles';
 
 const AnotherAuthOption: FC<ITheme> = ({ $themeColor }) => {
   return (
     <>
-      <Container>
-        <StyledDivider $themeColor={$themeColor} />
-        <Text $themeColor={$themeColor}>
+      <S.Container>
+        <S.StyledDivider $themeColor={$themeColor} />
+        <S.Text $themeColor={$themeColor}>
           Ou entre com
-        </Text>
-        <StyledDivider $themeColor={$themeColor} />
-      </Container >
+        </S.Text>
+        <S.StyledDivider $themeColor={$themeColor} />
+      </S.Container >
       <AuthOptionsButton />
     </>
   );

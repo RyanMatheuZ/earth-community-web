@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { SearchBar } from '@components/elements';
 import { FeedNavigationItems } from '@components/modules';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 interface DrawerProps {
   isOpenDrawer: boolean;
@@ -12,13 +12,13 @@ interface DrawerProps {
 
 const Drawer: FC<DrawerProps> = ({ isOpenDrawer, onClose }) => {
   return (
-    <Container
+    <S.Container
       open={isOpenDrawer}
       onClose={onClose}
     >
       <SearchBar />
       <FeedNavigationItems />
-    </Container>
+    </S.Container>
   );
 };
 

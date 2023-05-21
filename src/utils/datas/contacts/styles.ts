@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 import { Email, Phone, LocationOn } from '@mui/icons-material';
 
-import { baseIconStyles } from '../styles';
+import * as DataS from '../styles';
 
 export const EmailIcon = styled(Email)`
-  ${baseIconStyles};
+  ${DataS.baseIconStyles};
 `;
 
 export const PhoneIcon = styled(Phone)`
-  ${baseIconStyles};
+  ${DataS.baseIconStyles};
 `;
 
 export const LocationIcon = styled(LocationOn)`
-  ${baseIconStyles};
+  ${DataS.baseIconStyles};
 `;

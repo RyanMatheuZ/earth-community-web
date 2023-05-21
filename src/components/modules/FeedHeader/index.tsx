@@ -6,14 +6,7 @@ import { Logo, SearchBar, UserPictureProfile } from '@components/elements';
 
 import Drawer from './Drawer';
 
-import {
-  Container,
-  MaxWidthContainer,
-  SearchBarContainer,
-  GroupElements,
-  IconContainer,
-  MenuIcon,
-} from './styles';
+import * as S from './styles';
 
 const FeedHeader: FC = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -28,27 +21,27 @@ const FeedHeader: FC = () => {
 
   return (
     <>
-      <Container>
-        <MaxWidthContainer>
-          <GroupElements>
+      <S.Container>
+        <S.MaxWidthContainer>
+          <S.GroupElements>
             <Logo
               showOnlyImage
               $themeColor='green'
               width='50'
               height='50'
             />
-            <SearchBarContainer>
+            <S.SearchBarContainer>
               <SearchBar />
-            </SearchBarContainer>
-          </GroupElements>
-          <IconContainer onClick={handleToggleDrawer}>
-            <MenuIcon />
-          </IconContainer>
-          <GroupElements>
+            </S.SearchBarContainer>
+          </S.GroupElements>
+          <S.IconContainer onClick={handleToggleDrawer}>
+            <S.MenuIcon />
+          </S.IconContainer>
+          <S.GroupElements>
             <UserPictureProfile userName={userName} />
-          </GroupElements>
-        </MaxWidthContainer>
-      </Container>
+          </S.GroupElements>
+        </S.MaxWidthContainer>
+      </S.Container>
       <Drawer
         isOpenDrawer={isOpenDrawer}
         onClose={handleToggleDrawer}

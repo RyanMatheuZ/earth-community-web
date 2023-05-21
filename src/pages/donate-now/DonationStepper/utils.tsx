@@ -5,7 +5,7 @@ import { Receipt, SupervisedUserCircle, Home, VolunteerActivism } from '@mui/ico
 
 import { useFormContext } from 'react-hook-form';
 
-import { StepIconRoot } from './styles';
+import * as S from './styles';
 
 import { giverDefaultValues, type GiverDefaultValues } from '../utils';
 
@@ -54,11 +54,11 @@ export const resolveStepIcon = ({ active, className, icon }: StepIconProps) => {
   };
 
   return (
-    <StepIconRoot
+    <S.StepIconRoot
       ownerState={{ active }}
       className={className}
     >
       {icons[Number(icon)]}
-    </StepIconRoot>
+    </S.StepIconRoot>
   );
 };

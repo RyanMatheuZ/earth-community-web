@@ -5,18 +5,18 @@ import { Logo, RedirectLinkForDonation } from '@components/elements';
 import Drawer from './Drawer';
 import Dropdown from './Dropdown';
 
-import { Container, ElementsOnTheRight } from './styles';
+import * as S from './styles';
 
 const WelcomeHeader: FC = () => {
   return (
     <header>
-      <Container>
+      <S.Container>
         <Logo $themeColor='green' />
-        <ElementsOnTheRight>
+        <S.ElementsOnTheRight>
           <RedirectLinkForDonation />
           <Dropdown />
-        </ElementsOnTheRight>
-      </Container>
+        </S.ElementsOnTheRight>
+      </S.Container>
       <Drawer />
     </header>
   );

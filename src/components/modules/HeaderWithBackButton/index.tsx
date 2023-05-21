@@ -8,7 +8,7 @@ import type { ITheme } from '@ts/interfaces';
 
 import { BackIcon, Logo } from '@components/elements';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 interface HeaderWithBackButtonProps extends ITheme {
   handleClickBackButton?: () => void;
@@ -20,15 +20,15 @@ const HeaderWithBackButton: FC<HeaderWithBackButtonProps> = ({ handleClickBackBu
   const backButtonAndLogo$themeColor = $themeColor === 'white' ? 'green' : 'white';
 
   return (
-    <Container $themeColor={$themeColor}>
-      <IconButton onClick={handleClickBackButton ? handleClickBackButton : back }>
+    <S.Container $themeColor={$themeColor}>
+      <IconButton onClick={handleClickBackButton ? handleClickBackButton : back}>
         <BackIcon $themeColor={backButtonAndLogo$themeColor} />
       </IconButton>
       <Logo
         showOnlyImage
         $themeColor={backButtonAndLogo$themeColor}
       />
-    </Container>
+    </S.Container>
   );
 };
 

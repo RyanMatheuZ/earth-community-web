@@ -8,15 +8,7 @@ import { Logo, MenuIcon, RedirectLinkForDonation } from '@components/elements';
 
 import { dropdownItems } from '../utils';
 
-import {
-  Container,
-  StyledList,
-  StyledListItem,
-  LinkContainer,
-  ButtonContainer,
-  CloseDrawerButton,
-  CloseIcon
-} from './styles';
+import * as S from './styles';
 
 const Drawer: FC = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -26,7 +18,7 @@ const Drawer: FC = () => {
   };
 
   return (
-    <Container>
+    <S.Container>
       <Logo
         showOnlyImage
         $themeColor='green'
@@ -38,29 +30,29 @@ const Drawer: FC = () => {
         open={isOpenDrawer}
         onClose={handleToggleDrawer}
       >
-        <StyledList>
-          <LinkContainer>
+        <S.StyledList>
+          <S.LinkContainer>
             {dropdownItems.map(({ icon, label, path, target }, index) => (
               <Link
                 key={`drawer-${label}-${index}`}
                 href={path}
                 target={target}
               >
-                <StyledListItem onClick={handleToggleDrawer}>
+                <S.StyledListItem onClick={handleToggleDrawer}>
                   {icon} {label}
-                </StyledListItem>
+                </S.StyledListItem>
               </Link>
             ))}
-          </LinkContainer>
-          <ButtonContainer>
+          </S.LinkContainer>
+          <S.ButtonContainer>
             <RedirectLinkForDonation />
-            <CloseDrawerButton onClick={handleToggleDrawer}>
-              <CloseIcon /> Fechar
-            </CloseDrawerButton>
-          </ButtonContainer>
-        </StyledList>
+            <S.CloseDrawerButton onClick={handleToggleDrawer}>
+              <S.CloseIcon /> Fechar
+            </S.CloseDrawerButton>
+          </S.ButtonContainer>
+        </S.StyledList>
       </MuiDrawer>
-    </Container>
+    </S.Container>
   );
 };
 

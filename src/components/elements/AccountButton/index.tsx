@@ -2,7 +2,7 @@ import { useState, type FC } from 'react';
 
 import { actions } from './utils';
 
-import { StyledSpeedDial, StyledSpeedDialAction, SpaIcon, CloseIcon } from './styles';
+import * as S from './styles';
 
 const AccountButton: FC = () => {
   const [isOpenSpeedDial, setIsOpenSpeedDial] = useState(false);
@@ -12,16 +12,16 @@ const AccountButton: FC = () => {
   };
 
   return (
-    <StyledSpeedDial
+    <S.StyledSpeedDial
       ariaLabel='Rápido acesso para autenticação'
       open={isOpenSpeedDial}
-      icon={isOpenSpeedDial ? <CloseIcon /> : <SpaIcon />}
+      icon={isOpenSpeedDial ? <S.CloseIcon /> : <S.SpaIcon />}
       onOpen={handleToggleSpeedDial}
       onClose={handleToggleSpeedDial}
       direction='down'
     >
       {actions.map(({ icon, label }) => (
-        <StyledSpeedDialAction
+        <S.StyledSpeedDialAction
           key={label}
           icon={icon}
           tooltipOpen
@@ -29,7 +29,7 @@ const AccountButton: FC = () => {
           tooltipPlacement='right'
         />
       ))}
-    </StyledSpeedDial>
+    </S.StyledSpeedDial>
   );
 };
 

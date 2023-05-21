@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import type { ITheme } from '@ts/interfaces';
 
-import { Container, Text, StyledLink } from './styles';
+import * as S from './styles';
 
 interface AlreadyHaveAnAccountProps extends ITheme {
   alreadyHave?: boolean;
@@ -13,17 +13,17 @@ const AlreadyHaveAnAccount: FC<AlreadyHaveAnAccountProps> = ({ alreadyHave, $the
   const href = alreadyHave ? '/sign-up' : '/sign-in';
 
   return (
-    <Container>
-      <Text $themeColor={$themeColor}>
+    <S.Container>
+      <S.Text $themeColor={$themeColor}>
         {message}
-      </Text>{' '}
-      <StyledLink
+      </S.Text>{' '}
+      <S.StyledLink
         $themeColor={$themeColor}
         href={href}
       >
         uma conta?
-      </StyledLink>
-    </Container>
+      </S.StyledLink>
+    </S.Container>
   );
 };
 

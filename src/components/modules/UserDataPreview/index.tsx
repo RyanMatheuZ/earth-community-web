@@ -4,7 +4,7 @@ import { useAuth } from '@context/auth';
 
 import { UserPictureProfile } from '@components/elements';
 
-import { Container, UserBackgroundProfile, UserPictureProfileContainer, UserName } from './styles';
+import * as S from './styles';
 
 const UserDataPreview: FC = () => {
   const { user } = useAuth();
@@ -14,26 +14,26 @@ const UserDataPreview: FC = () => {
   const userName = `${user?.info.firstName} ${user?.info.surname}`;
 
   return (
-    <Container>
-      <UserBackgroundProfile
+    <S.Container>
+      <S.UserBackgroundProfile
         src='/backgrounds/icons-white.png'
         alt={userBackgroundProfileDescription}
         title={userBackgroundProfileDescription}
         draggable={false}
         fill
       />
-      <UserPictureProfileContainer>
+      <S.UserPictureProfileContainer>
         <UserPictureProfile
           userName={userName}
           pictureProfileSRC={user?.info.pictureProfile}
           width='60'
           height='60'
         />
-        <UserName>
+        <S.UserName>
           {userName}
-        </UserName>
-      </UserPictureProfileContainer>
-    </Container>
+        </S.UserName>
+      </S.UserPictureProfileContainer>
+    </S.Container>
   );
 };
 

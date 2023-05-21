@@ -14,7 +14,7 @@ import { states } from '@utils/datas/states';
 
 import { type GiverDefaultValues } from '../utils';
 
-import { StepDescription, StepHighlightedText } from '../styles';
+import * as DonateS from '../styles';
 
 const DonationAddressDataFields: FC = () => {
   const { control, setValue, trigger, formState: { errors } } = useFormContext<GiverDefaultValues>();
@@ -38,10 +38,10 @@ const DonationAddressDataFields: FC = () => {
 
   return (
     <>
-      <StepDescription>
-        <StepHighlightedText>Estamos quase lá!</StepHighlightedText> <br />
+      <DonateS.StepDescription>
+        <DonateS.StepHighlightedText>Estamos quase lá!</DonateS.StepHighlightedText> <br />
         Para concluírmos sua identificação preencha <br /> seus dados de endereço.
-      </StepDescription>
+      </DonateS.StepDescription>
       <Field
         control={control}
         errors={errors}

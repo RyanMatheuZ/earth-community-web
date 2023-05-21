@@ -1,12 +1,12 @@
-import { SignInIcon, SignUpIcon, StyledLink } from './styles';
+import * as S from './styles';
 
 export const actions = [
   {
-    icon: <StyledLink href='/sign-in'><SignInIcon /></StyledLink>,
+    icon: <S.StyledLink href='/sign-in'><S.SignInIcon /></S.StyledLink>,
     label: 'Entrar'
   },
   {
-    icon: <StyledLink href='/sign-up'><SignUpIcon /></StyledLink>,
+    icon: <S.StyledLink href='/sign-up'><S.SignUpIcon /></S.StyledLink>,
     label: 'Cadastrar-se'
   }
 ];
