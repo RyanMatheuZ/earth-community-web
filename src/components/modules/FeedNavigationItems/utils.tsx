@@ -11,7 +11,7 @@ export const navItems: ReadonlyArray<IMediaItems> = [
   },
   {
     icon: <DonateIcon />,
-    label: 'Doação',
+    label: 'Doar',
     path: '/donate-now',
     target: '_self'
   },

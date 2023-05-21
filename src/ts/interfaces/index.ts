@@ -1,5 +1,6 @@
 import type IAPIError from './APIError';
 import type IAuthContext from './AuthContext';
+import type IAuthOptions from './AuthOptions';
 import type IDonation from './Donation';
 import type IGiver from './Giver';
 import type IGroup from './Group';
@@ -17,6 +18,7 @@ export type {
   IAPIError,
   IActions,
   IAuthContext,
+  IAuthOptions,
   IDonation,
   IGiver,
   IGroup,

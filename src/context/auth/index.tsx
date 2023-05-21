@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { type AxiosResponse } from 'axios';
 
-import type { IAuthContext, ISignUp, ISignIn, IUser } from '@ts/interfaces';
+import type { IAuthContext, IAuthOptions, ISignUp, ISignIn, IUser } from '@ts/interfaces';
 
 import axiosInstance from '@services/axios';
 
@@ -22,7 +22,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const { user, handlePersistUserData, handleCleanUserData } = useUserStore();
 
   const isUserDataPersisted = !!user;
-  const isAuthenticatedUser = isUserDataPersisted && !!unauthenticatedRoutes.includes(asPath);
+  const isAuthenticatedUser = isUserDataPersisted && unauthenticatedRoutes.includes(asPath);
 
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
@@ -32,7 +32,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     push('/feed');
   };
 
-  const handleSignUp = async (signUpValues: ISignUp) => {
+  const handleSignUp = async (signUpValues: ISignUp & IAuthOptions) => {
     try {
       setIsLoadingSignUp(true);
       const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.post(`${ENDPOINT}/sign-up`, {
@@ -43,7 +43,8 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         },
         security: {
           password: signUpValues.password,
-          confirmPassword: signUpValues.confirmPassword
+          confirmPassword: signUpValues.confirmPassword,
+          authWith: signUpValues.authWith
         }
       });
       handlePersistUserDataAndRedirectToFeed(data.user);
@@ -54,7 +55,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
-  const handleSignIn = async (signInValues: ISignIn) => {
+  const handleSignIn = async (signInValues: ISignIn & IAuthOptions) => {
     try {
       setIsLoadingSignIn(true);
       const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.post(`${ENDPOINT}/sign-in`, {
@@ -63,6 +64,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         },
         security: {
           password: signInValues.password,
+          authWith: signInValues.authWith
         }
       });
       handlePersistUserDataAndRedirectToFeed(data.user);

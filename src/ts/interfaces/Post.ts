@@ -9,7 +9,7 @@ interface IPost {
   }>,
   likes: {
     quantity: number,
-    userIds: number[]
+    userIds: string[]
   },
   createdByUserId: string,
   createdAt: Date,

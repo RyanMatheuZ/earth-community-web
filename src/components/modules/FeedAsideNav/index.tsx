@@ -1,23 +1,13 @@
 import { type FC } from 'react';
 
-import { navItems } from './utils';
+import { FeedNavigationItems } from '@components/modules';
 
-import { Container, Navigation, StyledLink } from './styles';
+import { Container } from './styles';
 
 const FeedAsideNav: FC = () => {
   return (
     <Container>
-      <Navigation>
-        {navItems.map(({ label, icon, path, target }, index) => (
-          <StyledLink
-            key={`nav-item-${label}-${index}`}
-            href={path}
-            target={target}
-          >
-            {icon} {label}
-          </StyledLink>
-        ))}
-      </Navigation>
+      <FeedNavigationItems />
     </Container>
   );
 };

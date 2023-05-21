@@ -2,7 +2,9 @@ import { useState, type FC } from 'react';
 
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
-import type { IPost } from '@ts/interfaces';
+import type { IPost, IUser } from '@ts/interfaces';
+
+import { useAuth } from '@context/auth';
 
 import { usePost } from '@hooks/index';
 
@@ -33,15 +35,24 @@ interface PostProps {
   postType: 'feed' | 'group';
 }
 
-const Post: FC<PostProps> = ({ postItems, postType }) => {
-  const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(false);
+const Post: FC<PostProps> = ({ postItems }) => {
+  const { user } = useAuth();
+
+  const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(() => {
+    return resolveUserLikePost(
+      user?._id as IUser['_id'],
+      postItems.likes.userIds
+    );
+  });
+
+  const userName = `${user?.info.firstName} ${user?.info.surname}`;
 
   const queryClient = useQueryClient();
 
   const { handleUserToggleLikeThePost } = usePost();
 
   const { mutate } = useMutation(
-    () => handleUserToggleLikeThePost(postItems._id, '38947hirj393'),
+    () => handleUserToggleLikeThePost(postItems._id, user?._id as IUser['_id']),
     {
       onSuccess: () => {
         queryClient.invalidateQueries(['all-posts']);
@@ -54,14 +65,14 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
     <Container>
       <Header>
         <UserPictureProfile
-          pictureProfileSRC=''
-          userName=''
+          pictureProfileSRC={user?.info.pictureProfile}
+          userName={userName}
           width='35'
           height='35'
         />
         <AdditionalInformation>
           <CreatedByContainer>
-            <CreatedBy>Amigos da Mulekada</CreatedBy>
+            <CreatedBy>{postItems.createdByUserId}</CreatedBy>
           </CreatedByContainer>
           <PublicationDate>
             {resolvePostCreatedAt(postItems.createdAt)}
@@ -73,7 +84,7 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
           {postItems.text}
         </Text>
         <Image
-          src='https://img.freepik.com/fotos-gratis/foto-aerea-aerea-de-uma-floresta-densa-com-belas-arvores-e-vegetacao_181624-2812.jpg?w=996&t=st=1684526556~exp=1684527156~hmac=2ef5bb7806b9b4e0a3781a3c8321cae51711be2d9c949c8e3c1dbe463e4e8f54'
+          src='/backgrounds/florest.png'
           alt={postItems.text}
           draggable={false}
           fill
