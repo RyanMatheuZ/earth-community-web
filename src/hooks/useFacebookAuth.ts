@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { signInWithPopup, FacebookAuthProvider, type User } from 'firebase/auth';
 
@@ -9,7 +9,7 @@ import { catchError } from '@utils/requestMessages';
 const useFacebookAuth = () => {
   const [userData, setUserData] = useState<User>();
 
-  const handleSignIn = async () => {
+  const handleSignIn = useCallback(async () => {
     try {
       const response = await signInWithPopup(auth, facebookAuthProvider);
 
@@ -29,7 +29,7 @@ const useFacebookAuth = () => {
     } catch (error) {
       catchError(error);
     }
-  };
+  }, []);
 
   return {
     handleSignIn,

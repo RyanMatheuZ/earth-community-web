@@ -9,9 +9,11 @@ export const unauthenticatedRoutes: string[] = [
 ];
 
 export const authContextDefaultValues: IAuthContext = {
+  user: null,
   unauthenticatedRoutes,
   isLoadingSignUp: false,
   isLoadingSignIn: false,
   handleSignUp: () => Promise.resolve(),
-  handleSignIn: () => Promise.resolve()
+  handleSignIn: () => Promise.resolve(),
+  handleSignOut: () => null
 };

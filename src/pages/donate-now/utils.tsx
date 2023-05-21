@@ -8,7 +8,7 @@ import { email, firstName, surname, cpf } from '@utils/validationSchemas/user';
 import * as addressValidationSchemas from '@utils/validationSchemas/address';
 
 export interface GiverDefaultValues {
-  transactionAmount: IGiver['transaction_amount'];
+  transactionAmount: string;
   email: IGiver['payer']['email'];
   firstName: IGiver['payer']['first_name'];
   surname: IGiver['payer']['first_name'];
@@ -22,7 +22,7 @@ export interface GiverDefaultValues {
 }
 
 export const giverDefaultValues: GiverDefaultValues = {
-  transactionAmount: 5,
+  transactionAmount: '5',
   email: '',
   firstName: '',
   surname: '',

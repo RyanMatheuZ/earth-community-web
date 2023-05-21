@@ -1,8 +1,14 @@
-import { useState, useContext, createContext, type FC, type PropsWithChildren } from 'react';
+import { useState, useEffect, useContext, createContext, type FC, type PropsWithChildren } from 'react';
 
-import type { IAuthContext, ISignUp, ISignIn } from '@ts/interfaces';
+import { useRouter } from 'next/router';
+
+import { type AxiosResponse } from 'axios';
+
+import type { IAuthContext, IAuthOptions, ISignUp, ISignIn, IUser } from '@ts/interfaces';
 
 import axiosInstance from '@services/axios';
+
+import useUserStore from '@services/zustand';
 
 import { authContextDefaultValues, unauthenticatedRoutes } from './utils';
 
@@ -11,13 +17,25 @@ const AuthContext = createContext<IAuthContext>(authContextDefaultValues);
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const ENDPOINT = '/auth/user';
 
+  const { push, replace, asPath } = useRouter();
+
+  const { user, handlePersistUserData, handleCleanUserData } = useUserStore();
+
+  const isUserDataPersisted = !!user;
+  const isAuthenticatedUser = isUserDataPersisted && unauthenticatedRoutes.includes(asPath);
+
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
 
-  const handleSignUp = async (signUpValues: ISignUp) => {
+  const handlePersistUserDataAndRedirectToFeed = (userData: IUser) => {
+    handlePersistUserData(userData);
+    push('/feed');
+  };
+
+  const handleSignUp = async (signUpValues: ISignUp & IAuthOptions) => {
     try {
       setIsLoadingSignUp(true);
-      await axiosInstance.post(`${ENDPOINT}/sign-up`, {
+      const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.post(`${ENDPOINT}/sign-up`, {
         info: {
           firstName: signUpValues.firstName,
           surname: signUpValues.surname,
@@ -25,9 +43,11 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         },
         security: {
           password: signUpValues.password,
-          confirmPassword: signUpValues.confirmPassword
+          confirmPassword: signUpValues.confirmPassword,
+          authWith: signUpValues.authWith
         }
       });
+      handlePersistUserDataAndRedirectToFeed(data.user);
     } catch (error) {
       console.error(error);
     } finally {
@@ -35,17 +55,19 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
-  const handleSignIn = async (signInValues: ISignIn) => {
+  const handleSignIn = async (signInValues: ISignIn & IAuthOptions) => {
     try {
       setIsLoadingSignIn(true);
-      await axiosInstance.post(`${ENDPOINT}/sign-in`, {
+      const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.post(`${ENDPOINT}/sign-in`, {
         info: {
           email: signInValues.email,
         },
         security: {
           password: signInValues.password,
+          authWith: signInValues.authWith
         }
       });
+      handlePersistUserDataAndRedirectToFeed(data.user);
     } catch (error) {
       console.error(error);
     } finally {
@@ -53,13 +75,25 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const handleSignOut = () => {
+    push('/welcome');
+    handleCleanUserData();
+  };
+
+  useEffect(() => {
+    if (isAuthenticatedUser) push('/feed');
+    else replace('/welcome');
+  }, []);
+
   return (
     <AuthContext.Provider value={{
+      user,
       unauthenticatedRoutes,
       isLoadingSignUp,
       isLoadingSignIn,
       handleSignUp,
-      handleSignIn
+      handleSignIn,
+      handleSignOut
     }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { signInWithPopup, type User } from 'firebase/auth';
 
@@ -9,14 +9,14 @@ import { catchError } from '@utils/requestMessages';
 const useGoogleAuth = () => {
   const [userData, setUserData] = useState<User>();
 
-  const handleSignIn = async () => {
+  const handleSignIn = useCallback(async () => {
     try {
       const response = await signInWithPopup(auth, googleAuthProvider);
       setUserData(response.user);
     } catch (error) {
       catchError(error);
     }
-  };
+  }, []);
 
   return {
     handleSignIn,

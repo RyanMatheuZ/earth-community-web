@@ -33,7 +33,10 @@ const SignIn: NextPage = () => {
   });
 
   const onSubmit: SubmitHandler<ISignIn> = (signInValues) => {
-    handleSignIn(signInValues);
+    handleSignIn({
+      ...signInValues,
+      authWith: 'manually'
+    });
   };
 
   return (
