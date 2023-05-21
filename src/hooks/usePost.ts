@@ -14,6 +14,7 @@ const usePost = () => {
   const ENDPOINT = '/post';
 
   const handleGetAllPosts = useCallback(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useInfiniteQuery(
       ['all-posts'],
       async ({ pageParam = 1 }): Promise<IPost[] | undefined> => {

@@ -83,6 +83,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (isAuthenticatedUser) push('/feed');
     else replace('/welcome');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
