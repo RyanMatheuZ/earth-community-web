@@ -6,8 +6,9 @@ export const Container = styled(Drawer)`
   & .MuiPaper-root {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: ${({ theme }) => theme.spacing(2)};
     padding: ${({ theme }) => theme.spacing(1)};
-    width: 50%;
+    width: 80vw;
   }
 `;

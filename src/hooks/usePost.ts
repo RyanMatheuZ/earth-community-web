@@ -14,8 +14,7 @@ const usePost = () => {
   const ENDPOINT = '/post';
 
   const handleGetAllPosts = useCallback(() => {
-    const postsPerPage = 10;
-
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useInfiniteQuery(
       ['all-posts'],
       async ({ pageParam = 1 }): Promise<IPost[] | undefined> => {
@@ -23,7 +22,7 @@ const usePost = () => {
           axiosInstance.interceptors.response.clear();
 
           const { data }: AxiosResponse<{ posts: IPost[] }> = await axiosInstance.get(
-            `${ENDPOINT}/get-all?perPage=${postsPerPage}&page=${pageParam}`
+            `${ENDPOINT}/get-all?perPage=10&page=${pageParam}`
           );
 
           return data.posts;

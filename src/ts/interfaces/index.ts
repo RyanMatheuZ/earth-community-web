@@ -1,4 +1,5 @@
 import type IAPIError from './APIError';
+import type IAppProps from './AppProps';
 import type IAuthContext from './AuthContext';
 import type IAuthOptions from './AuthOptions';
 import type IDonation from './Donation';
@@ -17,6 +18,7 @@ import type { IActions, IState } from './UseStore';
 export type {
   IAPIError,
   IActions,
+  IAppProps,
   IAuthContext,
   IAuthOptions,
   IDonation,

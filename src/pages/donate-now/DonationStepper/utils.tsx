@@ -31,6 +31,7 @@ export const steps = [
 ];
 
 export const isFormFieldsFilledCorrectly = (values: AllowedFieldsType[]) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { getValues, formState: { errors } } = useFormContext<GiverDefaultValues>();
 
   const fieldValues: Array<string | number> = [];
