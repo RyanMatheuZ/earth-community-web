@@ -1,3 +1,5 @@
+import { type FC, type PropsWithChildren } from 'react';
+
 import { ThemeProvider as MaterialUiProvider } from '@mui/material';
 
 import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
@@ -9,13 +11,13 @@ import Global from '@styles/global';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-const ThemeProviders = (node: JSX.Element) => {
+const ThemeProviders: FC<PropsWithChildren> = ({ children }) => {
   return (
     <StyledComponentsProvider theme={styledComponentsTheme}>
       <MaterialUiProvider theme={materialUiTheme}>
         <ToastContainer />
         <Global />
-        {node}
+        {children}
       </MaterialUiProvider>
     </StyledComponentsProvider>
   );
