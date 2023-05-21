@@ -86,7 +86,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   await queryClient.prefetchInfiniteQuery(['all-posts'], handlePrefetchAllPosts);
 
   res.setHeader(
-    'Cache-Control', `s-maxage=${queryClient.getDefaultOptions().queries}, stale-while-revalidate=120`
+    'Cache-Control', `s-maxage=${queryClient.getDefaultOptions().queries?.staleTime}, stale-while-revalidate=120`
   );
 
   return {
