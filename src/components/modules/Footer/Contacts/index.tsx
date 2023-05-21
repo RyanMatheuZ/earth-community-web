@@ -2,27 +2,27 @@ import { type FC } from 'react';
 
 import { contacts } from '@utils/datas/contacts';
 
-import { ContactContainer, IconContainer } from './styles';
-import { ListTitle, ListText } from '../styles';
+import * as S from './styles';
+import * as FooterS from '../styles';
 
 const Contacts: FC = () => {
   return (
     <ul>
       <li>
-        <ListTitle>
+        <FooterS.ListTitle>
           Contatos
-        </ListTitle>
+        </FooterS.ListTitle>
       </li>
       {contacts.map(({ icon, label, value }, index) => (
         <li key={`contact-${label}-${index}`}>
-          <ContactContainer>
-            <IconContainer>
+          <S.ContactContainer>
+            <S.IconContainer>
               {icon}
-            </IconContainer>
-            <ListText>
+            </S.IconContainer>
+            <FooterS.ListText>
               {value}
-            </ListText>
-          </ContactContainer>
+            </FooterS.ListText>
+          </S.ContactContainer>
         </li>
       ))}
     </ul>

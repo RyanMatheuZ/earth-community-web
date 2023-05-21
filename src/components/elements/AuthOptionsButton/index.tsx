@@ -5,7 +5,7 @@ import Image from 'next/image';
 import useGoogleAuth from '@hooks/useGoogleAuth';
 import useFacebookAuth from '@hooks/useFacebookAuth';
 
-import { Container, AuthButton } from './styles';
+import * as S from './styles';
 
 const AuthOptionsButton: FC = () => {
   const { handleSignIn: handleSignInWithGoogle } = useGoogleAuth();
@@ -25,12 +25,12 @@ const AuthOptionsButton: FC = () => {
   ];
 
   return (
-    <Container>
+    <S.Container>
       {authOptions.map(({ label, iconPath, handleClick }, index) => {
         const description = `Entrar com a sua conta do ${label}`;
 
         return (
-          <AuthButton
+          <S.AuthButton
             key={`auth-${label}-${index}`}
             title={description}
             onClick={handleClick}
@@ -43,10 +43,10 @@ const AuthOptionsButton: FC = () => {
               height='25'
             />
             {label}
-          </AuthButton>
+          </S.AuthButton>
         );
       })}
-    </Container>
+    </S.Container>
   );
 };
 

@@ -1,34 +1,34 @@
-import { SeedIcon, BudIcon, PlantIcon, TreeIcon, ForestIcon, CommunityIcon } from './styles';
+import * as S from './styles';
 
 export const donationOptions = [
   {
     label: 'Semente',
     value: 5,
-    icon: <SeedIcon />
+    icon: <S.SeedIcon />
   },
   {
     label: 'Broto',
     value: 10,
-    icon: <BudIcon />
+    icon: <S.BudIcon />
   },
   {
     label: 'Planta',
     value: 25,
-    icon: <PlantIcon />
+    icon: <S.PlantIcon />
   },
   {
     label: 'Árvore',
     value: 50,
-    icon: <TreeIcon />
+    icon: <S.TreeIcon />
   },
   {
     label: 'Floresta',
     value: 100,
-    icon: <ForestIcon />
+    icon: <S.ForestIcon />
   },
   {
     label: 'Comunidade',
     value: 300,
-    icon: <CommunityIcon />
+    icon: <S.CommunityIcon />
   },
 ];

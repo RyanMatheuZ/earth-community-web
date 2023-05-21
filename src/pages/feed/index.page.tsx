@@ -20,7 +20,7 @@ import { FeedAsideNav, FeedHeader, Post } from '@components/modules';
 
 import { title, description } from './head';
 
-import { Container, PostContainer, Content, LoadingText } from './styles';
+import * as S from './styles';
 
 const Feed: NextPage = () => {
   const { handleGetAllPosts } = usePost();
@@ -53,11 +53,11 @@ const Feed: NextPage = () => {
         title={title}
         description={description}
       />
-      <Container>
+      <S.Container>
         <FeedHeader />
-        <Content>
+        <S.Content>
           <FeedAsideNav />
-          <PostContainer>
+          <S.PostContainer>
             {allPosts?.map((post, index) => (
               <Post
                 key={`post-${post._id}-${index}`}
@@ -65,14 +65,14 @@ const Feed: NextPage = () => {
                 postType='feed'
               />
             ))}
-            <LoadingText ref={ref}>
+            <S.LoadingText ref={ref}>
               {(isFetchingNextPage || isLoading || hasNextPage)
                 ? 'Carregando publicações...'
                 : 'Não há novas publicações no momento :)'}
-            </LoadingText>
-          </PostContainer>
-        </Content>
-      </Container>
+            </S.LoadingText>
+          </S.PostContainer>
+        </S.Content>
+      </S.Container>
     </>
   );
 };

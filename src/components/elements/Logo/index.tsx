@@ -4,7 +4,7 @@ import Image, { ImageProps } from 'next/image';
 
 import type { ITheme } from '@ts/interfaces';
 
-import { Container, Title } from './styles';
+import * as S from './styles';
 
 interface LogoProps extends ITheme {
   showOnlyImage?: boolean;
@@ -16,7 +16,7 @@ const Logo: FC<LogoProps> = ({ showOnlyImage, width = 60, height = 60, $themeCol
   const textLogo = 'Earth Community';
 
   return (
-    <Container>
+    <S.Container>
       <Image
         src={`/medias/logo-${$themeColor}.svg`}
         alt={textLogo}
@@ -26,11 +26,11 @@ const Logo: FC<LogoProps> = ({ showOnlyImage, width = 60, height = 60, $themeCol
         draggable={false}
       />
       {!showOnlyImage && (
-        <Title $themeColor={$themeColor}>
+        <S.Title $themeColor={$themeColor}>
           {textLogo}
-        </Title>
+        </S.Title>
       )}
-    </Container>
+    </S.Container>
   );
 };
 

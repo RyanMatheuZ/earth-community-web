@@ -1,15 +1,15 @@
 import { type FC } from 'react';
 
-import { StyleInput, SearchIcon, StyledInputAdorment } from './styles';
+import * as S from './styles';
 
 const SearchBar: FC = () => {
   return (
-    <StyleInput
+    <S.StyleInput
       placeholder='Pesquise por pessoas ou grupos...'
       InputProps={{
-        startAdornment: <StyledInputAdorment position='start'>
-          <SearchIcon />
-        </StyledInputAdorment>
+        startAdornment: <S.StyledInputAdorment position='start'>
+          <S.SearchIcon />
+        </S.StyledInputAdorment>
       }}
     />
   );

@@ -4,15 +4,7 @@ import { Step, StepLabel, Fade } from '@mui/material';
 
 import { steps, resolveStepIcon, isFormFieldsFilledCorrectly } from './utils';
 
-import {
-  StepperConnector,
-  StepContainer,
-  StyledStepper,
-  Container,
-  ButtonContainer,
-  NextButton,
-  PreviousButton
-} from './styles';
+import * as S from './styles';
 
 interface DonationStepperProps extends PropsWithChildren {
   activeStep: number;
@@ -30,15 +22,17 @@ const DonationStepper: FC<DonationStepperProps> = ({ children, activeStep = 0, s
   };
 
   const handleToggleFade = (stepFn: () => void) => {
+    const timeoutValue = 250;
+
     setIsActiveFade(false);
 
     setTimeout(() => {
       setIsActiveFade(true);
-    }, 250);
+    }, timeoutValue);
 
     setTimeout(() => {
       stepFn();
-    }, 250);
+    }, timeoutValue);
   };
 
   const nextStep = () => {
@@ -54,10 +48,10 @@ const DonationStepper: FC<DonationStepperProps> = ({ children, activeStep = 0, s
   };
 
   return (
-    <Container>
-      <StyledStepper
+    <S.Container>
+      <S.StyledStepper
         activeStep={activeStep}
-        connector={<StepperConnector />}
+        connector={<S.StepperConnector />}
         alternativeLabel
       >
         {steps.map(({ label }, index) => (
@@ -67,31 +61,31 @@ const DonationStepper: FC<DonationStepperProps> = ({ children, activeStep = 0, s
             </StepLabel>
           </Step>
         ))}
-      </StyledStepper>
+      </S.StyledStepper>
       <Fade
         in={isActiveFade}
         unmountOnExit
       >
-        <StepContainer>
+        <S.StepContainer>
           {children}
-        </StepContainer>
+        </S.StepContainer>
       </Fade>
-      <ButtonContainer>
-        <PreviousButton
+      <S.ButtonContainer>
+        <S.PreviousButton
           onClick={previousStep}
           disabled={activeStep === 0 || activeStep === 3}
         >
           Voltar
-        </PreviousButton>
-        <NextButton
+        </S.PreviousButton>
+        <S.NextButton
           onClick={nextStep}
           disabled={conditionsToNextStep[`${activeStep}-step` as keyof typeof conditionsToNextStep]}
           type={activeStep < 2 ? 'button' : 'submit'}
         >
           {activeStep < 2 ? 'Próximo' : 'Solicitar'}
-        </NextButton>
-      </ButtonContainer>
-    </Container>
+        </S.NextButton>
+      </S.ButtonContainer>
+    </S.Container>
   );
 };
 

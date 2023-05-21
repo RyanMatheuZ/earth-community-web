@@ -10,15 +10,8 @@ import { RadioButton } from '@components/elements';
 
 import { donationOptions } from './utils';
 
-import {
-  Container,
-  DonationOptionsContainer,
-  StyledFormControlLabel,
-  CardLabel,
-  MonetaryValue,
-  DonationMethod
-} from './styles';
-import { StepDescription, StepHighlightedText } from '../styles';
+import * as S from './styles';
+import * as DonateS from '../styles';
 
 const DonationAmounts: FC = () => {
   const { control } = useFormContext();
@@ -27,32 +20,32 @@ const DonationAmounts: FC = () => {
 
   return (
     <>
-      <StepDescription>
-        <StepHighlightedText>Vamos começar!</StepHighlightedText> <br />
+      <DonateS.StepDescription>
+        <DonateS.StepHighlightedText>Vamos começar!</DonateS.StepHighlightedText> <br />
         Escolha uma quantia em dinheiro para <br /> prosseguir com a doação.
-      </StepDescription>
-      <Container>
+      </DonateS.StepDescription>
+      <S.Container>
         <RadioButton
           control={control}
           name='transactionAmount'
         >
-          <DonationOptionsContainer>
+          <S.DonationOptionsContainer>
             {donationOptions.map(({ label, value, icon }, index) => (
-              <StyledFormControlLabel
+              <S.StyledFormControlLabel
                 key={`donation-option-${label}-${index}`}
                 value={value}
                 control={<Radio />}
                 label={
                   <>
-                    <CardLabel>{icon} {label}</CardLabel>
-                    <MonetaryValue>R$ {value}</MonetaryValue>
+                    <S.CardLabel>{icon} {label}</S.CardLabel>
+                    <S.MonetaryValue>R$ {value}</S.MonetaryValue>
                   </>
                 }
               />
             ))}
-          </DonationOptionsContainer>
+          </S.DonationOptionsContainer>
         </RadioButton>
-        <DonationMethod>
+        <S.DonationMethod>
           <Typography>
             Método de doação:
           </Typography>
@@ -63,8 +56,8 @@ const DonationAmounts: FC = () => {
             width='20'
             height='20'
           />
-        </DonationMethod>
-      </Container>
+        </S.DonationMethod>
+      </S.Container>
     </>
   );
 };

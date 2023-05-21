@@ -12,23 +12,7 @@ import { UserPictureProfile } from '@components/elements';
 
 import { resolvePostCreatedAt, resolveUserLikePost } from '@utils/post';
 
-import {
-  Container,
-  Header,
-  Content,
-  Text,
-  Image,
-  AdditionalInformation,
-  CreatedByContainer,
-  CreatedBy,
-  PublicationDate,
-  ActionsContainer,
-  StyledToggleButton,
-  StyledBadge,
-  DisabledLikeIcon,
-  EnabledLikeIcon,
-  CommentIcon
-} from './styles';
+import * as S from './styles';
 
 interface PostProps {
   postItems: IPost;
@@ -62,52 +46,52 @@ const Post: FC<PostProps> = ({ postItems }) => {
   );
 
   return (
-    <Container>
-      <Header>
+    <S.Container>
+      <S.Header>
         <UserPictureProfile
           pictureProfileSRC={user?.info.pictureProfile}
           userName={userName}
           width='35'
           height='35'
         />
-        <AdditionalInformation>
-          <CreatedByContainer>
-            <CreatedBy>{postItems.createdByUserId}</CreatedBy>
-          </CreatedByContainer>
-          <PublicationDate>
+        <S.AdditionalInformation>
+          <S.CreatedByContainer>
+            <S.CreatedBy>{postItems.createdByUserId}</S.CreatedBy>
+          </S.CreatedByContainer>
+          <S.PublicationDate>
             {resolvePostCreatedAt(postItems.createdAt)}
-          </PublicationDate>
-        </AdditionalInformation>
-      </Header>
-      <Content>
-        <Text>
+          </S.PublicationDate>
+        </S.AdditionalInformation>
+      </S.Header>
+      <S.Content>
+        <S.Text>
           {postItems.text}
-        </Text>
-        <Image
+        </S.Text>
+        <S.Image
           src='/backgrounds/florest.png'
           alt={postItems.text}
           draggable={false}
           fill
         />
-      </Content>
-      <ActionsContainer>
-        <StyledToggleButton
+      </S.Content>
+      <S.ActionsContainer>
+        <S.StyledToggleButton
           value={isUserLikeThePost}
           onClick={() => mutate()}
         >
-          <StyledBadge badgeContent={postItems.likes.quantity} >
-            {isUserLikeThePost ? <EnabledLikeIcon /> : <DisabledLikeIcon />}
-          </StyledBadge>
+          <S.StyledBadge badgeContent={postItems.likes.quantity} >
+            {isUserLikeThePost ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
+          </S.StyledBadge>
           Apoio
-        </StyledToggleButton>
-        <StyledToggleButton value={true}>
-          <StyledBadge badgeContent={postItems.comments.length}>
-            <CommentIcon />
-          </StyledBadge>
+        </S.StyledToggleButton>
+        <S.StyledToggleButton value={true}>
+          <S.StyledBadge badgeContent={postItems.comments.length}>
+            <S.CommentIcon />
+          </S.StyledBadge>
           Comentar
-        </StyledToggleButton>
-      </ActionsContainer>
-    </Container>
+        </S.StyledToggleButton>
+      </S.ActionsContainer>
+    </S.Container>
   );
 };
 

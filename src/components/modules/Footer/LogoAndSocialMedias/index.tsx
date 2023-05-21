@@ -4,34 +4,34 @@ import { socialMedias } from '@utils/datas/socialMedias';
 
 import { phrases } from './utils';
 
-import { SocialMediaContainer } from './styles';
-import { ListTitle, ListText } from '../styles';
+import * as S from './styles';
+import * as FooterS from '../styles';
 
 const LogoAndSocialMedias: FC = () => {
   return (
     <ul>
       <li>
-        <ListTitle>
+        <FooterS.ListTitle>
           Earth Community
-        </ListTitle>
+        </FooterS.ListTitle>
       </li>
       <li>
         {phrases.map((phrase, index) => (
-          <ListText key={`phrase-${index}`}>
+          <FooterS.ListText key={`phrase-${index}`}>
             {phrase}
-          </ListText>
+          </FooterS.ListText>
         ))}
       </li>
       <li>
         {socialMedias.map(({ label, icon, path, target }, index) => (
-          <SocialMediaContainer
+          <S.SocialMediaContainer
             key={`social-media-${label}-${index}`}
             href={path}
             target={target}
             title={label}
           >
             {icon}
-          </SocialMediaContainer>
+          </S.SocialMediaContainer>
         ))}
       </li>
     </ul>

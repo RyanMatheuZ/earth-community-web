@@ -9,7 +9,7 @@ import type { ITheme } from '@ts/interfaces';
 
 import { ErrorMessage } from '@components/elements';
 
-import { Container, StyledSelectTextField } from './styles';
+import * as S from './styles';
 
 type SelectProps = TextFieldProps & {
   control: Control<any, any>;
@@ -27,13 +27,13 @@ const Select: FC<SelectProps> = ({
   ...props
 }) => {
   return (
-    <Container>
+    <S.Container>
       <Controller
         name={name}
         control={control}
         render={
           ({ field, fieldState: { error } }) => (
-            <StyledSelectTextField
+            <S.StyledSelectTextField
               {...field}
               {...props}
               select
@@ -45,7 +45,7 @@ const Select: FC<SelectProps> = ({
               $themeColor={$themeColor}
             >
               {children}
-            </StyledSelectTextField>
+            </S.StyledSelectTextField>
           )}
       />
       <ErrorMessage
@@ -53,7 +53,7 @@ const Select: FC<SelectProps> = ({
         errors={errors}
         name={name}
       />
-    </Container>
+    </S.Container>
   );
 };
 

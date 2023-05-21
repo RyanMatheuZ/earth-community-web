@@ -9,7 +9,7 @@ import type { ITheme } from '@ts/interfaces';
 
 import { StyledTextField, ErrorMessage } from '@components/elements';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 type FieldProps = TextFieldProps & {
   control: Control<any, any>;
@@ -25,7 +25,7 @@ const Field: FC<FieldProps> = ({
   ...props
 }) => {
   return (
-    <Container>
+    <S.Container>
       <Controller
         name={name}
         control={control}
@@ -48,7 +48,7 @@ const Field: FC<FieldProps> = ({
         errors={errors}
         name={name}
       />
-    </Container>
+    </S.Container>
   );
 };
 

@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 
-import { PictureProfile } from './styles';
-
 import { type PictureProfileSizeProps } from './utils';
+
+import * as S from './styles';
 
 interface UserPictureProfileProps extends PictureProfileSizeProps {
   pictureProfileSRC?: string;
@@ -16,7 +16,7 @@ const UserPictureProfile: FC<UserPictureProfileProps> = ({
   height = '50'
 }) => {
   return (
-    <PictureProfile
+    <S.PictureProfile
       src={pictureProfileSRC}
       alt={userName}
       title={userName}

@@ -4,7 +4,7 @@ import { type FieldErrors } from 'react-hook-form';
 
 import type { ITheme } from '@ts/interfaces';
 
-import { Container, ErrorIcon } from './styles';
+import * as S from './styles';
 
 interface ErrorMessageProps extends ITheme {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,10 +16,10 @@ const ErrorMessage: FC<ErrorMessageProps> = ({ errors, name, $themeColor }) => {
   return (
     <>
       {errors[name] && (
-        <Container $themeColor={$themeColor}>
-          <ErrorIcon $themeColor={$themeColor} />
+        <S.Container $themeColor={$themeColor}>
+          <S.ErrorIcon $themeColor={$themeColor} />
           {errors[name]?.message as string}
-        </Container>
+        </S.Container>
       )}
     </>
   );

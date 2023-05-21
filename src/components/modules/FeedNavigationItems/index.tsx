@@ -4,24 +4,24 @@ import { UserDataPreview } from '@components/modules';
 
 import { navItems } from './utils';
 
-import { Container, Navigation, StyledLink } from './styles';
+import * as S from './styles';
 
 const FeedNavigationItems: FC = () => {
   return (
-    <Container>
+    <S.Container>
       <UserDataPreview />
-      <Navigation>
+      <S.Navigation>
         {navItems.map(({ label, icon, path, target }, index) => (
-          <StyledLink
+          <S.StyledLink
             key={`nav-item-${label}-${index}`}
             href={path}
             target={target}
           >
             {icon} {label}
-          </StyledLink>
+          </S.StyledLink>
         ))}
-      </Navigation>
-    </Container>
+      </S.Navigation>
+    </S.Container>
   );
 };
 

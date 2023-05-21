@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import NextImage, { ImageProps } from 'next/image';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 const Image: FC<ImageProps> = ({
   draggable = false,
@@ -12,7 +12,7 @@ const Image: FC<ImageProps> = ({
   ...props
 }) => {
   return (
-    <Container
+    <S.Container
       width={width}
       height={height}
     >
@@ -21,7 +21,7 @@ const Image: FC<ImageProps> = ({
         loading={loading}
         {...props}
       />
-    </Container>
+    </S.Container>
   );
 };
 

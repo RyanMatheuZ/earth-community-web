@@ -1,22 +1,22 @@
 import type { IMediaItems } from '@ts/interfaces';
 
-import { FacebookIcon, InstagramIcon, LinkedInIcon } from './styles';
+import * as S from './styles';
 
 export const socialMedias: ReadonlyArray<IMediaItems> = [
   {
-    icon: <FacebookIcon />,
+    icon: <S.FacebookIcon />,
     label: 'Facebook',
     path: 'https://www.facebook.com/',
     target: '_blank'
   },
   {
-    icon: <InstagramIcon />,
+    icon: <S.InstagramIcon />,
     label: 'Instagram',
     path: 'https://www.instagram.com/',
     target: '_blank'
   },
   {
-    icon: <LinkedInIcon />,
+    icon: <S.LinkedInIcon />,
     label: 'LinkedIn',
     path: 'https://www.linkedin.com/',
     target: '_blank'

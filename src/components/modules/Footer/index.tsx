@@ -3,16 +3,16 @@ import { type FC } from 'react';
 import LogoAndSocialMedias from './LogoAndSocialMedias';
 import Contacts from './Contacts';
 
-import { StyledFooter, Container } from './styles';
+import * as S from './styles';
 
 const Footer: FC = () => {
   return (
-    <StyledFooter>
-      <Container>
+    <S.StyledFooter>
+      <S.Container>
         <LogoAndSocialMedias />
         <Contacts />
-      </Container>
-    </StyledFooter>
+      </S.Container>
+    </S.StyledFooter>
   );
 };
 

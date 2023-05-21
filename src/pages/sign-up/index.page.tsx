@@ -21,7 +21,7 @@ import { title, description } from './head';
 
 import { signUpDefaultValues, schema } from './utils';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 const SignUp: NextPage = () => {
   const { handleSignUp, isLoadingSignUp } = useAuth();
@@ -45,7 +45,7 @@ const SignUp: NextPage = () => {
         title={title}
         description={description}
       />
-      <Container>
+      <S.Container>
         <HeaderWithBackButton $themeColor='white' />
         <FormSection $themeColor='white'>
           <FormTitle $themeColor='green'>
@@ -103,7 +103,7 @@ const SignUp: NextPage = () => {
           <AnotherAuthOption $themeColor='green' />
           <AlreadyHaveAnAccount $themeColor='green' />
         </FormSection>
-      </Container>
+      </S.Container>
     </>
   );
 };

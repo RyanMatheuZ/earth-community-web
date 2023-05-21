@@ -9,17 +9,17 @@ import { formatCPF, validateCPF } from '@utils/inputs/cpf';
 
 import { type GiverDefaultValues } from '../utils';
 
-import { StepDescription, StepHighlightedText } from '../styles';
+import * as DonateS from '../styles';
 
 const DonationPersonalDataFields: FC = () => {
   const { control, setValue, setError, clearErrors, formState: { errors } } = useFormContext<GiverDefaultValues>();
 
   return (
     <>
-      <StepDescription>
-        <StepHighlightedText>Muito bem!</StepHighlightedText> <br />
+      <DonateS.StepDescription>
+        <DonateS.StepHighlightedText>Muito bem!</DonateS.StepHighlightedText> <br />
         Agora preencha seus dados pessoais para <br /> conseguirmos te identificar.
-      </StepDescription>
+      </DonateS.StepDescription>
       <HalfToHalfContainer>
         <Field
           control={control}

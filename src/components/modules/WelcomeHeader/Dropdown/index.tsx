@@ -8,7 +8,7 @@ import { MenuIcon } from '@components/elements';
 
 import { dropdownItems } from '../utils';
 
-import { StyledMenuItem, paperProps, transformOrigin, anchorOrigin } from './styles';
+import * as S from './styles';
 
 const Dropdown: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -34,9 +34,9 @@ const Dropdown: FC = () => {
         anchorEl={anchorEl}
         onClose={handleClose}
         onClick={handleClose}
-        PaperProps={paperProps}
-        transformOrigin={transformOrigin}
-        anchorOrigin={anchorOrigin}
+        PaperProps={S.paperProps}
+        transformOrigin={S.transformOrigin}
+        anchorOrigin={S.anchorOrigin}
       >
         {dropdownItems.map(({ icon, label, path, target }, index) => (
           <Link
@@ -44,9 +44,9 @@ const Dropdown: FC = () => {
             href={path}
             target={target}
           >
-            <StyledMenuItem onClick={handleClose}>
+            <S.StyledMenuItem onClick={handleClose}>
               {icon} {label}
-            </StyledMenuItem>
+            </S.StyledMenuItem>
           </Link>
         ))}
       </Menu>

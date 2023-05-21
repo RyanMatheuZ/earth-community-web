@@ -1,12 +1,12 @@
 import { type FC } from 'react';
 
-import { LinkContainer, WalletIcon } from './styles';
+import * as S from './styles';
 
 const RedirectLinkForDonation: FC = () => {
   return (
-    <LinkContainer href='/donate-now'>
-      <WalletIcon /> Doe agora
-    </LinkContainer>
+    <S.LinkContainer href='/donate-now'>
+      <S.WalletIcon /> Doe agora
+    </S.LinkContainer>
   );
 };
 

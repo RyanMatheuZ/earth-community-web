@@ -20,7 +20,7 @@ import { title, description } from './head';
 
 import { schema, giverDefaultValues, type GiverDefaultValues } from './utils';
 
-import { Container, Content, Title, Text, MessageSection, FormSection, StyledForm } from './styles';
+import * as S from './styles';
 
 const DonateNow: NextPage = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -74,31 +74,31 @@ const DonateNow: NextPage = () => {
         title={title}
         description={description}
       />
-      <Container>
+      <S.Container>
         <HeaderWithBackButton $themeColor='white' />
-        <Content>
-          <MessageSection>
-            <Title>
+        <S.Content>
+          <S.MessageSection>
+            <S.Title>
               Conecte-se pela <br /> mudança
-            </Title>
-            <Text>
+            </S.Title>
+            <S.Text>
               Com sua ajuda, podemos promover o desenvolvimento sustentável e ações que visem a redução dos impactos ambientais e sociais!
-            </Text>
-          </MessageSection>
-          <FormSection>
+            </S.Text>
+          </S.MessageSection>
+          <S.FormSection>
             <FormProvider {...methods}>
-              <StyledForm onSubmit={methods.handleSubmit(onSubmit)}>
+              <S.StyledForm onSubmit={methods.handleSubmit(onSubmit)}>
                 <DonationStepper
                   activeStep={activeStep}
                   setActiveStep={setActiveStep}
                 >
                   {stepComponents[activeStep]}
                 </DonationStepper>
-              </StyledForm>
+              </S.StyledForm>
             </FormProvider>
-          </FormSection>
-        </Content>
-      </Container>
+          </S.FormSection>
+        </S.Content>
+      </S.Container>
     </>
   );
 };
