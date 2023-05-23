@@ -2,9 +2,9 @@ interface IPost {
   _id: string,
   text: string,
   image: string,
-  comments: Array<{
+  comments?: Array<{
     userId: string,
-    id_comments: number,
+    id_comment: number,
     comment: string
   }>,
   likes: {
