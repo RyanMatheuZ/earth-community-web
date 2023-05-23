@@ -1,12 +1,9 @@
 {
   "framework": "nextjs",
-  "routes": [
-    {
-      "src": "/feed",
-      "functions": {
-        "memory": 3008,
-        "maxDuration": 30
-      }
+  "functions": {
+    "/feed": {
+      "memory": 3008,
+      "maxDuration": 20
     }
-  ]
+  }
 }
