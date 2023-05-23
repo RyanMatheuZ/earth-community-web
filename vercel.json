@@ -1,6 +1,7 @@
 {
+  "framework": "nextjs",
   "functions": {
-    "/feed": {
+    "src/pages/feed": {
       "memory": 3008,
       "maxDuration": 20
     }
