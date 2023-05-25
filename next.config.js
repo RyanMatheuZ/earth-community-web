@@ -4,6 +4,16 @@ const nextConfig = {
     'page.tsx'
   ],
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn0.gstatic.com',
+        pathname: '/*',
+      },
+    ],
+  },
+
   reactStrictMode: true,
 
   compiler: {
