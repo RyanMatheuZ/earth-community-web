@@ -8,12 +8,12 @@ import type IGroup from './Group';
 import type IHead from './Head';
 import type IMediaItems from './MediaItems';
 import type IPagination from './Pagination';
-import type IPost from './Post';
 import type ISignIn from './SignIn';
 import type ISignUp from './SignUp';
 import type ITheme from './Theme';
 import type IUser from './User';
 import type { IActions, IState } from './UseStore';
+import type { IComment, IPost } from './Post';
 
 export type {
   IAPIError,
@@ -21,6 +21,7 @@ export type {
   IAppProps,
   IAuthContext,
   IAuthOptions,
+  IComment,
   IDonation,
   IGiver,
   IGroup,

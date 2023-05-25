@@ -1,4 +1,4 @@
-import { useState, useMemo, type FC } from 'react';
+import { useState, type FC } from 'react';
 
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
@@ -9,7 +9,7 @@ import { useAuth } from '@context/auth';
 import { usePost } from '@hooks/index';
 
 import { UserPictureProfile } from '@components/elements';
-import { PostComment } from '@components/modules';
+import { PostComments } from '@components/modules';
 
 import { resolvePostCreatedAt, resolveUserLikePost } from '@utils/post';
 
@@ -23,17 +23,15 @@ interface PostProps {
 const Post: FC<PostProps> = ({ postItems }) => {
   const { user } = useAuth();
 
-  const isUserLikeThePostInitialState = useMemo(() => {
-    return resolveUserLikePost(
-      user?._id as IUser['_id'],
-      postItems.likes.userIds
-    );
-  }, [user?._id, postItems.likes.userIds]);
+  const isUserLikeThePostInitialState = resolveUserLikePost(
+    user?._id as IUser['_id'],
+    postItems.likes.userIds
+  );
 
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(isUserLikeThePostInitialState);
 
-  const userName = `${user?.info.firstName} ${user?.info.surname}`;
+  const userName = `${postItems.createdByUser.info.firstName} ${postItems.createdByUser.info.surname}`;
 
   const queryClient = useQueryClient();
 
@@ -44,12 +42,10 @@ const Post: FC<PostProps> = ({ postItems }) => {
   };
 
   const { mutate } = useMutation(
-    () => handleUserToggleLikeThePost(postItems._id, user?._id as IUser['_id']),
+    ({ postId, userId }: { postId: string, userId: IUser['_id'] }) => handleUserToggleLikeThePost(postId, userId),
     {
-      onMutate: () => {
-        queryClient.invalidateQueries(['all-posts']);
-        setIsUserLikeThePost((prevState) => !prevState);
-      }
+      onMutate: () => setIsUserLikeThePost((prevState) => !prevState),
+      onSuccess: () => queryClient.invalidateQueries(['all-posts'])
     }
   );
 
@@ -58,14 +54,14 @@ const Post: FC<PostProps> = ({ postItems }) => {
       <S.Container>
         <S.Header>
           <UserPictureProfile
-            pictureProfileSRC={user?.info.pictureProfile}
+            pictureProfileSRC={postItems.createdByUser.info.pictureProfile}
             userName={userName}
             width='35'
             height='35'
           />
           <S.AdditionalInformation>
             <S.CreatedByContainer>
-              <S.CreatedBy>{postItems.createdByUserId}</S.CreatedBy>
+              <S.CreatedBy>{userName}</S.CreatedBy>
             </S.CreatedByContainer>
             <S.PublicationDate>
               {resolvePostCreatedAt(postItems.createdAt)}
@@ -77,7 +73,7 @@ const Post: FC<PostProps> = ({ postItems }) => {
             {postItems.text}
           </S.Text>
           <S.Image
-            src='/backgrounds/florest.png'
+            src={postItems.image}
             alt={postItems.text}
             draggable={false}
             fill
@@ -86,7 +82,7 @@ const Post: FC<PostProps> = ({ postItems }) => {
         <S.ActionsContainer>
           <S.StyledToggleButton
             value={isUserLikeThePost}
-            onClick={() => mutate()}
+            onClick={() => mutate({ postId: postItems._id, userId: user?._id as string })}
           >
             <S.StyledBadge badgeContent={postItems.likes.quantity} >
               {isUserLikeThePost ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
@@ -97,16 +93,17 @@ const Post: FC<PostProps> = ({ postItems }) => {
             value={true}
             onClick={handleToggleDialog}
           >
-            <S.StyledBadge badgeContent={postItems.comments.length}>
+            <S.StyledBadge badgeContent={postItems.comments?.length}>
               <S.CommentIcon />
             </S.StyledBadge>
             Comentar
           </S.StyledToggleButton>
         </S.ActionsContainer>
       </S.Container>
-      <PostComment
+      <PostComments
         isDialogOpen={isDialogOpen}
         handleToggleDialog={handleToggleDialog}
+        postItem={postItems}
       />
     </>
   );

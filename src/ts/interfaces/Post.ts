@@ -1,18 +1,20 @@
-interface IPost {
-  _id: string,
-  text: string,
-  image: string,
-  comments?: Array<{
-    userId: string,
-    id_comment: number,
-    comment: string
-  }>,
-  likes: {
-    quantity: number,
-    userIds: string[]
-  },
-  createdByUserId: string,
-  createdAt: Date,
+import type { IUser } from '@ts/interfaces';
+
+export interface IComment {
+  _id: string;
+  user: IUser;
+  comment: string;
 }
 
-export default IPost;
+export interface IPost {
+  _id: string;
+  text: string;
+  image: string;
+  comments?: IComment[];
+  likes: {
+    quantity: number;
+    userIds: string[];
+  };
+  createdByUser: IUser;
+  createdAt: Date;
+}

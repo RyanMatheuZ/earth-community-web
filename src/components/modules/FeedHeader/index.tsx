@@ -38,7 +38,10 @@ const FeedHeader: FC = () => {
             <S.MenuIcon />
           </S.IconContainer>
           <S.GroupElements>
-            <UserPictureProfile userName={userName} />
+            <UserPictureProfile
+              pictureProfileSRC={user?.info.pictureProfile}
+              userName={userName}
+            />
           </S.GroupElements>
         </S.MaxWidthContainer>
       </S.Container>
