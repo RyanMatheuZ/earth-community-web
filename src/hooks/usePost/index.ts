@@ -10,6 +10,8 @@ import axiosInstance from '@services/axios';
 
 import { catchError } from '@utils/requestMessages';
 
+import { type SendCommentParams } from './utils';
+
 const usePost = () => {
   const ENDPOINT = '/post';
 
@@ -46,9 +48,29 @@ const usePost = () => {
     }
   }, []);
 
+  const handleUserSendComment = useCallback(async ({ postId, userId, comment }: SendCommentParams) => {
+    try {
+      await axiosInstance.post(`${ENDPOINT}/comment/${postId}/${userId}`, {
+        comment
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  const handleUserDeleteComment = useCallback(async (postId: string, commentId: string) => {
+    try {
+      await axiosInstance.delete(`${ENDPOINT}/delete-comment/${postId}/${commentId}`);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   return {
     handleGetAllPosts,
-    handleUserToggleLikeThePost
+    handleUserToggleLikeThePost,
+    handleUserSendComment,
+    handleUserDeleteComment
   };
 };
 

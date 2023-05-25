@@ -6,6 +6,7 @@ import HalfToHalfContainer from './HalfToHalfContainer';
 import HeaderWithBackButton from './HeaderWithBackButton';
 import MaxWidthContainer from './MaxWidthContainer';
 import Post from './Post';
+import PostComments from './PostComments';
 import TwoThirdContainer from './TwoThirdContainer';
 import UserDataPreview from './UserDataPreview';
 import WelcomeHeader from './WelcomeHeader';
@@ -19,6 +20,7 @@ export {
   HeaderWithBackButton,
   MaxWidthContainer,
   Post,
+  PostComments,
   TwoThirdContainer,
   UserDataPreview,
   WelcomeHeader

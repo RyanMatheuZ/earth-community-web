@@ -9,6 +9,7 @@ import { useAuth } from '@context/auth';
 import { usePost } from '@hooks/index';
 
 import { UserPictureProfile } from '@components/elements';
+import { PostComments } from '@components/modules';
 
 import { resolvePostCreatedAt, resolveUserLikePost } from '@utils/post';
 
@@ -22,76 +23,89 @@ interface PostProps {
 const Post: FC<PostProps> = ({ postItems }) => {
   const { user } = useAuth();
 
-  const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(() => {
-    return resolveUserLikePost(
-      user?._id as IUser['_id'],
-      postItems.likes.userIds
-    );
-  });
+  const isUserLikeThePostInitialState = resolveUserLikePost(
+    user?._id as IUser['_id'],
+    postItems.likes.userIds
+  );
 
-  const userName = `${user?.info.firstName} ${user?.info.surname}`;
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(isUserLikeThePostInitialState);
+
+  const userName = `${postItems.createdByUser.info.firstName} ${postItems.createdByUser.info.surname}`;
 
   const queryClient = useQueryClient();
 
   const { handleUserToggleLikeThePost } = usePost();
 
+  const handleToggleDialog = () => {
+    setIsDialogOpen((prevState) => !prevState);
+  };
+
   const { mutate } = useMutation(
-    () => handleUserToggleLikeThePost(postItems._id, user?._id as IUser['_id']),
+    ({ postId, userId }: { postId: string, userId: IUser['_id'] }) => handleUserToggleLikeThePost(postId, userId),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['all-posts']);
-        setIsUserLikeThePost((prevState) => !prevState);
-      }
+      onMutate: () => setIsUserLikeThePost((prevState) => !prevState),
+      onSuccess: () => queryClient.invalidateQueries(['all-posts'])
     }
   );
 
   return (
-    <S.Container>
-      <S.Header>
-        <UserPictureProfile
-          pictureProfileSRC={user?.info.pictureProfile}
-          userName={userName}
-          width='35'
-          height='35'
-        />
-        <S.AdditionalInformation>
-          <S.CreatedByContainer>
-            <S.CreatedBy>{postItems.createdByUserId}</S.CreatedBy>
-          </S.CreatedByContainer>
-          <S.PublicationDate>
-            {resolvePostCreatedAt(postItems.createdAt)}
-          </S.PublicationDate>
-        </S.AdditionalInformation>
-      </S.Header>
-      <S.Content>
-        <S.Text>
-          {postItems.text}
-        </S.Text>
-        <S.Image
-          src='/backgrounds/florest.png'
-          alt={postItems.text}
-          draggable={false}
-          fill
-        />
-      </S.Content>
-      <S.ActionsContainer>
-        <S.StyledToggleButton
-          value={isUserLikeThePost}
-          onClick={() => mutate()}
-        >
-          <S.StyledBadge badgeContent={postItems.likes.quantity} >
-            {isUserLikeThePost ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
-          </S.StyledBadge>
-          Apoio
-        </S.StyledToggleButton>
-        <S.StyledToggleButton value={true}>
-          <S.StyledBadge badgeContent={postItems.comments.length}>
-            <S.CommentIcon />
-          </S.StyledBadge>
-          Comentar
-        </S.StyledToggleButton>
-      </S.ActionsContainer>
-    </S.Container>
+    <>
+      <S.Container>
+        <S.Header>
+          <UserPictureProfile
+            pictureProfileSRC={postItems.createdByUser.info.pictureProfile}
+            userName={userName}
+            width='35'
+            height='35'
+          />
+          <S.AdditionalInformation>
+            <S.CreatedByContainer>
+              <S.CreatedBy>{userName}</S.CreatedBy>
+            </S.CreatedByContainer>
+            <S.PublicationDate>
+              {resolvePostCreatedAt(postItems.createdAt)}
+            </S.PublicationDate>
+          </S.AdditionalInformation>
+        </S.Header>
+        <S.Content>
+          <S.Text>
+            {postItems.text}
+          </S.Text>
+          <S.Image
+            src={postItems.image}
+            alt={postItems.text}
+            draggable={false}
+            fill
+          />
+        </S.Content>
+        <S.ActionsContainer>
+          <S.StyledToggleButton
+            value={isUserLikeThePost}
+            onClick={() => mutate({ postId: postItems._id, userId: user?._id as string })}
+          >
+            <S.StyledBadge badgeContent={postItems.likes.quantity} >
+              {isUserLikeThePost ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
+            </S.StyledBadge>
+            Apoio
+          </S.StyledToggleButton>
+          <S.StyledToggleButton
+            value={true}
+            onClick={handleToggleDialog}
+          >
+            <S.StyledBadge badgeContent={postItems.comments?.length}>
+              <S.CommentIcon />
+            </S.StyledBadge>
+            Comentar
+          </S.StyledToggleButton>
+        </S.ActionsContainer>
+      </S.Container>
+      <PostComments
+        isDialogOpen={isDialogOpen}
+        handleToggleDialog={handleToggleDialog}
+        postItem={postItems}
+      />
+    </>
   );
 };
 
