@@ -16,7 +16,7 @@ const UserDataPreview: FC = () => {
   return (
     <S.Container href={String(user?.info.nickName)}>
       <S.UserBackgroundProfile
-        src='/backgrounds/icons-white.png'
+        src='/backgrounds/icons-green.png'
         alt={userBackgroundProfileDescription}
         title={userBackgroundProfileDescription}
         draggable={false}

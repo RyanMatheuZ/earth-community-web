@@ -11,6 +11,7 @@ import Image from './Image';
 import InputDate from './Form/InputDate';
 import InputFile from './Form/InputFile';
 import Logo from './Logo';
+import LogoutButton from './LogoutButton';
 import MenuIcon from './MenuIcon/styles';
 import RadioButton from './Form/RadioButton';
 import RedirectLinkForDonation from './RedirectLinkForDonation';
@@ -36,6 +37,7 @@ export {
   InputDate,
   InputFile,
   Logo,
+  LogoutButton,
   MenuIcon,
   RadioButton,
   RedirectLinkForDonation,

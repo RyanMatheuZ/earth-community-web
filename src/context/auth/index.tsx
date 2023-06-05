@@ -75,7 +75,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const handleSignOut = () => {
-    push('/welcome');
+    replace('/welcome');
     handleCleanUserData();
   };
 
