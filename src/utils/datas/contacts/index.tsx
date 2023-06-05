@@ -6,7 +6,7 @@ export const contacts: ReadonlyArray<Pick<IMediaItems, 'icon' | 'label'> & { val
   {
     icon: <S.EmailIcon />,
     label: 'Email',
-    value: 'office@earthcommunity.com'
+    value: 'contato@earthcommunity.com'
   },
   {
     icon: <S.PhoneIcon />,

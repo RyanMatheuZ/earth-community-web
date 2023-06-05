@@ -22,6 +22,17 @@ export const Comment = styled.article`
   position: relative;
 `;
 
+export const CreatedAt = styled.span`
+  color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.common.white};
+  font-size: .75rem;
+  font-weight: 600;
+  padding-inline: ${({ theme }) => theme.spacing(.5)};
+  position: absolute;
+  bottom: -8px;
+  right: 5px;
+`;
+
 export const DeleteButton = styled(IconButton)`
   background-color: ${({ theme }) => theme.palette.error.main};
   padding: ${({ theme }) => theme.spacing(.5)};

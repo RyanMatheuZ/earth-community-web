@@ -8,9 +8,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'encrypted-tbn0.gstatic.com',
-        pathname: '/*',
-      },
+        hostname: '**',
+        pathname: '/**',
+      }
     ],
   },
 

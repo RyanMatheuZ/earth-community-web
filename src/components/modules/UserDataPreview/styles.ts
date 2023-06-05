@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
+import { Typography } from '@mui/material';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   border: 1px solid ${({ theme }) => theme.palette.primary.main};
   border-radius: 5px;
 `;
@@ -25,11 +27,7 @@ export const UserPictureProfileContainer = styled.div`
   transform: translateY(-40%);
 `;
 
-export const UserName = styled(Link)`
+export const UserName = styled(Typography)`
   color: ${({ theme }) => theme.palette.tertiary.main};
   font-weight: 600;
-
-  &:visited {
-    color: ${({ theme }) => theme.palette.tertiary.main};
-  }
 `;

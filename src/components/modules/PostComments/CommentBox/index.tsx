@@ -12,6 +12,8 @@ import { queryClient } from '@services/tanstackQuery';
 
 import { UserPictureProfile } from '@components/elements';
 
+import { resolveCreatedAt } from '@utils/post';
+
 import { isCommentOwner } from './utils';
 
 import * as S from './styles';
@@ -49,6 +51,9 @@ const CommentBox: FC<CommentBoxProps> = ({ comment, postId }) => {
           {authorName}
         </S.AuthorName>
         {comment.comment}
+        <S.CreatedAt>
+          {resolveCreatedAt(comment.createdAt)}
+        </S.CreatedAt>
         {showDeleteButton && (
           <S.DeleteButton
             title='Apagar mensagem?'

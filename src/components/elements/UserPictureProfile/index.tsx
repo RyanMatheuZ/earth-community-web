@@ -22,6 +22,7 @@ const UserPictureProfile: FC<UserPictureProfileProps> = ({
       title={userName}
       width={width}
       height={height}
+      draggable={false}
     />
   );
 };

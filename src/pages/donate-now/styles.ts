@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Typography } from '@mui/material';
 
 export const Container = styled.div`
-  background: url('/backgrounds/florest.png') center center / cover;
+  background: url('/backgrounds/forest.jpg') center center / cover;
   display: flex;
   flex-direction: column;
   padding: ${({ theme }) => theme.spacing(2)};

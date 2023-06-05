@@ -4,8 +4,6 @@ import { useAuth } from '@context/auth';
 
 import { UserPictureProfile } from '@components/elements';
 
-import { slugify } from '@utils/transforms/slugify';
-
 import * as S from './styles';
 
 const UserDataPreview: FC = () => {
@@ -15,10 +13,8 @@ const UserDataPreview: FC = () => {
 
   const userName = `${user?.info.firstName} ${user?.info.surname}`;
 
-  const userNameSlug = slugify(userName);
-
   return (
-    <S.Container>
+    <S.Container href={String(user?.info.nickName)}>
       <S.UserBackgroundProfile
         src='/backgrounds/icons-white.png'
         alt={userBackgroundProfileDescription}
@@ -33,7 +29,7 @@ const UserDataPreview: FC = () => {
           width='60'
           height='60'
         />
-        <S.UserName href={userNameSlug}>
+        <S.UserName >
           {userName}
         </S.UserName>
       </S.UserPictureProfileContainer>
