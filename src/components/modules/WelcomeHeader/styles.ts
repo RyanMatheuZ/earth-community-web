@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { MaxWidthContainer } from '@components/modules';
-import { Info } from '@mui/icons-material';
+import { Info, LockOpen, HowToReg } from '@mui/icons-material';
 
 import { baseIconStyles } from '@utils/datas/styles';
 
@@ -22,5 +22,13 @@ export const ElementsOnTheRight = styled.div`
 `;
 
 export const AboutIcon = styled(Info)`
+  ${baseIconStyles};
+`;
+
+export const SignInIcon = styled(LockOpen)`
+  ${baseIconStyles};
+`;
+
+export const SignUpIcon = styled(HowToReg)`
   ${baseIconStyles};
 `;
