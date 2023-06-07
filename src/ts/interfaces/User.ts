@@ -10,6 +10,7 @@ interface IUser {
     dateOfBirth: Date;
     phone: string;
     pictureProfile: string;
+    about: string;
   };
   address: {
     city: string;

@@ -46,3 +46,13 @@ export const SectionLabel = styled(Typography).attrs({ variant: 'h2' })`
   font-size: 1.15rem;
   margin-block: ${({ theme }) => theme.spacing(1, .5)};
 `;
+
+export const ImageUploadingMessage = styled(Typography)`
+  color: ${({ theme }) => theme.palette.secondary.main};
+  font-size: .85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing(1)};
+`;

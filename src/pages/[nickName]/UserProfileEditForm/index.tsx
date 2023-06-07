@@ -6,7 +6,7 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import { useMutation } from '@tanstack/react-query';
 
-import { MenuItem } from '@mui/material';
+import { MenuItem, CircularProgress } from '@mui/material';
 
 import { useAuth } from '@context/auth';
 
@@ -46,14 +46,16 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
 
   const { handleUpdateUser } = useUser();
   const { imageURL: previewImageURL } = useFilePreview(file as unknown as FileList);
-  const { handleUpload } = useImageUpload();
+  const { progress: imageUploadProgress, handleUpload } = useImageUpload();
 
-  const { mutate } = useMutation(
+  const { mutate, isLoading: isUpdatingUser, isPaused: isUserUpdatedPaused } = useMutation(
     ({ userId, userUpdatedValues }: UpdatedUserParams) => handleUpdateUser({ userId, userUpdatedValues }),
     {
       onSuccess: () => replace('/feed')
     }
   );
+
+  const isLoadingAction = isUpdatingUser || isUserUpdatedPaused || !!imageUploadProgress;
 
   const onSubmit: SubmitHandler<UserDefaultValues> = async (userEditedValues) => {
     const defaultOrNewImage = isUrlOfImage
@@ -69,6 +71,7 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           firstName: userEditedValues?.firstName as string,
           surname: userEditedValues?.surname as string,
           email: userEditedValues?.email as string,
+          about: userEditedValues?.about as string,
           dateOfBirth: userEditedValues?.dateOfBirth as Date,
           phone: userEditedValues?.phone as string
         },
@@ -100,6 +103,11 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
       <S.PictureErrorMessage>
         <ErrorMessage name='pictureProfile' errors={errors} $themeColor='green' />
       </S.PictureErrorMessage>
+      {!!imageUploadProgress && (
+        <S.ImageUploadingMessage>
+          Carregando imagem... <CircularProgress color='secondary' size={20} />
+        </S.ImageUploadingMessage>
+      )}
       <S.SectionLabel>Informações básicas</S.SectionLabel>
       <HalfToHalfContainer>
         <Field
@@ -136,6 +144,17 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           $themeColor='green'
         />
       </HalfToHalfContainer>
+      <Field
+        control={control}
+        errors={errors}
+        multiline
+        minRows={3}
+        spellCheck={false}
+        type='text'
+        name='about'
+        label='Sobre:'
+        $themeColor='green'
+      />
       <S.SectionLabel>Contatos</S.SectionLabel>
       <HalfToHalfContainer>
         <Field
@@ -186,6 +205,7 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
       </TwoThirdContainer>
       <SubmitButton
         label='Atualizar'
+        isLoadingAction={isLoadingAction}
         $themeColor='green'
       />
     </form>

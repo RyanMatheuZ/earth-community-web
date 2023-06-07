@@ -15,7 +15,6 @@ export const PostContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   overflow-y: auto;
-  padding-bottom: ${({ theme }) => theme.spacing(1)};
   height: 88vh;
   width: 100%;
 `;
@@ -31,5 +30,6 @@ export const LoadingText = styled(Typography)`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 30px;
   font-weight: 600;
+  margin: ${({ theme }) => theme.spacing(1)};
   padding: ${({ theme }) => theme.spacing(2)};
 `;

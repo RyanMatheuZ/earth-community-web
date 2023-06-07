@@ -13,6 +13,11 @@ const StyledTextField = styled(TextField) <ITheme>`
     padding: ${({ theme }) => theme.spacing(2)};
   }
 
+  textarea {
+    color: ${({ $themeColor }) => resolveTheme({ $themeColor })};
+    font-size: 1.15rem;
+  }
+
   label,
   label.Mui-focused {
     color: ${({ $themeColor }) => resolveTheme({ $themeColor })};

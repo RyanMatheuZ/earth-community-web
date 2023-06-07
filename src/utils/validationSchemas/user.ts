@@ -43,6 +43,10 @@ const schema = {
     })
     .min(new Date(1900, 0, 1), 'A data mínima é 01/01/1900!')
     .max(new Date(), 'A data não deve ser futura!'),
+  about: z
+    .string()
+    .nonempty('A sua descrição é obrigatória!')
+    .max(1000, 'O máximo de caracteres é 1000!'),
   cpf: z
     .string()
     .nonempty('O CPF é obrigatório!')
@@ -66,6 +70,7 @@ export const {
   phone,
   email,
   dateOfBirth,
+  about,
   cpf,
   password,
   confirmPassword

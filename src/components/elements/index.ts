@@ -22,6 +22,7 @@ import StyledTextField from './StyledTextField/styles';
 import SubmitButton from './Form/SubmitButton';
 import UserNameSkeleton from './UserNameSkeleton';
 import UserPictureProfile from './UserPictureProfile';
+import UserPictureProfileSkeleton from './UserPictureProfileSkeleton/styles';
 
 export {
   AccountButton,
@@ -47,5 +48,6 @@ export {
   StyledTextField,
   SubmitButton,
   UserNameSkeleton,
-  UserPictureProfile
+  UserPictureProfile,
+  UserPictureProfileSkeleton
 };
