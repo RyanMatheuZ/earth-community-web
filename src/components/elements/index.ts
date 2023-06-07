@@ -1,4 +1,5 @@
 import AccountButton from './AccountButton';
+import AnchorLink from './AnchorLink';
 import AlreadyHaveAnAccount from './Form/AlreadyHaveAnAccount';
 import AnotherAuthOption from './Form/AnotherAuthOption';
 import AuthOptionsButton from './AuthOptionsButton';
@@ -26,6 +27,7 @@ import UserPictureProfileSkeleton from './UserPictureProfileSkeleton/styles';
 
 export {
   AccountButton,
+  AnchorLink,
   AlreadyHaveAnAccount,
   AnotherAuthOption,
   AuthOptionsButton,

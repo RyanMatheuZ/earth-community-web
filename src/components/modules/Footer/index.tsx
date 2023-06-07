@@ -7,7 +7,7 @@ import * as S from './styles';
 
 const Footer: FC = () => {
   return (
-    <S.StyledFooter>
+    <S.StyledFooter id='footer'>
       <S.Container>
         <LogoAndSocialMedias />
         <Contacts />

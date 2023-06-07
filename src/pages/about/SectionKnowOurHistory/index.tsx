@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Image } from '@components/elements';
+import { AnchorLink, Image } from '@components/elements';
 
 import { uNAgendaHref, onuAbbreviation } from '../utils';
 
@@ -25,6 +25,7 @@ const SectionKnowOurHistory: FC = () => {
         <AboutS.Text>
           Além disso, a plataforma é uma oportunidade para que os usuários possam aprender mais sobre as temáticas que envolvem a <AboutS.StyledLink href={uNAgendaHref} target='_blank'>agenda 2030</AboutS.StyledLink> da <AboutS.Abbreviation title={onuAbbreviation}>ONU</AboutS.Abbreviation> e se inspirarem em outras iniciativas ao redor do mundo.
         </AboutS.Text>
+        <AnchorLink elementId='how-do-we-apply-the-our-resources?' />
       </AboutS.TextContainer>
       <Image
         src='/illustrations/nature/reforestation.svg'

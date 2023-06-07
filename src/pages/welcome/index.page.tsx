@@ -1,6 +1,6 @@
 import { type NextPage } from 'next';
 
-import { AccountButton, Image } from '@components/elements';
+import { AccountButton, AnchorLink, Image } from '@components/elements';
 import { Head } from '@components/meta';
 import { Footer, WelcomeHeader } from '@components/modules';
 
@@ -41,6 +41,12 @@ const Welcome: NextPage = () => {
               Começar a mudança...
             </S.TextButtonContainer>
           </S.ButtonContainer>
+          <S.AnchorLinkContainer>
+            <AnchorLink
+              elementId='footer'
+              showMessage
+            />
+          </S.AnchorLinkContainer>
         </S.Content>
         <Footer />
       </S.Container>
