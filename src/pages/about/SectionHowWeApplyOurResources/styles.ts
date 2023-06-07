@@ -10,6 +10,10 @@ export const StyledSectionContainer = styled(AboutS.SectionContainer)`
   }
 `;
 
+export const StyledTextContainer = styled(AboutS.TextContainer)`
+  align-items: end;
+`;
+
 export const SlantedContainer = styled.div`
   background-color: #F1F1F1;
   margin-block: ${({ theme }) => theme.spacing(6)};

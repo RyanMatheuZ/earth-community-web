@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Image } from '@components/elements';
+import { AnchorLink, Image } from '@components/elements';
 
 import * as AboutS from '../styles';
 
@@ -8,7 +8,7 @@ const SectionMadeForWho: FC = () => {
   const descriptionImage = 'Aperto de mão amigável - illustration by @Storyset';
 
   return (
-    <AboutS.SectionContainer>
+    <AboutS.SectionContainer id='who-was-it-made-for?'>
       <AboutS.TextContainer>
         <AboutS.Subtitle>
           Foi feito <AboutS.UppercaseText>pensando</AboutS.UppercaseText> <br />
@@ -23,6 +23,7 @@ const SectionMadeForWho: FC = () => {
         <AboutS.Text>
           O Earth Community valoriza a diversidade de perspectivas e incentiva a participação ativa de todos os membros. Seja você um defensor dos direitos humanos, um entusiasta da conservação da natureza, um empreendedor social ou simplesmente alguém que deseja aprender mais e agir.
         </AboutS.Text>
+        <AnchorLink elementId='footer' />
       </AboutS.TextContainer>
       <Image
         src='/illustrations/people/friendly-handshake.svg'

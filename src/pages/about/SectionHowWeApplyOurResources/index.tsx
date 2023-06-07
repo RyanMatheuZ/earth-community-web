@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Image } from '@components/elements';
+import { AnchorLink, Image } from '@components/elements';
 
 import { uNAgendaHref, onuAbbreviation } from '../utils';
 
@@ -12,7 +12,7 @@ const SectionHowWeApplyOurResources: FC = () => {
   const ongsAbbreviation = 'Organizações não governamentais';
 
   return (
-    <S.SlantedContainer>
+    <S.SlantedContainer id='how-do-we-apply-the-our-resources?'>
       <S.StyledSectionContainer>
         <Image
           src='/illustrations/chart/resources.svg'
@@ -22,7 +22,7 @@ const SectionHowWeApplyOurResources: FC = () => {
           height='400'
           fill
         />
-        <AboutS.TextContainer>
+        <S.StyledTextContainer>
           <AboutS.Subtitle align='right'>
             Como <AboutS.UppercaseText>aplicamos</AboutS.UppercaseText> os <br />
             nossos <AboutS.UnderlinedText>recursos</AboutS.UnderlinedText>?
@@ -33,7 +33,8 @@ const SectionHowWeApplyOurResources: FC = () => {
           <AboutS.Text align='right'>
             Os 60% restantes são repassados para <AboutS.Abbreviation title={ongsAbbreviation}>ONGs</AboutS.Abbreviation> que desenvolvem projetos alinhados aos objetivos da <AboutS.StyledLink href={uNAgendaHref} target='_blank'>agenda 2030</AboutS.StyledLink> da <AboutS.Abbreviation title={onuAbbreviation}>ONU</AboutS.Abbreviation> e que atuam em causas sociais e ambientais relevantes. A seleção das <AboutS.Abbreviation title={ongsAbbreviation}>ONGs</AboutS.Abbreviation> beneficiadas é feita com base em critérios transparentes e objetivos, como a qualidade e o impacto dos projetos desenvolvidos, a idoneidade das organizações e a sua capacidade de gestão.
           </AboutS.Text>
-        </AboutS.TextContainer>
+          <AnchorLink elementId='who-was-it-made-for?' />
+        </S.StyledTextContainer>
       </S.StyledSectionContainer>
     </S.SlantedContainer>
   );

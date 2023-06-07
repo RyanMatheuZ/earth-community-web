@@ -58,3 +58,9 @@ export const TextButtonContainer = styled(Typography)`
   margin-top: ${({ theme }) => theme.spacing(2)};
   margin-left: ${({ theme }) => theme.spacing(1)};
 `;
+
+export const AnchorLinkContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  transform: translateY(-80%);
+`;

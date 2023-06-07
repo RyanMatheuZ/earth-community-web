@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import { Head } from '@components/meta';
 import { Footer, HeaderWithBackButton } from '@components/modules';
@@ -12,6 +13,8 @@ import { title, description } from './head';
 import * as S from './styles';
 
 const About: NextPage = () => {
+  const { push } = useRouter();
+
   return (
     <>
       <Head
@@ -20,7 +23,10 @@ const About: NextPage = () => {
       />
       <S.Container>
         <S.HeaderContainer>
-          <HeaderWithBackButton $themeColor='green' />
+          <HeaderWithBackButton
+            handleClickBackButton={() => push('/welcome')}
+            $themeColor='green'
+          />
         </S.HeaderContainer>
         <SectionKnowOurHistory />
         <SectionHowWeApplyOurResources />

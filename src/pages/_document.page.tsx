@@ -62,7 +62,10 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='pt-BR' translate='no'>
+      <Html
+        lang='pt-BR'
+        translate='no'
+      >
         <Head>
           <meta charSet='UTF-8' />
           <meta
