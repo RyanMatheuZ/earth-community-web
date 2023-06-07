@@ -16,17 +16,24 @@ const AccountButton: FC = () => {
       ariaLabel='Rápido acesso para autenticação'
       open={isOpenSpeedDial}
       icon={isOpenSpeedDial ? <S.CloseIcon /> : <S.SpaIcon />}
-      onOpen={handleToggleSpeedDial}
-      onClose={handleToggleSpeedDial}
+      onClick={handleToggleSpeedDial}
       direction='down'
     >
-      {actions.map(({ icon, label }) => (
+      {actions.map(({ icon, label, path }, index) => (
         <S.StyledSpeedDialAction
-          key={label}
-          icon={icon}
-          tooltipOpen
-          tooltipTitle={label}
+          key={`action-${label}-${index}`}
+          icon={
+            <S.StyledLink href={path}>
+              {icon}
+            </S.StyledLink>
+          }
+          tooltipTitle={
+            <S.StyledLink href={path}>
+              {label}
+            </S.StyledLink>
+          }
           tooltipPlacement='right'
+          tooltipOpen
         />
       ))}
     </S.StyledSpeedDial>

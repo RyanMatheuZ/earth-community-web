@@ -2,11 +2,13 @@ import * as S from './styles';
 
 export const actions = [
   {
-    icon: <S.StyledLink href='/sign-in'><S.SignInIcon /></S.StyledLink>,
-    label: 'Entrar'
+    icon: <S.SignInIcon />,
+    label: 'Entrar',
+    path: '/sign-in'
   },
   {
-    icon: <S.StyledLink href='/sign-up'><S.SignUpIcon /></S.StyledLink>,
-    label: 'Cadastrar-se'
+    icon: <S.SignUpIcon />,
+    label: 'Cadastrar-se',
+    path: '/sign-up'
   }
 ];
