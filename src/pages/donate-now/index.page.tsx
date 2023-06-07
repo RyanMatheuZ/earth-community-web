@@ -44,7 +44,7 @@ const DonateNow: NextPage = () => {
   });
 
   const onSubmit: SubmitHandler<GiverDefaultValues> = (giverValues) => {
-    handleCreateDonation(({
+    handleCreateDonation({
       transaction_amount: +giverValues.transactionAmount,
       description: `Doação Earth Community - R$ ${giverValues.transactionAmount}`,
       payment_method_id: 'pix',
@@ -65,7 +65,7 @@ const DonateNow: NextPage = () => {
         city: giverValues.city,
         federal_unit: giverValues.state
       }
-    }));
+    });
   };
 
   return (

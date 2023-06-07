@@ -19,7 +19,6 @@ export const Container = styled.article`
   flex-direction: column;
   margin: ${({ theme }) => theme.spacing(1)};
   max-width: 600px;
-  width: 100%;
 `;
 
 export const Header = styled.header`
@@ -47,8 +46,8 @@ export const PublicationDate = styled.span`
 `;
 
 export const Content = styled.div`
+  display: flex;
   flex-direction: column;
-  margin-block: ${({ theme }) => theme.spacing(1)};
 `;
 
 export const Text = styled(Typography)`
@@ -56,7 +55,6 @@ export const Text = styled(Typography)`
 `;
 
 export const Image = styled(NextImage)`
-  height: 100%;
   object-fit: contain;
   position: static !important;
 `;

@@ -11,7 +11,7 @@ import { usePost } from '@hooks/index';
 import { UserPictureProfile } from '@components/elements';
 import { PostComments } from '@components/modules';
 
-import { resolvePostCreatedAt, resolveUserLikePost } from '@utils/post';
+import { resolveCreatedAt, resolveUserLikePost } from '@utils/post';
 
 import * as S from './styles';
 
@@ -64,7 +64,7 @@ const Post: FC<PostProps> = ({ postItems }) => {
               <S.CreatedBy>{userName}</S.CreatedBy>
             </S.CreatedByContainer>
             <S.PublicationDate>
-              {resolvePostCreatedAt(postItems.createdAt)}
+              {resolveCreatedAt(postItems.createdAt)}
             </S.PublicationDate>
           </S.AdditionalInformation>
         </S.Header>

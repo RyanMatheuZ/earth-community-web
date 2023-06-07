@@ -8,7 +8,6 @@ export const Container = styled.aside`
   padding: ${({ theme }) => theme.spacing(2)};
   max-width: 300px;
   width: 100%;
-  height: 100%;
 
   @media ${({ theme }) => theme.breakpoints.down('laptop')} {
     display: none;

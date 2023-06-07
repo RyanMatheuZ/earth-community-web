@@ -6,7 +6,7 @@ interface IAuthContext {
   isLoadingSignUp: boolean;
   isLoadingSignIn: boolean;
   handleSignUp: (signUpValues: ISignUp & IAuthOptions) => Promise<void>;
-  handleSignIn: (signInValues: ISignIn & IAuthOptions) => Promise<void>;
+  handleSignIn: (signInValues: ISignIn) => Promise<void>;
   handleSignOut: () => void;
 }
 

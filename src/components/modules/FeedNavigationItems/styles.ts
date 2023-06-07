@@ -15,9 +15,18 @@ export const Container = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(2)};
   width: 100%;
+  height: 100%;
 `;
 
 export const Navigation = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing(1)};
+  height: 100%;
+`;
+
+export const LinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(1)};

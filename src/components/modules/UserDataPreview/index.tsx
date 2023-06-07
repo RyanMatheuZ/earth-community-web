@@ -14,9 +14,9 @@ const UserDataPreview: FC = () => {
   const userName = `${user?.info.firstName} ${user?.info.surname}`;
 
   return (
-    <S.Container>
+    <S.Container href={String(user?.info.nickName)}>
       <S.UserBackgroundProfile
-        src='/backgrounds/icons-white.png'
+        src='/backgrounds/icons-green.png'
         alt={userBackgroundProfileDescription}
         title={userBackgroundProfileDescription}
         draggable={false}
@@ -29,7 +29,7 @@ const UserDataPreview: FC = () => {
           width='60'
           height='60'
         />
-        <S.UserName>
+        <S.UserName >
           {userName}
         </S.UserName>
       </S.UserPictureProfileContainer>

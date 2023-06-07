@@ -1,13 +1,14 @@
 import {
+  addHours,
   differenceInSeconds,
   differenceInMinutes,
   differenceInHours,
   differenceInDays
 } from 'date-fns';
 
-export const resolvePostCreatedAt = (createdAt: Date): string => {
+export const resolveCreatedAt = (createdAt: Date): string => {
   const currentDate = new Date();
-  const createdAtDate = new Date(createdAt);
+  const createdAtDate = addHours(new Date(createdAt), 3);
 
   const secondsNumber = differenceInSeconds(currentDate, createdAtDate);
   const minutesNumber = differenceInMinutes(currentDate, createdAtDate);

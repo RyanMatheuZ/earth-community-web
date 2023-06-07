@@ -55,7 +55,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
-  const handleSignIn = async (signInValues: ISignIn & IAuthOptions) => {
+  const handleSignIn = async (signInValues: ISignIn) => {
     try {
       setIsLoadingSignIn(true);
       const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.post(`${ENDPOINT}/sign-in`, {
@@ -63,8 +63,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           email: signInValues.email,
         },
         security: {
-          password: signInValues.password,
-          authWith: signInValues.authWith
+          password: signInValues.password
         }
       });
       handlePersistUserDataAndRedirectToFeed(data.user);
@@ -76,7 +75,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const handleSignOut = () => {
-    push('/welcome');
+    replace('/welcome');
     handleCleanUserData();
   };
 

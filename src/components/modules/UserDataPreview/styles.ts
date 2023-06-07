@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-import Image from 'next/image';
-
 import { Typography } from '@mui/material';
 
-export const Container = styled.div`
+import Image from 'next/image';
+import Link from 'next/link';
+
+export const Container = styled(Link)`
   border: 1px solid ${({ theme }) => theme.palette.primary.main};
   border-radius: 5px;
 `;

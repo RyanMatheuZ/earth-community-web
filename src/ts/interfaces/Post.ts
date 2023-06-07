@@ -4,6 +4,7 @@ export interface IComment {
   _id: string;
   user: IUser;
   comment: string;
+  createdAt: Date;
 }
 
 export interface IPost {

@@ -35,15 +35,11 @@ const DonationStepper: FC<DonationStepperProps> = ({ children, activeStep = 0, s
     }, timeoutValue);
   };
 
-  const nextStep = () => {
-    handleToggleFade(
-      () => setActiveStep((prevState) => prevState + 1)
-    );
-  };
+  const handleStep = (action: 'next' | 'previous') => {
+    const operator = action === 'next' ? '+' : '-';
 
-  const previousStep = () => {
     handleToggleFade(
-      () => setActiveStep((prevState) => prevState - 1)
+      () => setActiveStep((prevState) => eval(`${prevState} ${operator} 1`))
     );
   };
 
@@ -72,13 +68,13 @@ const DonationStepper: FC<DonationStepperProps> = ({ children, activeStep = 0, s
       </Fade>
       <S.ButtonContainer>
         <S.PreviousButton
-          onClick={previousStep}
+          onClick={() => handleStep('previous')}
           disabled={activeStep === 0 || activeStep === 3}
         >
           Voltar
         </S.PreviousButton>
         <S.NextButton
-          onClick={nextStep}
+          onClick={() => handleStep('next')}
           disabled={conditionsToNextStep[`${activeStep}-step` as keyof typeof conditionsToNextStep]}
           type={activeStep < 2 ? 'button' : 'submit'}
         >

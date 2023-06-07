@@ -23,7 +23,6 @@ const Feed: NextPage = () => {
   const {
     data,
     fetchNextPage,
-    hasNextPage,
     isFetchingNextPage,
     isLoading
   } = handleGetAllPosts();
@@ -59,9 +58,7 @@ const Feed: NextPage = () => {
               />
             ))}
             <S.LoadingText ref={ref}>
-              {(isFetchingNextPage || isLoading || hasNextPage)
-                ? 'Carregando publicações...'
-                : 'Não há novas publicações no momento :)'}
+              {(isFetchingNextPage || isLoading) ? 'Carregando publicações...' : 'Não há publicações até o momento :)'}
             </S.LoadingText>
           </S.PostContainer>
         </S.Content>
