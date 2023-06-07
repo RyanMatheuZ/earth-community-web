@@ -4,6 +4,7 @@ import AlreadyHaveAnAccount from './Form/AlreadyHaveAnAccount';
 import AnotherAuthOption from './Form/AnotherAuthOption';
 import AuthOptionsButton from './AuthOptionsButton';
 import BackIcon from './BackIcon/styles';
+import ButtonToTop from './ButtonToTop';
 import ErrorMessage from './Form/ErrorMessage';
 import Field from './Form/Field';
 import FormSection from './Form/FormSection';
@@ -32,6 +33,7 @@ export {
   AnotherAuthOption,
   AuthOptionsButton,
   BackIcon,
+  ButtonToTop,
   ErrorMessage,
   Field,
   FormSection,
