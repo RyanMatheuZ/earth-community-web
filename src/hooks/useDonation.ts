@@ -2,6 +2,8 @@ import { useState, useCallback } from 'react';
 
 import { type AxiosResponse } from 'axios';
 
+import { useAuth } from '@context/auth';
+
 import axiosInstance from '@services/axios';
 
 import type { IDonation, IGiver } from '@ts/interfaces';
@@ -9,14 +11,18 @@ import type { IDonation, IGiver } from '@ts/interfaces';
 const useDonation = () => {
   const ENDPOINT = '/donation';
 
+  const { user } = useAuth();
+
   const [donation, setDonation] = useState<IDonation>();
   const [isLoadingDonation, setIsLoadingDonation] = useState<boolean>(false);
 
   const handleCreateDonation = useCallback(async (giverValues: IGiver) => {
+    const FORMATTED_ENDPOINT = user?._id ? `${ENDPOINT}/${user?._id}` : ENDPOINT;
+
     try {
       setIsLoadingDonation(true);
 
-      const { data }: AxiosResponse<{ response: IDonation }> = await axiosInstance.post(ENDPOINT, {
+      const { data }: AxiosResponse<{ response: IDonation }> = await axiosInstance.post(FORMATTED_ENDPOINT, {
         transaction_amount: giverValues.transaction_amount,
         description: giverValues.description,
         payment_method_id: giverValues.payment_method_id,
@@ -45,6 +51,7 @@ const useDonation = () => {
     } finally {
       setIsLoadingDonation(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
