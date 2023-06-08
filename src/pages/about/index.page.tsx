@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import { Head } from '@components/meta';
 import { Footer, HeaderWithBackButton } from '@components/modules';
+import { ButtonToTop } from '@components/elements';
 
 import SectionKnowOurHistory from './SectionKnowOurHistory';
 import SectionHowWeApplyOurResources from './SectionHowWeApplyOurResources';
@@ -33,6 +34,7 @@ const About: NextPage = () => {
         <SectionMadeForWho />
         <Footer />
       </S.Container>
+      <ButtonToTop />
     </>
   );
 };

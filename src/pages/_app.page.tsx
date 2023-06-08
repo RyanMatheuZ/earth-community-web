@@ -36,7 +36,7 @@ const App = ({
               showOnShallow={true}
             />
             <Component {...pageProps} />
-            <Analytics />
+            {process.env.NEXT_PUBLIC_ENV === 'prod' && <Analytics />}
           </TanstackQueryProvider>
         </ThemeProviders>
       </CacheProvider>
