@@ -7,6 +7,8 @@ import { Footer, HeaderWithBackButton } from '@components/modules';
 import SectionKnowOurHistory from './SectionKnowOurHistory';
 import SectionHowWeApplyOurResources from './SectionHowWeApplyOurResources';
 import SectionMadeForWho from './SectionMadeForWho';
+import SectionWhatAreTheSDG from './SectionWhatAreTheSDG';
+import SectionWhatAreAllTheSDG from './SectionWhatAreAllTheSDG';
 
 import { title, description } from './head';
 
@@ -31,6 +33,8 @@ const About: NextPage = () => {
         <SectionKnowOurHistory />
         <SectionHowWeApplyOurResources />
         <SectionMadeForWho />
+        <SectionWhatAreTheSDG />
+        <SectionWhatAreAllTheSDG />
         <Footer />
       </S.Container>
     </>

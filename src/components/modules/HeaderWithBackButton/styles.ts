@@ -18,7 +18,7 @@ export const Container = styled.header<ITheme>`
     justify-self: start;
   }
 
-  & figure {
+  & a {
     justify-self: center;
   }
 `;

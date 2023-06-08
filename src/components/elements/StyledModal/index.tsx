@@ -1,6 +1,6 @@
-import { useRef, useEffect, type FC, type ReactNode } from 'react';
+import { type FC, type ReactNode } from 'react';
 
-import { DialogContent, DialogContentText } from '@mui/material';
+import { DialogContent } from '@mui/material';
 
 import Header from './Header';
 import Actions from './Actions';
@@ -16,17 +16,6 @@ interface StyledModalProps {
 }
 
 const StyledModal: FC<StyledModalProps> = ({ isOpen, handleToggleModal, modalTitle, content, actions }) => {
-  const descriptionElementRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (isOpen) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [isOpen]);
-
   return (
     <S.Container
       open={isOpen}
@@ -34,12 +23,7 @@ const StyledModal: FC<StyledModalProps> = ({ isOpen, handleToggleModal, modalTit
     >
       <Header title={modalTitle} />
       <DialogContent dividers={true}>
-        <DialogContentText
-          ref={descriptionElementRef}
-          tabIndex={-1}
-        >
-          {content}
-        </DialogContentText>
+        {content}
       </DialogContent>
       {!!actions && (
         <Actions>
