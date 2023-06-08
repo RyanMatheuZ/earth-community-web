@@ -60,12 +60,12 @@ const Post: FC<PostProps> = ({ postItems }) => {
             height='35'
           />
           <S.AdditionalInformation>
-            <S.CreatedByContainer>
+            <div>
               <S.CreatedBy>{userName}</S.CreatedBy>
-            </S.CreatedByContainer>
-            <S.PublicationDate>
+            </div>
+            <span>
               {resolveCreatedAt(postItems.createdAt)}
-            </S.PublicationDate>
+            </span>
           </S.AdditionalInformation>
         </S.Header>
         <S.Content>
@@ -87,7 +87,7 @@ const Post: FC<PostProps> = ({ postItems }) => {
             <S.StyledBadge badgeContent={postItems.likes.quantity} >
               {isUserLikeThePost ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
             </S.StyledBadge>
-            Apoio
+            Apoiar
           </S.StyledToggleButton>
           <S.StyledToggleButton
             value={true}

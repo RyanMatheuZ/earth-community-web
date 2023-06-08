@@ -15,6 +15,7 @@ export const PostContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   overflow-y: auto;
+  padding-inline: ${({ theme }) => theme.spacing(1)};
   height: 88vh;
   width: 100%;
 `;

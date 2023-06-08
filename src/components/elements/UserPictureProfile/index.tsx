@@ -7,11 +7,13 @@ import * as S from './styles';
 interface UserPictureProfileProps extends PictureProfileSizeProps {
   pictureProfileSRC?: string;
   userName: string;
+  handleClick?: () => void;
 }
 
 const UserPictureProfile: FC<UserPictureProfileProps> = ({
   pictureProfileSRC = '',
   userName,
+  handleClick,
   width = '50',
   height = '50'
 }) => {
@@ -23,6 +25,8 @@ const UserPictureProfile: FC<UserPictureProfileProps> = ({
       width={width}
       height={height}
       draggable={false}
+      onClick={handleClick}
+      style={{ cursor: handleClick && 'pointer' }}
     />
   );
 };

@@ -7,18 +7,22 @@ import {
   type StorageError
 } from 'firebase/storage';
 
+import { useAuth } from '@context/auth';
+
 import { storage } from '@services/firebase';
 
 import { showToast } from '@utils/toast';
 
 const useImageUpload = () => {
+  const { user } = useAuth();
+
   const [imageURL, setImageURL] = useState('');
   const [error, setError] = useState<StorageError>();
   const [progress, setProgress] = useState(0);
 
   const handleUpload = useCallback(async (file: File) => {
     return new Promise<string>((resolve, reject) => {
-      const storageRef = ref(storage, `picture-profile/${file.name}`);
+      const storageRef = ref(storage, `picture-profile/${user?._id}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
@@ -45,7 +49,7 @@ const useImageUpload = () => {
         }
       );
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

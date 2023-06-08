@@ -43,7 +43,7 @@ const UserProfileInfo: FC<UserProfileInfoProps> = ({ user, isLoading }) => {
     <>
       <S.Container>
         <S.UserBackgroundProfile
-          src='/backgrounds/icons-green.png'
+          src='/backgrounds/user-background-photo.svg'
           alt={userBackgroundProfileDescription}
           title={userBackgroundProfileDescription}
           draggable={false}

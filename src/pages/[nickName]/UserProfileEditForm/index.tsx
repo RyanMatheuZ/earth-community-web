@@ -13,6 +13,8 @@ import { useAuth } from '@context/auth';
 import { useUser, useFilePreview, useImageUpload } from '@hooks/index';
 import { UpdatedUserParams } from '@hooks/useUser/utils';
 
+import { queryClient } from '@services/tanstackQuery';
+
 import { ErrorMessage, Field, InputDate, InputFile, Select, SubmitButton, UserPictureProfile } from '@components/elements';
 import { HalfToHalfContainer, TwoThirdContainer } from '@components/modules';
 
@@ -51,6 +53,7 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
   const { mutate, isLoading: isUpdatingUser, isPaused: isUserUpdatedPaused } = useMutation(
     ({ userId, userUpdatedValues }: UpdatedUserParams) => handleUpdateUser({ userId, userUpdatedValues }),
     {
+      onMutate: () => queryClient.invalidateQueries(['all-posts']),
       onSuccess: () => replace('/feed')
     }
   );

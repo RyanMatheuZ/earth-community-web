@@ -17,8 +17,9 @@ export const Container = styled.article`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  margin: ${({ theme }) => theme.spacing(1)};
+  margin-block: ${({ theme }) => theme.spacing(1)};
   max-width: 600px;
+  width: 100%;
 `;
 
 export const Header = styled.header`
@@ -33,16 +34,8 @@ export const AdditionalInformation = styled.div`
   flex-direction: column;
 `;
 
-export const CreatedByContainer = styled.div`
-
-`;
-
 export const CreatedBy = styled(Typography)`
   font-weight: 600;
-`;
-
-export const PublicationDate = styled.span`
-
 `;
 
 export const Content = styled.div`
