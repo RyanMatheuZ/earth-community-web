@@ -33,6 +33,8 @@ const Welcome: NextPage = () => {
               width='375'
               height='335'
               fill
+              loading='eager'
+              priority
             />
           </S.SectionContainer>
           <S.ButtonContainer>

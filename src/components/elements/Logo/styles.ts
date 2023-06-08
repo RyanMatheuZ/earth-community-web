@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+import Link from 'next/link';
+
 import { Typography } from '@mui/material';
 
 import type { ITheme } from '@ts/interfaces';
 
 import { resolveTheme } from '@utils/theme';
 
-export const Container = styled.figure`
+export const Container = styled(Link)`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(1)};
