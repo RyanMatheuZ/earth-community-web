@@ -5,11 +5,13 @@ import { useAuth } from '@context/auth';
 import { Logo, SearchBar, UserPictureProfile } from '@components/elements';
 
 import Drawer from './Drawer';
+import Shortcuts from './Shortcut';
 
 import * as S from './styles';
 
 const FeedHeader: FC = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const [isOpenShortscutMenu, setIsOpenShortscutMenu] = useState(false);
 
   const { user } = useAuth();
 
@@ -17,6 +19,10 @@ const FeedHeader: FC = () => {
 
   const handleToggleDrawer = () => {
     setIsOpenDrawer((prevState) => !prevState);
+  };
+
+  const handleToggleMenu = () => {
+    setIsOpenShortscutMenu((prevState) => !prevState);
   };
 
   return (
@@ -41,6 +47,11 @@ const FeedHeader: FC = () => {
             <UserPictureProfile
               pictureProfileSRC={user?.info.pictureProfile}
               userName={userName}
+              handleClick={handleToggleMenu}
+            />
+            <Shortcuts
+              isOpenMenu={isOpenShortscutMenu}
+              handleToggleMenu={handleToggleMenu}
             />
           </S.GroupElements>
         </S.MaxWidthContainer>
