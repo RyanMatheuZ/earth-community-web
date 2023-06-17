@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { TextField, InputAdornment } from '@mui/material';
 import { Search } from '@mui/icons-material';
 
-export const StyleInput = styled(TextField).attrs({
+export const StyledInput = styled(TextField).attrs({
   variant: 'filled'
 })`
   max-width: 325px;

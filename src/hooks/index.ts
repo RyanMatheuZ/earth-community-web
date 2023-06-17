@@ -5,6 +5,7 @@ import useFilePreview from './useFilePreview';
 import useGoogleAuth from './useGoogleAuth';
 import useImageUpload from './useImageUpload';
 import usePost from './usePost';
+import useSearch from './useSearch';
 import useUser from './useUser';
 
 export {
@@ -15,5 +16,6 @@ export {
   useGoogleAuth,
   useImageUpload,
   usePost,
+  useSearch,
   useUser
 };

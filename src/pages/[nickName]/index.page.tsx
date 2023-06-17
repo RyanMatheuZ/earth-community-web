@@ -1,5 +1,4 @@
-import { type NextPage } from 'next';
-import { useRouter } from 'next/router';
+import { type NextPage, type GetServerSideProps } from 'next';
 
 import type { IUser } from '@ts/interfaces';
 
@@ -14,10 +13,11 @@ import { head } from './head';
 
 import * as S from './styles';
 
-const UserProfile: NextPage = () => {
-  const { query } = useRouter();
-  const { nickName } = query;
+interface UserProfileProps {
+  nickName: string;
+}
 
+const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
   const { handleGetUserByNickName } = useUser();
 
   const { data, isLoading, isRefetching } = handleGetUserByNickName(nickName as string);
@@ -41,6 +41,14 @@ const UserProfile: NextPage = () => {
       </S.Container>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  return {
+    props: {
+      nickName: query.nickName
+    }
+  };
 };
 
 export default UserProfile;
