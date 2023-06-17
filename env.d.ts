@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_ENV: 'dev' | 'prod';
@@ -9,5 +10,7 @@ namespace NodeJS {
     NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: string;
     NEXT_PUBLIC_FIREBASE_APP_ID: string;
     NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: string;
+    NEXT_PUBLIC_NOTION_SECRET_KEY: string;
+    NEXT_PUBLIC_NOTION_DATABASE_ID: string;
   }
 }
