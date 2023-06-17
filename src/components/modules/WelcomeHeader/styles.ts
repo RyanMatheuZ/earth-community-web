@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { MaxWidthContainer } from '@components/modules';
-import { Info, LockOpen, HowToReg } from '@mui/icons-material';
+import { Info, LockOpen, HowToReg, Newspaper } from '@mui/icons-material';
 
 import { baseIconStyles } from '@utils/datas/styles';
 
@@ -30,5 +30,9 @@ export const SignInIcon = styled(LockOpen)`
 `;
 
 export const SignUpIcon = styled(HowToReg)`
+  ${baseIconStyles};
+`;
+
+export const BlogIcon = styled(Newspaper)`
   ${baseIconStyles};
 `;

@@ -23,5 +23,11 @@ export const dropdownItems: ReadonlyArray<IMediaItems> = [
     path: '/sign-up',
     target: '_self'
   },
-  ...socialMedias
+  ...socialMedias,
+  {
+    icon: <S.BlogIcon />,
+    label: 'Blog',
+    path: '/blog',
+    target: '_self'
+  }
 ];

@@ -79,11 +79,11 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     handleCleanUserData();
   };
 
-  useEffect(() => {
-    if (isAuthenticatedUser) push('/feed');
-    else replace('/welcome');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   if (isAuthenticatedUser) push('/feed');
+  //   else replace('/welcome');
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <AuthContext.Provider value={{
