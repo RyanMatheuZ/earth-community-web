@@ -46,7 +46,7 @@ const Results: FC<Results> = ({ results, isLoading, children }) => {
             height='250'
             fill
           />
-          <S.NoResultsMessage>Sem resultados</S.NoResultsMessage>
+          <S.NoResultsMessage>Sem resultados...</S.NoResultsMessage>
         </>
       )}
       {isLoading && <S.CardSkeleton />}

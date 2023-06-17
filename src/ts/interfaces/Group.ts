@@ -2,7 +2,7 @@ import type { IUser } from '@ts/interfaces';
 
 interface IGroup {
   _id: string;
-  logo: string;
+  image: string;
   name: string;
   description: string;
   category: string;
