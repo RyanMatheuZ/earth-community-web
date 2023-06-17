@@ -22,7 +22,7 @@ const LogoAndSocialMedias: FC = () => {
           </FooterS.ListText>
         ))}
       </li>
-      <li>
+      <S.StyledListItem>
         {socialMedias.map(({ label, icon, path, target }, index) => (
           <S.SocialMediaContainer
             key={`social-media-${label}-${index}`}
@@ -33,7 +33,7 @@ const LogoAndSocialMedias: FC = () => {
             {icon}
           </S.SocialMediaContainer>
         ))}
-      </li>
+      </S.StyledListItem>
     </ul>
   );
 };

@@ -6,16 +6,11 @@ export const contacts: ReadonlyArray<Pick<IMediaItems, 'icon' | 'label'> & { val
   {
     icon: <S.EmailIcon />,
     label: 'Email',
-    value: 'contato@earthcommunity.com'
-  },
-  {
-    icon: <S.PhoneIcon />,
-    label: 'Telefone',
-    value: '(16) 2152-3024'
+    value: 'ec.contato@outlook.com.br'
   },
   {
     icon: <S.LocationIcon />,
     label: 'Localização',
-    value: 'Matão, SP, Brasil'
+    value: 'São Paulo, Brasil'
   }
 ];
