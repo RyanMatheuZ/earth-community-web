@@ -1,4 +1,5 @@
 import type IAPIError from './APIError';
+import type IAchievements from './Achievements';
 import type IAppProps from './AppProps';
 import type IAuthContext from './AuthContext';
 import type IAuthOptions from './AuthOptions';
@@ -17,6 +18,7 @@ import type { IComment, IPost } from './Post';
 
 export type {
   IAPIError,
+  IAchievements,
   IActions,
   IAppProps,
   IAuthContext,
