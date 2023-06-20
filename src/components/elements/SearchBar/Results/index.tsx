@@ -49,7 +49,9 @@ const Results: FC<Results> = ({ results, isLoading, children }) => {
           <S.NoResultsMessage>Sem resultados...</S.NoResultsMessage>
         </>
       )}
-      {isLoading && <S.CardSkeleton />}
+      {isLoading && Array.from({ length: 10 }).map((_, index) => (
+        <S.CardSkeleton key={`card-skeleton-${index}`} />
+      ))}
     </S.Container>
   );
 };

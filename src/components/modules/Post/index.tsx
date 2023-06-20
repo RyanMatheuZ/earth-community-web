@@ -1,5 +1,7 @@
 import { useState, type FC } from 'react';
 
+import { useRouter } from 'next/router';
+
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 import type { IPost, IUser } from '@ts/interfaces';
@@ -20,7 +22,8 @@ interface PostProps {
   postType: 'feed' | 'group';
 }
 
-const Post: FC<PostProps> = ({ postItems }) => {
+const Post: FC<PostProps> = ({ postItems, postType }) => {
+  const { pathname } = useRouter();
   const { user } = useAuth();
 
   const isUserLikeThePostInitialState = resolveUserLikePost(
@@ -28,7 +31,7 @@ const Post: FC<PostProps> = ({ postItems }) => {
     postItems.likes.userIds
   );
 
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(isUserLikeThePostInitialState);
 
   const userName = `${postItems.createdByUser.info.firstName} ${postItems.createdByUser.info.surname}`;
@@ -37,15 +40,18 @@ const Post: FC<PostProps> = ({ postItems }) => {
 
   const { handleUserToggleLikeThePost } = usePost();
 
-  const handleToggleDialog = () => {
-    setIsDialogOpen((prevState) => !prevState);
+  const handleToggleModal = () => {
+    setIsOpenModal((prevState) => !prevState);
   };
 
   const { mutate } = useMutation(
     ({ postId, userId }: { postId: string, userId: IUser['_id'] }) => handleUserToggleLikeThePost(postId, userId),
     {
       onMutate: () => setIsUserLikeThePost((prevState) => !prevState),
-      onSuccess: () => queryClient.invalidateQueries(['all-posts'])
+      onSuccess: () => {
+        const query = pathname === '/feed' ? 'all-posts' : 'all-posts-by-group-id';
+        queryClient.invalidateQueries([query]);
+      }
     }
   );
 
@@ -53,15 +59,28 @@ const Post: FC<PostProps> = ({ postItems }) => {
     <>
       <S.Container>
         <S.Header>
-          <UserPictureProfile
-            pictureProfileSRC={postItems.createdByUser.info.pictureProfile}
-            userName={userName}
-            width='35'
-            height='35'
-          />
+          <S.PictureContainer>
+            <UserPictureProfile
+              pictureProfileSRC={postItems.createdByUser.info.pictureProfile}
+              userName={userName}
+              width='35'
+              height='35'
+            />
+            {postType === 'feed' && (
+              <UserPictureProfile
+                pictureProfileSRC={postItems.createdByGroup.image}
+                userName={postItems.createdByGroup.name}
+                width='35'
+                height='35'
+              />
+            )}
+          </S.PictureContainer>
           <S.AdditionalInformation>
             <div>
-              <S.CreatedBy>{userName}</S.CreatedBy>
+              <S.CreatedBy>{userName}</S.CreatedBy> {' '}
+              {postType === 'feed' && (
+                <S.CreatedBy>| {postItems.createdByGroup.name}</S.CreatedBy>
+              )}
             </div>
             <span>
               {resolveCreatedAt(postItems.createdAt)}
@@ -84,14 +103,14 @@ const Post: FC<PostProps> = ({ postItems }) => {
             value={isUserLikeThePost}
             onClick={() => mutate({ postId: postItems._id, userId: user?._id as string })}
           >
-            <S.StyledBadge badgeContent={postItems.likes.quantity} >
+            <S.StyledBadge badgeContent={postItems.likes.quantity}>
               {isUserLikeThePost ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
             </S.StyledBadge>
             Apoiar
           </S.StyledToggleButton>
           <S.StyledToggleButton
             value={true}
-            onClick={handleToggleDialog}
+            onClick={handleToggleModal}
           >
             <S.StyledBadge badgeContent={postItems.comments?.length}>
               <S.CommentIcon />
@@ -101,8 +120,8 @@ const Post: FC<PostProps> = ({ postItems }) => {
         </S.ActionsContainer>
       </S.Container>
       <PostComments
-        isDialogOpen={isDialogOpen}
-        handleToggleDialog={handleToggleDialog}
+        isOpenModal={isOpenModal}
+        handleToggleModal={handleToggleModal}
         postItem={postItems}
       />
     </>

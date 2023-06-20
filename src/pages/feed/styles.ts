@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Typography } from '@mui/material';
 
 export const Container = styled.div`
-  background-color: #F1F1F1;
+  background-color: ${({ theme }) => theme.palette.lightGray.main};
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -22,6 +22,9 @@ export const PostContainer = styled.div`
 
 export const Content = styled.div`
   display: flex;
+  margin: 0 auto;
+  max-width: 1800px;
+  width: 100%;
   height: 100%;
 `;
 

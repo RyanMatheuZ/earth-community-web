@@ -18,7 +18,7 @@ const NoComments: FC = () => {
         fill
       />
       <S.Message>
-        Não há comentários no momento, <br />
+        Não há comentários até o momento, <br />
         seja o primeiro a comentar!
       </S.Message>
     </S.Container>

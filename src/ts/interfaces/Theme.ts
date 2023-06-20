@@ -1,5 +1,5 @@
 interface ITheme {
-  $themeColor: 'white' | 'green'
+  $themeColor?: 'white' | 'green'
 }
 
 export default ITheme;

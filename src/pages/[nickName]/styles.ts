@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: #F1F1F1;
+  background-color: ${({ theme }) => theme.palette.lightGray.main};
   display: flex;
   flex-direction: column;
-  display: flex;
 `;

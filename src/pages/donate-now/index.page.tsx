@@ -46,7 +46,7 @@ const DonateNow: NextPage = () => {
   const onSubmit: SubmitHandler<GiverDefaultValues> = (giverValues) => {
     handleCreateDonation({
       transaction_amount: +giverValues.transactionAmount,
-      description: `Doação Earth Community - R$ ${giverValues.transactionAmount}`,
+      description: `Doacao Earth Community - R$ ${giverValues.transactionAmount}`,
       payment_method_id: 'pix',
       payer: {
         email: giverValues.email,

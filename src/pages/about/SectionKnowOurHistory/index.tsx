@@ -23,7 +23,7 @@ const SectionKnowOurHistory: FC = () => {
           Criado a partir de um projeto acadêmico baseado na <S.StyledLink href={uNAgendaHref} target='_blank'>agenda 2030</S.StyledLink> da <S.Abbreviation title={onuAbbreviation}>ONU</S.Abbreviation>, oferecendo um espaço virtual para que os usuários possam se conectar, compartilhar ideias e iniciativas, e se mobilizarem em prol de um mundo mais sustentável.
         </S.Text>
         <S.Text>
-          Além disso, a plataforma é uma oportunidade para que os usuários possam aprender mais sobre as temáticas que envolvem a <S.StyledLink href={uNAgendaHref} target='_blank'>agenda 2030</S.StyledLink> da <S.Abbreviation title={onuAbbreviation}>ONU</S.Abbreviation> e se inspirarem em outras iniciativas ao redor do mundo.
+          Além disso, a plataforma é uma oportunidade para que os usuários possam aprender mais sobre as temáticas que envolvem a <S.StyledLink href={uNAgendaHref} target='_blank'>agenda 2030</S.StyledLink> da <S.Abbreviation title={onuAbbreviation}>ONU</S.Abbreviation> e se inspirarem em outras iniciativas ao redor do Brasil.
         </S.Text>
         <AnchorLink elementId='how-do-we-apply-the-our-resources?' />
       </S.TextContainer>

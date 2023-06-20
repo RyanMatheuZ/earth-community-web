@@ -5,8 +5,8 @@ import { Skeleton } from '@mui/material';
 const Container = styled(Skeleton).attrs({
   variant: 'circular'
 })`
-  width: 120px;
-  height: 120px;
+  width: 115px;
+  height: 115px;
 `;
 
 export default Container;

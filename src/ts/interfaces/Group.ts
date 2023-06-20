@@ -1,17 +1,23 @@
 import type { IUser } from '@ts/interfaces';
 
+import { type CategoriesOptions } from '@utils/datas/categories/utils';
+
 interface IGroup {
   _id: string;
   image: string;
   name: string;
   description: string;
-  category: string;
+  category: CategoriesOptions;
   headOffice: {
-    city: string,
-    state: string
+    city: string;
+    state: string;
   },
-  memberIds: number[];
-  createdByUser: IUser;
+  members: Array<{
+    user: IUser;
+  }>;
+  createdByUser: {
+    user: IUser;
+  };
   createdAt: Date;
 }
 

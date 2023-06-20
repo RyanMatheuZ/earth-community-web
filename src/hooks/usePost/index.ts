@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useCallback } from 'react';
 
 import { type AxiosResponse } from 'axios';
@@ -10,13 +11,12 @@ import axiosInstance from '@services/axios';
 
 import { catchError } from '@utils/requestMessages';
 
-import { type SendCommentParams } from './utils';
+import { type SendCommentParams, type CreatePostParams } from './utils';
 
 const usePost = () => {
   const ENDPOINT = '/post';
 
   const handleGetAllPosts = useCallback(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useInfiniteQuery(
       ['all-posts'],
       async ({ pageParam = 1 }): Promise<IPost[] | undefined> => {
@@ -40,6 +40,38 @@ const usePost = () => {
         refetchInterval: 60 * 1000
       }
     );
+  }, []);
+
+  const handleGetAllPostsByGroupId = useCallback((groupId: string) => {
+    return useInfiniteQuery(
+      ['all-posts-by-group-id'],
+      async ({ pageParam = 1 }): Promise<IPost[] | undefined> => {
+        try {
+          axiosInstance.interceptors.response.clear();
+
+          const { data }: AxiosResponse<{ posts: IPost[] }> = await axiosInstance.get(
+            `${ENDPOINT}/get-group-by-id/${groupId}?perPage=10&page=${pageParam}`
+          );
+
+          return data.posts;
+        } catch (e) {
+          catchError(e);
+        }
+      },
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          return lastPage?.length ? allPages.length + 1 : undefined;
+        }
+      }
+    );
+  }, []);
+
+  const handleCreatePost = useCallback(async ({ userId, groupId, postValues }: CreatePostParams) => {
+    try {
+      await axiosInstance.post(`${ENDPOINT}/create/${userId}/${groupId}`, postValues);
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   const handleUserToggleLikeThePost = useCallback(async (postId: string, userId: string) => {
@@ -70,6 +102,8 @@ const usePost = () => {
 
   return {
     handleGetAllPosts,
+    handleGetAllPostsByGroupId,
+    handleCreatePost,
     handleUserToggleLikeThePost,
     handleUserSendComment,
     handleUserDeleteComment

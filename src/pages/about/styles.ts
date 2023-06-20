@@ -34,7 +34,8 @@ export const SlantedSectionContainer = styled(SectionContainer)`
 `;
 
 export const SlantedContainer = styled.div`
-  background-color: #F1F1F1;
+    background-color: ${({ theme }) => theme.palette.lightGray.main};
+
   margin-block: ${({ theme }) => theme.spacing(6)};
   padding: ${({ theme }) => theme.spacing(6, 2)};
   transform: skewY(-2.5deg);

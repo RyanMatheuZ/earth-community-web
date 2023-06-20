@@ -30,7 +30,8 @@ const SearchBar: FC = () => {
       <S.StyledInput
         placeholder={placeholder}
         InputProps={{ startAdornment }}
-        onFocus={handleToggleModal}
+        onClick={handleToggleModal}
+        style={{ caretColor: 'transparent' }}
       />
       <StyledModal
         isOpen={isOpenModal}
