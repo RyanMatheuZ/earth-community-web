@@ -11,7 +11,7 @@ const nextConfig = {
         hostname: '**',
         pathname: '/**',
       }
-    ],
+    ]
   },
 
   reactStrictMode: true,
@@ -26,7 +26,7 @@ const nextConfig = {
         source: '/',
         destination: '/welcome',
         permanent: false
-      },
+      }
     ];
   }
 };

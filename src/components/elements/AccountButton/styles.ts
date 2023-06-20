@@ -54,6 +54,7 @@ export const StyledSpeedDialAction = styled(SpeedDialAction)`
 `;
 
 export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.palette.common.white};
   display: flex;
   align-items: center;
   justify-content: center;
