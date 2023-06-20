@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type NextPage, type GetServerSideProps } from 'next';
-import { notFound } from 'next/navigation';
 
 import hljs from '@notion-render/hljs-plugin';
 import bookmark from '@notion-render/bookmark-plugin';
@@ -43,7 +42,15 @@ const BlogSlug: NextPage<DataFromNotion> = ({ blocks, html }) => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const post = await fetchPageBySlug(params?.slug as string);
 
-  if (!post) notFound();
+  if (!post) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false
+      },
+      props: {},
+    };
+  }
 
   const blocks = await fetchPageBlocks(post.id);
 
