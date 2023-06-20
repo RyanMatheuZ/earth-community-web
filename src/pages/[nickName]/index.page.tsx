@@ -1,13 +1,14 @@
 import { type NextPage, type GetServerSideProps } from 'next';
 
-import type { IUser } from '@ts/interfaces';
+import type { IUser, IAchievements } from '@ts/interfaces';
 
-import { useUser } from '@hooks/index';
+import { useUser, useAchievements } from '@hooks/index';
 
 import { Head } from '@components/meta';
 import { FeedHeader } from '@components/modules';
 
 import UserProfileInfo from './UserProfileInfo';
+import Achievements from './Achievements';
 
 import { head } from './head';
 
@@ -19,10 +20,20 @@ interface UserProfileProps {
 
 const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
   const { handleGetUserByNickName } = useUser();
+  const { handleGetAllAchievements } = useAchievements();
 
-  const { data, isLoading, isRefetching } = handleGetUserByNickName(nickName as string);
+  const {
+    data: user,
+    isLoading: isLoadingUser,
+    isRefetching: isRefetchingUser
+  } = handleGetUserByNickName(nickName as string);
+  const {
+    data: achievements,
+    isLoading: isLoadingAchievements,
+    isRefetching: isRefetchingAchievements
+  } = handleGetAllAchievements(user?._id as string);
 
-  const userName = `${data?.info?.firstName} ${data?.info?.surname}`;
+  const userName = `${user?.info?.firstName} ${user?.info?.surname}`;
 
   const { title, description } = head(userName);
 
@@ -34,10 +45,16 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
       />
       <S.Container>
         <FeedHeader />
-        <UserProfileInfo
-          user={data as IUser}
-          isLoading={isLoading || isRefetching}
-        />
+        <S.Content>
+          <UserProfileInfo
+            user={user as IUser}
+            isLoading={isLoadingUser || isRefetchingUser}
+          />
+          <Achievements
+            achievements={achievements as IAchievements['achievements']}
+            isLoading={isLoadingAchievements || isRefetchingAchievements}
+          />
+        </S.Content>
       </S.Container>
     </>
   );

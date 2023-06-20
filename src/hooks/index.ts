@@ -1,3 +1,4 @@
+import useAchievements from './useAchievements';
 import useAddress from './useAddress';
 import useDonation from './useDonation';
 import useFacebookAuth from './useFacebookAuth';
@@ -10,6 +11,7 @@ import useSearch from './useSearch';
 import useUser from './useUser';
 
 export {
+  useAchievements,
   useAddress,
   useDonation,
   useFacebookAuth,

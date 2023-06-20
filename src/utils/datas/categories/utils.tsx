@@ -19,26 +19,26 @@ export interface Categories {
 }
 
 export const categories: Categories[] = [
-  {
-    label: 'Apoio aos Idosos',
-    icon: <S.SupportForElderlyIcon />
-  },
+  // {
+  //   label: 'Apoio aos Idosos',
+  //   icon: <S.SupportForElderlyIcon />
+  // },
   {
     label: 'Artes e Cultura',
     icon: <S.ArtsAndCultureIcon />
   },
-  {
-    label: 'Direitos Humanos',
-    icon: <S.HumanRightsIcon />
-  },
+  // {
+  //   label: 'Direitos Humanos',
+  //   icon: <S.HumanRightsIcon />
+  // },
   {
     label: 'Educação',
     icon: <S.EducationIcon />
   },
-  {
-    label: 'Esportes',
-    icon: <S.SportsIcon />
-  },
+  // {
+  //   label: 'Esportes',
+  //   icon: <S.SportsIcon />
+  // },
   {
     label: 'Meio Ambiente',
     icon: <S.EnvironmentIcon />
@@ -51,8 +51,8 @@ export const categories: Categories[] = [
     label: 'Saúde',
     icon: <S.HealthIcon />
   },
-  {
-    label: 'Tecnologia e Inovação Social',
-    icon: <S.TechnologyAndInovationIcon />
-  }
+  // {
+  //   label: 'Tecnologia e Inovação Social',
+  //   icon: <S.TechnologyAndInovationIcon />
+  // }
 ];

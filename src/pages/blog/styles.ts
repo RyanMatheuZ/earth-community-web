@@ -9,6 +9,8 @@ import { AutoStories } from '@mui/icons-material';
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.lightGray.main};
   padding: ${({ theme }) => theme.spacing(2)};
+  min-height: 100vh;
+  height: 100%;
 `;
 
 export const PageTitle = styled(Typography).attrs({
