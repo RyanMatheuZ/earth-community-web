@@ -33,6 +33,9 @@ const UserDataPreview: FC = () => {
           {userName}
         </S.UserName>
       </S.UserPictureProfileContainer>
+      <S.ViewContainer>
+        <S.ViewIcon />
+      </S.ViewContainer>
     </S.Container>
   );
 };

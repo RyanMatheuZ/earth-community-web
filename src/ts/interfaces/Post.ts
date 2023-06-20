@@ -1,4 +1,4 @@
-import type { IUser } from '@ts/interfaces';
+import type { IGroup, IUser } from '@ts/interfaces';
 
 export interface IComment {
   _id: string;
@@ -17,5 +17,6 @@ export interface IPost {
     userIds: string[];
   };
   createdByUser: IUser;
+  createdByGroup: IGroup;
   createdAt: Date;
 }

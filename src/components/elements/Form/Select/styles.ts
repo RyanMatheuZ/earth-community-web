@@ -30,6 +30,13 @@ export const StyledSelectTextField = styled(TextField) <ITheme>`
   .MuiSelect-select {
     color: ${({ $themeColor }) => resolveTheme({ $themeColor })};
     font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: ${({ theme }) => theme.spacing(1)};
+
+    svg {
+      fill: ${({ theme }) => theme.palette.primary.main};
+    }
   }
 
   .MuiOutlinedInput-root {

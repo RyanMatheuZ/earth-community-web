@@ -34,11 +34,8 @@ const useCEP = () => {
 
       const { data }: AxiosResponse<AddressResponse> = await axiosInstance.get(ENDPOINT);
 
-      if (data.erro) {
-        showToast('CEP inválido. Tente Novamente!', 'error');
-      }
-
-      showToast('CEP encontrado!', 'success');
+      if (data.erro) showToast('CEP inválido. Tente Novamente!', 'error');
+      else showToast('CEP encontrado!', 'success');
 
       return data;
     } catch (error) {

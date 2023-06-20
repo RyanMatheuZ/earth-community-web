@@ -4,6 +4,7 @@ declare module 'styled-components' {
   interface DefaultTheme extends Theme {
     palette: Palette & {
       tertiary: PaletteColor;
+      lightGray: PaletteColor;
     };
     breakpoints: Breakpoints;
   }
@@ -12,10 +13,12 @@ declare module 'styled-components' {
 declare module '@mui/material/styles' {
   interface Palette {
     tertiary: Palette['primary'];
+    lightGray: Palette['primary'];
   }
 
   interface PaletteOptions {
     tertiary: PaletteOptions['primary'];
+    lightGray: PaletteOptions['primary'];
   }
 
   interface BreakpointOverrides {

@@ -29,6 +29,10 @@ export const Header = styled.header`
   padding: ${({ theme }) => theme.spacing(2)};
 `;
 
+export const PictureContainer = styled.div`
+  display: flex;
+`;
+
 export const AdditionalInformation = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,6 +40,7 @@ export const AdditionalInformation = styled.div`
 
 export const CreatedBy = styled(Typography)`
   font-weight: 600;
+  display: inline-block;
 `;
 
 export const Content = styled.div`
@@ -45,6 +50,7 @@ export const Content = styled.div`
 
 export const Text = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(0, 2, 1, 2)};
+  white-space: pre-line;
 `;
 
 export const Image = styled(NextImage)`

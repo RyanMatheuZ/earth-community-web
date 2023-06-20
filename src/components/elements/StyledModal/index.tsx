@@ -30,6 +30,9 @@ const StyledModal: FC<StyledModalProps> = ({ isOpen, handleToggleModal, modalTit
           {actions}
         </Actions>
       )}
+      <S.CloseModalButton onClick={handleToggleModal}>
+        <S.CloseIcon />
+      </S.CloseModalButton>
     </S.Container>
   );
 };

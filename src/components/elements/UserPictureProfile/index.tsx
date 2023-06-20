@@ -11,6 +11,7 @@ interface UserPictureProfileProps extends PictureProfileSizeProps {
 }
 
 const UserPictureProfile: FC<UserPictureProfileProps> = ({
+  $themeColor = 'green',
   pictureProfileSRC = '',
   userName,
   handleClick,
@@ -26,6 +27,7 @@ const UserPictureProfile: FC<UserPictureProfileProps> = ({
       height={height}
       draggable={false}
       onClick={handleClick}
+      $themeColor={$themeColor}
       style={{ cursor: handleClick && 'pointer' }}
     />
   );

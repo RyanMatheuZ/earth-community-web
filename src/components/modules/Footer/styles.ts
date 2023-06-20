@@ -23,6 +23,11 @@ export const Container = styled.div`
 
   @media ${({ theme }) => theme.breakpoints.down('tablet')} {
     flex-direction: column;
+    align-items: center;
+
+    & p {
+      text-align: center;
+    }
   }
 `;
 

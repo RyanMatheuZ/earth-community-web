@@ -19,6 +19,7 @@ export const Comment = styled.article`
   border: 1px solid ${({ theme }) => theme.palette.secondary.main};
   border-radius: 5px;
   padding: ${({ theme }) => theme.spacing(1)};
+  white-space: pre-line;
   position: relative;
 `;
 

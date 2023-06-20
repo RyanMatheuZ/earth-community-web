@@ -63,7 +63,11 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
   const onSubmit: SubmitHandler<UserDefaultValues> = async (userEditedValues) => {
     const defaultOrNewImage = isUrlOfImage
       ? userEditedValues?.pictureProfile as string
-      : await handleUpload(file?.[0] as unknown as File);
+      : await handleUpload(
+        file?.[0] as unknown as File,
+        'picture-profile',
+        user?._id as string
+      );
 
     mutate({
       userId: user?._id as string,

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, createContext, type FC, type PropsWithChildren } from 'react';
+import { useState, useContext, createContext, type FC, type PropsWithChildren } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -17,12 +17,9 @@ const AuthContext = createContext<IAuthContext>(authContextDefaultValues);
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const ENDPOINT = '/auth/user';
 
-  const { push, replace, asPath } = useRouter();
+  const { push, replace } = useRouter();
 
   const { user, handlePersistUserData, handleCleanUserData } = useUserStore();
-
-  const isUserDataPersisted = !!user;
-  const isAuthenticatedUser = isUserDataPersisted && unauthenticatedRoutes.includes(asPath);
 
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
@@ -78,12 +75,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     replace('/welcome');
     handleCleanUserData();
   };
-
-  // useEffect(() => {
-  //   if (isAuthenticatedUser) push('/feed');
-  //   else replace('/welcome');
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   return (
     <AuthContext.Provider value={{

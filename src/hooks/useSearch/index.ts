@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useCallback } from 'react';
 
 import { type AxiosResponse } from 'axios';
@@ -14,7 +15,6 @@ const useSearch = () => {
   const handleSearch = useCallback((name: string) => {
     const ENDPOINT = '/search';
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useQuery(
       ['search', name],
       async () => {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useCallback } from 'react';
 
 import { type AxiosResponse } from 'axios';
@@ -19,7 +20,6 @@ const useUser = () => {
   const { handlePersistUserData } = useUseStore();
 
   const handleGetUserByNickName = useCallback((nickName: string) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useQuery(
       ['user-by-nick-name'],
       async () => {

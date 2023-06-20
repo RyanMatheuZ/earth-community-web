@@ -1,11 +1,12 @@
 import { useState, useMemo, type FC } from 'react';
-import { useRouter } from 'next/router';
 
 import { Divider } from '@mui/material';
 
 import type { IUser } from '@ts/interfaces';
 
-import { BackIcon, StyledModal, UserNameSkeleton, UserPictureProfile, UserPictureProfileSkeleton } from '@components/elements';
+import { useAuth } from '@context/auth';
+
+import { AbsoluteBackButton, StyledModal, UserNameSkeleton, UserPictureProfile, UserPictureProfileSkeleton } from '@components/elements';
 
 import { middleEndianFormat } from '@utils/date/middleEndianFormat';
 
@@ -21,12 +22,13 @@ interface UserProfileInfoProps {
 }
 
 const UserProfileInfo: FC<UserProfileInfoProps> = ({ user, isLoading }) => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const { user: userAuth } = useAuth();
 
-  const { back } = useRouter();
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const userBackgroundProfileDescription = 'Foto de fundo do perfil';
   const userName = `${user?.info.firstName} ${user?.info.surname}`;
+  const isProfileOwner = userAuth?._id === user?._id;
 
   const handleToggleModal = () => {
     setIsOpenModal((prevState) => !prevState);
@@ -58,6 +60,7 @@ const UserProfileInfo: FC<UserProfileInfoProps> = ({ user, isLoading }) => {
                 pictureProfileSRC={user?.info.pictureProfile}
                 width='115'
                 height='115'
+                $themeColor='white'
               />}
             <S.UserName>
               {isLoading ? <UserNameSkeleton /> : userName}
@@ -81,9 +84,11 @@ const UserProfileInfo: FC<UserProfileInfoProps> = ({ user, isLoading }) => {
               </>
             )}
           </div>
-          <S.EditProfileButton onClick={handleToggleModal}>
-            <S.EditIcon />
-          </S.EditProfileButton>
+          {isProfileOwner && (
+            <S.EditProfileButton onClick={handleToggleModal}>
+              <S.EditIcon />
+            </S.EditProfileButton>
+          )}
         </S.UserPictureProfileContainer>
         <Divider />
         {user?.info.about && (
@@ -96,9 +101,7 @@ const UserProfileInfo: FC<UserProfileInfoProps> = ({ user, isLoading }) => {
               </S.AboutSection>}
           </>
         )}
-        <S.BackButton onClick={back}>
-          <BackIcon $themeColor='green' />
-        </S.BackButton>
+        <AbsoluteBackButton $themeColor='green' />
       </S.Container>
       <StyledModal
         isOpen={isOpenModal}

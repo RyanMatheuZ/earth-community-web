@@ -6,7 +6,8 @@ import { Send } from '@mui/icons-material';
 export const Container = styled(DialogActions)`
   display: flex;
   align-items: start;
-  padding: ${({ theme }) => theme.spacing(2, 3)};
+  justify-content: center;
+  width: 100%;
 `;
 
 export const SendCommentButton = styled(Button)`
