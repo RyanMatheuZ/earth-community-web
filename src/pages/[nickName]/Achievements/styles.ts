@@ -27,7 +27,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing(2)};
 
-  @media ${({ theme }) => theme.breakpoints.down('tablet')} {
+  @media ${({ theme }) => theme.breakpoints.down('laptop')} {
     justify-content: center;
   }
 `;

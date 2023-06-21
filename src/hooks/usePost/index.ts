@@ -44,7 +44,7 @@ const usePost = () => {
 
   const handleGetAllPostsByGroupId = useCallback((groupId: string) => {
     return useInfiniteQuery(
-      ['all-posts-by-group-id'],
+      ['all-posts-by-group-id', groupId],
       async ({ pageParam = 1 }): Promise<IPost[] | undefined> => {
         try {
           axiosInstance.interceptors.response.clear();

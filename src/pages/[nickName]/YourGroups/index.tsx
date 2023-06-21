@@ -1,30 +1,33 @@
 import { type FC } from 'react';
 
+import { useRouter } from 'next/router';
+
 import type { IGroup } from '@ts/interfaces';
 
 import { TopicSection } from '@components/modules';
 import { EmptyGroupCard, GroupCard, GroupCardSkeleton } from '@components/elements';
 
-import * as S from '../styles';
+import * as S from './styles';
 
-interface OtherGroupsProps {
+interface YourGroupsProps {
   groups: IGroup[];
   isLoading: boolean;
-  handleToggleModal: () => void;
 }
 
-const OtherGroups: FC<OtherGroupsProps> = ({ groups, isLoading, handleToggleModal }) => {
+const YourGroups: FC<YourGroupsProps> = ({ groups, isLoading }) => {
+  const { push } = useRouter();
+
   const initialGroupsAmount = 5;
 
   return (
     <TopicSection
-      topic='Outros grupos'
-      topicIcon={<S.GroupIcon />}
+      topic={`Seus grupos • (${groups?.length ?? '...'})`}
+      topicIcon={<S.YourGroupsIcon />}
     >
-      <S.GroupContainer>
+      <S.Container>
         {!!groups?.length && groups?.map(({ _id, name, image, members, category }, index) => (
           <GroupCard
-            key={`group-card-${_id}-${index}`}
+            key={`user-group-card-${_id}-${index}`}
             backgroundImageURL={image}
             title={name}
             membersLength={members.length}
@@ -34,17 +37,17 @@ const OtherGroups: FC<OtherGroupsProps> = ({ groups, isLoading, handleToggleModa
         ))}
         {(!isLoading && !groups?.length) && Array.from({ length: initialGroupsAmount }).map((_, index) => (
           <EmptyGroupCard
-            key={`empty-group-card-${index}`}
-            message='Não há grupos até o momento, seja o primeiro a criar!'
-            handleClick={handleToggleModal}
+            key={`user-empty-group-card-${index}`}
+            message='Você não faz parte de nenhum grupo até o momento, entre em algum!'
+            handleClick={() => push('/groups')}
           />
         ))}
         {isLoading && Array.from({ length: initialGroupsAmount }).map((_, index) => (
-          <GroupCardSkeleton key={`group-skeleton-${index}`} />
+          <GroupCardSkeleton key={`user-group-skeleton-${index}`} />
         ))}
-      </S.GroupContainer>
+      </S.Container>
     </TopicSection>
   );
 };
 
-export default OtherGroups;
+export default YourGroups;

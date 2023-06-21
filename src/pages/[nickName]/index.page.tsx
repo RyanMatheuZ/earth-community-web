@@ -1,14 +1,15 @@
 import { type NextPage, type GetServerSideProps } from 'next';
 
-import type { IUser, IAchievements } from '@ts/interfaces';
+import type { IUser, IAchievements, IGroup } from '@ts/interfaces';
 
-import { useUser, useAchievements } from '@hooks/index';
+import { useUser, useAchievements, useGroup } from '@hooks/index';
 
 import { Head } from '@components/meta';
 import { FeedHeader } from '@components/modules';
 
 import UserProfileInfo from './UserProfileInfo';
 import Achievements from './Achievements';
+import YourGroups from './YourGroups';
 
 import { head } from './head';
 
@@ -21,6 +22,7 @@ interface UserProfileProps {
 const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
   const { handleGetUserByNickName } = useUser();
   const { handleGetAllAchievements } = useAchievements();
+  const { handleGetGroupByUserId } = useGroup();
 
   const {
     data: user,
@@ -32,6 +34,11 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
     isLoading: isLoadingAchievements,
     isRefetching: isRefetchingAchievements
   } = handleGetAllAchievements(user?._id as string);
+  const {
+    data: groups,
+    isLoading: isLoadingGroups,
+    isRefetching: isRefetchingGroups
+  } = handleGetGroupByUserId(user?._id as string);
 
   const userName = `${user?.info?.firstName} ${user?.info?.surname}`;
 
@@ -53,6 +60,10 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
           <Achievements
             achievements={achievements as IAchievements['achievements']}
             isLoading={isLoadingAchievements || isRefetchingAchievements}
+          />
+          <YourGroups
+            groups={groups as IGroup[]}
+            isLoading={isLoadingGroups || isRefetchingGroups}
           />
         </S.Content>
       </S.Container>

@@ -21,7 +21,7 @@ const useUser = () => {
 
   const handleGetUserByNickName = useCallback((nickName: string) => {
     return useQuery(
-      ['user-by-nick-name'],
+      ['user-by-nick-name', nickName],
       async () => {
         try {
           axiosInstance.interceptors.response.clear();
@@ -36,7 +36,8 @@ const useUser = () => {
         }
       },
       {
-        staleTime: 1000
+        refetchIntervalInBackground: true,
+        refetchInterval: 60 * 1000
       }
     );
   }, []);
