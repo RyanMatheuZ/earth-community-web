@@ -54,7 +54,7 @@ const ActionButtons: FC<ActionButtonsProps> = ({ group }) => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries(['all-groups']);
-        replace('/feed');
+        replace('/groups');
       }
     }
   );

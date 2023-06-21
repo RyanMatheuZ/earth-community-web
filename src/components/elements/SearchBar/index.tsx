@@ -41,6 +41,7 @@ const SearchBar: FC = () => {
           <Results
             results={data as SearchResults}
             isLoading={isLoading}
+            handleToggleModal={handleToggleModal}
           >
             <S.StyledInput
               placeholder={placeholder}

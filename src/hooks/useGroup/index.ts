@@ -56,7 +56,7 @@ const useGroup = () => {
 
   const handleGetGroupById = useCallback((groupId: IGroup['_id']) => {
     return useQuery(
-      ['group-by-id'],
+      ['group-by-id', groupId],
       async () => {
         try {
           axiosInstance.interceptors.response.clear();
@@ -69,9 +69,25 @@ const useGroup = () => {
         } catch (error) {
           catchError(error);
         }
-      },
-      {
-        staleTime: 1000
+      }
+    );
+  }, []);
+
+  const handleGetGroupByUserId = useCallback((userId: string) => {
+    return useQuery(
+      ['group-by-user-id', userId],
+      async () => {
+        try {
+          axiosInstance.interceptors.response.clear();
+
+          const { data }: AxiosResponse<{ groups: IGroup[] }> = await axiosInstance.get(
+            `${ENDPOINT}/get-by-user-id/${userId}`
+          );
+
+          return data.groups;
+        } catch (error) {
+          catchError(error);
+        }
       }
     );
   }, []);
@@ -112,6 +128,7 @@ const useGroup = () => {
     handleGetAllGroups,
     handleGetAllTrendingGroups,
     handleGetGroupById,
+    handleGetGroupByUserId,
     handleCreateGroup,
     handleDeleteGroup,
     handleAddMemberGroup,

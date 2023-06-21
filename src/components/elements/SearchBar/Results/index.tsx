@@ -9,9 +9,10 @@ import * as S from './styles';
 interface Results extends PropsWithChildren {
   results: SearchResults;
   isLoading: boolean;
+  handleToggleModal: () => void;
 }
 
-const Results: FC<Results> = ({ results, isLoading, children }) => {
+const Results: FC<Results> = ({ results, isLoading, handleToggleModal, children }) => {
   const descriptionImage = 'Turbina de vento - illustration by @Storyset';
 
   return (
@@ -30,7 +31,10 @@ const Results: FC<Results> = ({ results, isLoading, children }) => {
               <S.Name>{info ? `${info.firstName} ${info.surname}` : name}</S.Name>
               <S.Identifier>{info ? 'Pessoa' : 'Grupo'}</S.Identifier>
             </div>
-            <S.VisitLink href={info ? `${info.nickName}` : `/groups/${_id}`}>
+            <S.VisitLink
+              href={info ? `${info.nickName}` : `/groups/${_id}`}
+              onClick={handleToggleModal}
+            >
               <S.VisitIcon />  Visitar
             </S.VisitLink>
           </S.Info>

@@ -1,7 +1,5 @@
 import { type FC } from 'react';
 
-import { queryClient } from '@services/tanstackQuery';
-
 import { resolveCategoryIcon } from '@utils/datas/categories';
 import { type CategoriesOptions } from '@utils/datas/categories/utils';
 
@@ -29,10 +27,7 @@ const GroupCard: FC<GroupCardProps> = ({ backgroundImageURL, title, membersLengt
       <S.Title>
         {title}
       </S.Title>
-      <S.VisitGroupLink
-        href={visitGroupLink}
-        onClick={() => queryClient.invalidateQueries(['all-posts-by-group-id'])}
-      >
+      <S.VisitGroupLink href={visitGroupLink}>
         <S.VisitGroupIcon /> Visitar
       </S.VisitGroupLink>
     </S.Card>

@@ -1,5 +1,7 @@
 import { type FC } from 'react';
 
+import { useRouter } from 'next/router';
+
 import { useMutation } from '@tanstack/react-query';
 
 import type { IComment } from '@ts/interfaces';
@@ -24,6 +26,7 @@ interface CommentBoxProps {
 }
 
 const CommentBox: FC<CommentBoxProps> = ({ comment, postId }) => {
+  const { pathname } = useRouter();
   const { user } = useAuth();
 
   const { handleUserDeleteComment } = usePost();
@@ -33,8 +36,12 @@ const CommentBox: FC<CommentBoxProps> = ({ comment, postId }) => {
   const showDeleteButton = isCommentOwner(String(user?._id), comment.user._id);
 
   const { mutate } = useMutation(
-    ({ postId, commentId }: { postId: string, commentId: string }) => handleUserDeleteComment(postId, commentId), {
-      onSuccess: () => queryClient.invalidateQueries(['all-posts'])
+    ({ postId, commentId }: { postId: string, commentId: string }) => handleUserDeleteComment(postId, commentId),
+    {
+      onSuccess: () => {
+        const query = pathname === '/feed' ? 'all-posts' : 'all-posts-by-group-id';
+        queryClient.invalidateQueries([query]);
+      }
     }
   );
 

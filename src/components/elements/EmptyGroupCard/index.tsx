@@ -3,17 +3,17 @@ import { type FC } from 'react';
 import * as S from './styles';
 
 interface EmptyGroupCardProps {
-  handleToggleModal: () => void;
+  message: string;
+  handleClick: () => void;
 }
 
-const EmptyGroupCard: FC<EmptyGroupCardProps> = ({ handleToggleModal }) => {
+const EmptyGroupCard: FC<EmptyGroupCardProps> = ({ message, handleClick }) => {
   return (
     <S.Container>
       <S.Message>
-        Não há grupos até o momento, <br />
-        seja o primeiro a criar!
+        {message}
       </S.Message>
-      <S.StyledIconButton onClick={handleToggleModal}>
+      <S.StyledIconButton onClick={handleClick}>
         <S.CreateGroupIcon />
       </S.StyledIconButton>
     </S.Container>
