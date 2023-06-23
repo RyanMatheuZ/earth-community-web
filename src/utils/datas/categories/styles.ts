@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Elderly, TheaterComedy, Balance, School, SportsSoccer, Park, Pets, HealthAndSafety, EmojiObjects } from '@mui/icons-material';
+import { Elderly, TheaterComedy, FamilyRestroom, Balance, School, SportsSoccer, Park, Pets, HealthAndSafety, EmojiObjects } from '@mui/icons-material';
 
 const iconBaseStyles = css`
   fill: ${({ theme }) => theme.palette.common.white};
@@ -13,6 +13,10 @@ export const SupportForElderlyIcon = styled(Elderly)`
 `;
 
 export const ArtsAndCultureIcon = styled(TheaterComedy)`
+  ${iconBaseStyles}
+`;
+
+export const ChildAndTeenagerIcon = styled(FamilyRestroom)`
   ${iconBaseStyles}
 `;
 

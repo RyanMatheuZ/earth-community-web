@@ -5,6 +5,7 @@ import * as S from './styles';
 export type CategoriesOptions =
   | 'Apoio aos Idosos'
   | 'Artes e Cultura'
+  | 'Crianças e Adolescentes'
   | 'Direitos Humanos'
   | 'Educação'
   | 'Esportes'
@@ -18,27 +19,31 @@ export interface Categories {
   icon: ReactNode;
 }
 
-export const categories: Categories[] = [
-  // {
-  //   label: 'Apoio aos Idosos',
-  //   icon: <S.SupportForElderlyIcon />
-  // },
+export const categories: ReadonlyArray<Categories> = [
+  {
+    label: 'Apoio aos Idosos',
+    icon: <S.SupportForElderlyIcon />
+  },
   {
     label: 'Artes e Cultura',
     icon: <S.ArtsAndCultureIcon />
   },
-  // {
-  //   label: 'Direitos Humanos',
-  //   icon: <S.HumanRightsIcon />
-  // },
+  {
+    label: 'Crianças e Adolescentes',
+    icon: <S.ChildAndTeenagerIcon />
+  },
+  {
+    label: 'Direitos Humanos',
+    icon: <S.HumanRightsIcon />
+  },
   {
     label: 'Educação',
     icon: <S.EducationIcon />
   },
-  // {
-  //   label: 'Esportes',
-  //   icon: <S.SportsIcon />
-  // },
+  {
+    label: 'Esportes',
+    icon: <S.SportsIcon />
+  },
   {
     label: 'Meio Ambiente',
     icon: <S.EnvironmentIcon />
@@ -51,8 +56,8 @@ export const categories: Categories[] = [
     label: 'Saúde',
     icon: <S.HealthIcon />
   },
-  // {
-  //   label: 'Tecnologia e Inovação Social',
-  //   icon: <S.TechnologyAndInovationIcon />
-  // }
+  {
+    label: 'Tecnologia e Inovação Social',
+    icon: <S.TechnologyAndInovationIcon />
+  }
 ];
