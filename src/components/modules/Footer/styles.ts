@@ -21,13 +21,10 @@ export const Container = styled.div`
   max-width: 1200px;
   width: 100%;
 
-  @media ${({ theme }) => theme.breakpoints.down('tablet')} {
+  @media ${({ theme }) => theme.breakpoints.down('mobile')} {
     flex-direction: column;
-    align-items: center;
-
-    & p {
-      text-align: center;
-    }
+    align-items: start;
+    padding: ${({ theme }) => theme.spacing(2)};
   }
 `;
 
