@@ -1,7 +1,5 @@
 import { useState, type FC } from 'react';
 
-import { useRouter } from 'next/router';
-
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 
 import type { IPost, IUser } from '@ts/interfaces';
@@ -23,7 +21,6 @@ interface PostProps {
 }
 
 const Post: FC<PostProps> = ({ postItems, postType }) => {
-  const { pathname } = useRouter();
   const { user } = useAuth();
 
   const isUserLikeThePostInitialState = resolveUserLikePost(
@@ -49,8 +46,8 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
     {
       onMutate: () => setIsUserLikeThePost((prevState) => !prevState),
       onSuccess: () => {
-        const query = pathname === '/feed' ? 'all-posts' : 'all-posts-by-group-id';
-        queryClient.invalidateQueries([query]);
+        queryClient.invalidateQueries(['all-posts']);
+        queryClient.invalidateQueries(['all-posts-by-group-id']);
       }
     }
   );

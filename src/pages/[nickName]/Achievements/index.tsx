@@ -45,7 +45,7 @@ const Achievements: FC<AchievementsProps> = ({ achievements, isLoading }) => {
             </S.CardIcon>
           </S.Card>
         ))}
-        {(isLoading && !achievements) && Array.from({ length: 5 }).map((_, index) => (
+        {(isLoading && !achievements) && Array.from({ length: 6 }).map((_, index) => (
           <S.CardSkeleton key={`card-skeleton-${index}`} />
         ))}
       </S.Container>

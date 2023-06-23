@@ -33,6 +33,7 @@ const FieldToComment: FC<FieldToCommentProps> = ({ postId }) => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries(['all-posts']);
+        queryClient.invalidateQueries(['all-posts-by-group-id']);
         setComment('');
       }
     }

@@ -1,12 +1,17 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useCallback } from 'react';
 
+import { useQuery } from '@tanstack/react-query';
+
 import { type AxiosResponse } from 'axios';
+
+import type { IDonation, IGiver } from '@ts/interfaces';
 
 import { useAuth } from '@context/auth';
 
 import axiosInstance from '@services/axios';
 
-import type { IDonation, IGiver } from '@ts/interfaces';
+import { catchError } from '@utils/requestMessages';
 
 const useDonation = () => {
   const ENDPOINT = '/donation';
@@ -54,8 +59,28 @@ const useDonation = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleGetDonationStatus = useCallback((donationId: string) => {
+    return useQuery(
+      ['donation-status'],
+      async () => {
+        try {
+          axiosInstance.interceptors.response.clear();
+
+          const { data }: AxiosResponse<{ response: IDonation }> = await axiosInstance.get(
+            `${'/payment'}/status${donationId}`
+          );
+
+          return data.response;
+        } catch (error) {
+          catchError(error);
+        }
+      }
+    );
+  }, []);
+
   return {
     handleCreateDonation,
+    handleGetDonationStatus,
     donation,
     isLoadingDonation
   };

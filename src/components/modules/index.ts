@@ -1,3 +1,4 @@
+import DoughnutChart from './DoughnutChart';
 import FeedAsideNav from './FeedAsideNav';
 import FeedHeader from './FeedHeader';
 import FeedNavigationItems from './FeedNavigationItems';
@@ -13,6 +14,7 @@ import UserDataPreview from './UserDataPreview';
 import WelcomeHeader from './WelcomeHeader';
 
 export {
+  DoughnutChart,
   FeedAsideNav,
   FeedHeader,
   FeedNavigationItems,
