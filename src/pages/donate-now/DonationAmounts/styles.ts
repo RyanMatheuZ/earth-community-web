@@ -1,13 +1,24 @@
 import styled, { css } from 'styled-components';
 
-import { FormControlLabel, Typography } from '@mui/material';
+import { FormControlLabel, Typography, TextField } from '@mui/material';
 
-import { Grass, Spa, LocalFlorist, Nature, Forest, Diversity3 } from '@mui/icons-material';
+import { Spa, LocalFlorist, Nature, Forest, Diversity3, AccountBalanceWallet } from '@mui/icons-material';
 
 const baseIconStyles = css`
   fill: ${({ theme }) => theme.palette.secondary.main};
   width: 25px;
   height: 25px;
+`;
+
+const baseControlLabelStyles = css`
+  border: 2px solid ${({ theme }) => theme.palette.primary.main};
+  border-radius: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: ${({ theme }) => theme.spacing(1)};
+  margin: 0;
+  width: 250px;
 `;
 
 export const Container = styled.div`
@@ -25,19 +36,18 @@ export const DonationOptionsContainer = styled.div`
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
-  border: 2px solid ${({ theme }) => theme.palette.primary.main};
-  border-radius: 10px 30px 10px 30px;
-  display: flex;
-  flex-direction: column;
-  padding: ${({ theme }) => theme.spacing(1)};
-  margin: 0;
-  width: 250px;
+  ${baseControlLabelStyles}
+`;
+
+export const CustomFormControlLabel = styled.div`
+  ${baseControlLabelStyles}
 `;
 
 export const CardLabel = styled(Typography)`
   color: ${({ theme }) => theme.palette.tertiary.main};
   display: flex;
   align-items: center;
+  justify-content: center;
   font-weight: 600;
   gap: ${({ theme }) => theme.spacing(1)};
   width: 100%;
@@ -51,16 +61,39 @@ export const MonetaryValue = styled(Typography)`
   margin-top: ${({ theme }) => theme.spacing(1)};
 `;
 
+export const CustomDonationInput = styled(TextField)`
+  input {
+    color: ${({ theme }) => theme.palette.primary.main};
+    text-align: center;
+    font-weight: 600;
+    height: 10px;
+  }
+
+  & div {
+    border-radius: 10px 25px;
+  }
+
+  .MuiOutlinedInput-root {
+    fieldset,
+    &.Mui-focused fieldset {
+      border-width: 2px;
+      border-color: ${({ theme }) => theme.palette.primary.main};
+    }
+  }
+`;
+
+export const Warning = styled.span`
+  color: ${({ theme }) => theme.palette.primary.main};
+  font-size: .85rem;
+  font-weight: 600;
+`;
+
 export const DonationMethod = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(1)};
-  margin-block: ${({ theme }) => theme.spacing(3)};
-`;
-
-export const SeedIcon = styled(Grass)`
-  ${baseIconStyles}
+  margin-block: ${({ theme }) => theme.spacing(2, .5)};
 `;
 
 export const BudIcon = styled(Spa)`
@@ -80,5 +113,9 @@ export const ForestIcon = styled(Forest)`
 `;
 
 export const CommunityIcon = styled(Diversity3)`
+  ${baseIconStyles}
+`;
+
+export const CustomDonationIcon = styled(AccountBalanceWallet)`
   ${baseIconStyles}
 `;

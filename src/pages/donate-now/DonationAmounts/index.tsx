@@ -9,14 +9,22 @@ import { Typography, Radio } from '@mui/material';
 import { RadioButton } from '@components/elements';
 
 import { donationOptions } from './utils';
+import { type GiverDefaultValues } from '../utils';
 
 import * as S from './styles';
 import * as DonateS from '../styles';
 
 const DonationAmounts: FC = () => {
-  const { control } = useFormContext();
+  const { control, setValue } = useFormContext<GiverDefaultValues>();
 
   const iconDescription = 'Método de doação PIX';
+
+  const validateTransactionAmount = (value: string) => {
+    const hasLetters = /[a-zA-Z]/.test(value);
+    const isNumeric = /^\d+$/.test(value);
+    if (hasLetters || !isNumeric || +value < 1) setValue('transactionAmount', '');
+    else setValue('transactionAmount', value);
+  };
 
   return (
     <>
@@ -43,6 +51,14 @@ const DonationAmounts: FC = () => {
                 }
               />
             ))}
+            <S.CustomFormControlLabel>
+              <S.CardLabel><S.CustomDonationIcon />Outro valor</S.CardLabel>
+              <S.CustomDonationInput
+                type='text'
+                placeholder='R$ ?'
+                onChange={({ target: { value } }) => validateTransactionAmount(value)}
+              />
+            </S.CustomFormControlLabel>
           </S.DonationOptionsContainer>
         </RadioButton>
         <S.DonationMethod>
@@ -57,6 +73,9 @@ const DonationAmounts: FC = () => {
             height='20'
           />
         </S.DonationMethod>
+        <S.Warning>
+          * As doações serão salvas em sua conta caso esteja autenticado
+        </S.Warning>
       </S.Container>
     </>
   );
