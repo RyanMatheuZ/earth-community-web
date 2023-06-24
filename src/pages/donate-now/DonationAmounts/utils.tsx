@@ -2,18 +2,13 @@ import * as S from './styles';
 
 export const donationOptions = [
   {
-    label: 'Semente',
-    value: 5,
-    icon: <S.SeedIcon />
-  },
-  {
     label: 'Broto',
-    value: 10,
+    value: 5,
     icon: <S.BudIcon />
   },
   {
     label: 'Planta',
-    value: 25,
+    value: 20,
     icon: <S.PlantIcon />
   },
   {
@@ -30,5 +25,5 @@ export const donationOptions = [
     label: 'Comunidade',
     value: 300,
     icon: <S.CommunityIcon />
-  },
+  }
 ];
