@@ -32,17 +32,19 @@ export const steps = [
 
 export const isFormFieldsFilledCorrectly = (values: AllowedFieldsType[]) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { getValues, formState: { errors } } = useFormContext<GiverDefaultValues>();
+  const { getValues, watch, formState: { errors } } = useFormContext<GiverDefaultValues>();
 
   const fieldValues: Array<string | number> = [];
   const fieldErrors: Array<string | undefined> = [];
+
+  const transactionAmount = watch('transactionAmount');
 
   values.map((value) => {
     fieldValues.push(getValues(value));
     fieldErrors.push(errors[value]?.message);
   });
 
-  return fieldValues.every((value) => !!value) && fieldErrors.every((value) => !value);
+  return transactionAmount !== '' && fieldValues.every((value) => !!value) && fieldErrors.every((value) => !value);
 };
 
 export const resolveStepIcon = ({ active, className, icon }: StepIconProps) => {

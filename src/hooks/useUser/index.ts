@@ -34,10 +34,6 @@ const useUser = () => {
         } catch (e) {
           catchError(e);
         }
-      },
-      {
-        refetchIntervalInBackground: true,
-        refetchInterval: 60 * 1000
       }
     );
   }, []);

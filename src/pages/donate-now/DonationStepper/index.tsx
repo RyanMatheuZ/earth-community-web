@@ -26,21 +26,15 @@ const DonationStepper: FC<DonationStepperProps> = ({ children, activeStep = 0, s
 
     setIsActiveFade(false);
 
-    setTimeout(() => {
-      setIsActiveFade(true);
-    }, timeoutValue);
+    setTimeout(() => setIsActiveFade(true), timeoutValue);
 
-    setTimeout(() => {
-      stepFn();
-    }, timeoutValue);
+    setTimeout(() => stepFn(), timeoutValue);
   };
 
   const handleStep = (action: 'next' | 'previous') => {
     const operator = action === 'next' ? '+' : '-';
 
-    handleToggleFade(
-      () => setActiveStep((prevState) => eval(`${prevState} ${operator} 1`))
-    );
+    handleToggleFade(() => setActiveStep((prevState) => eval(`${prevState} ${operator} 1`)));
   };
 
   return (

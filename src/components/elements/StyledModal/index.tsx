@@ -9,17 +9,31 @@ import * as S from './styles';
 
 interface StyledModalProps {
   isOpen: boolean;
+  showCloseIcon?: boolean;
   handleToggleModal: () => void;
   modalTitle: string;
   content: ReactNode;
   actions?: ReactNode;
+  width?: number;
+  height?: number;
 }
 
-const StyledModal: FC<StyledModalProps> = ({ isOpen, handleToggleModal, modalTitle, content, actions }) => {
+const StyledModal: FC<StyledModalProps> = ({
+  isOpen,
+  showCloseIcon = true,
+  handleToggleModal,
+  modalTitle,
+  content,
+  actions,
+  width = 800,
+  height = 650
+}) => {
   return (
     <S.Container
       open={isOpen}
       onClose={handleToggleModal}
+      width={width}
+      height={height}
     >
       <Header title={modalTitle} />
       <DialogContent dividers={true}>
@@ -30,9 +44,11 @@ const StyledModal: FC<StyledModalProps> = ({ isOpen, handleToggleModal, modalTit
           {actions}
         </Actions>
       )}
-      <S.CloseModalButton onClick={handleToggleModal}>
-        <S.CloseIcon />
-      </S.CloseModalButton>
+      {showCloseIcon && (
+        <S.CloseModalButton onClick={handleToggleModal}>
+          <S.CloseIcon />
+        </S.CloseModalButton>
+      )}
     </S.Container>
   );
 };

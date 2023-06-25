@@ -31,7 +31,7 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(isUserLikeThePostInitialState);
 
-  const userName = `${postItems.createdByUser.info.firstName} ${postItems.createdByUser.info.surname}`;
+  const userName = `${postItems.createdByUser.user.info.firstName} ${postItems.createdByUser.user.info.surname}`;
 
   const queryClient = useQueryClient();
 
@@ -58,7 +58,7 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
         <S.Header>
           <S.PictureContainer>
             <UserPictureProfile
-              pictureProfileSRC={postItems.createdByUser.info.pictureProfile}
+              pictureProfileSRC={postItems.createdByUser.user.info.pictureProfile}
               userName={userName}
               width='35'
               height='35'

@@ -15,7 +15,7 @@ interface PostCommentsProps {
 }
 
 const PostComments: FC<PostCommentsProps> = ({ isOpenModal, handleToggleModal, postItem }) => {
-  const authorPost = `${postItem.createdByUser.info.firstName} ${postItem.createdByUser.info.surname}`;
+  const authorPost = `${postItem.createdByUser.user.info.firstName} ${postItem.createdByUser.user.info.surname}`;
 
   return (
     <StyledModal
