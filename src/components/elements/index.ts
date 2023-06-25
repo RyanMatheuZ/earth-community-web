@@ -1,4 +1,5 @@
 import AbsoluteBackButton from './AbsoluteBackButton';
+import ActionsModal from './ActionsModal';
 import AccountButton from './AccountButton';
 import AlreadyHaveAnAccount from './Form/AlreadyHaveAnAccount';
 import AnchorLink from './AnchorLink';
@@ -32,6 +33,7 @@ import UserPictureProfileSkeleton from './UserPictureProfileSkeleton/styles';
 
 export {
   AbsoluteBackButton,
+  ActionsModal,
   AccountButton,
   AnchorLink,
   AlreadyHaveAnAccount,

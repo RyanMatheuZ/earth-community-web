@@ -19,6 +19,7 @@ const baseControlLabelStyles = css`
   padding: ${({ theme }) => theme.spacing(1)};
   margin: 0;
   width: 250px;
+  height: 110px;
 `;
 
 export const Container = styled.div`
@@ -86,6 +87,7 @@ export const Warning = styled.span`
   color: ${({ theme }) => theme.palette.primary.main};
   font-size: .85rem;
   font-weight: 600;
+  text-align: center;
 `;
 
 export const DonationMethod = styled.div`

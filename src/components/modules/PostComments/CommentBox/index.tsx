@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { useState, type FC } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -12,7 +12,7 @@ import { usePost } from '@hooks/index';
 
 import { queryClient } from '@services/tanstackQuery';
 
-import { UserPictureProfile } from '@components/elements';
+import { ActionsModal, UserPictureProfile } from '@components/elements';
 
 import { resolveCreatedAt } from '@utils/post';
 
@@ -28,49 +28,65 @@ interface CommentBoxProps {
 const CommentBox: FC<CommentBoxProps> = ({ comment, postId }) => {
   const { pathname } = useRouter();
   const { user } = useAuth();
-
   const { handleUserDeleteComment } = usePost();
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const authorName = `${comment.user.info.firstName} ${comment.user.info.surname}`;
 
   const showDeleteButton = isCommentOwner(String(user?._id), comment.user._id);
 
-  const { mutate } = useMutation(
+  const handleToggleModal = () => {
+    setIsOpenModal((prevState) => !prevState);
+  };
+
+  const { mutate, isLoading } = useMutation(
     ({ postId, commentId }: { postId: string, commentId: string }) => handleUserDeleteComment(postId, commentId),
     {
-      onSuccess: () => {
+      onSuccess: async () => {
         const query = pathname === '/feed' ? 'all-posts' : 'all-posts-by-group-id';
-        queryClient.invalidateQueries([query]);
+        await queryClient.invalidateQueries([query]);
+        handleToggleModal();
       }
     }
   );
 
   return (
-    <S.Container>
-      <UserPictureProfile
-        pictureProfileSRC={comment.user.info.pictureProfile}
-        userName={authorName}
-        width='35'
-        height='35'
+    <>
+      <S.Container>
+        <UserPictureProfile
+          pictureProfileSRC={comment.user.info.pictureProfile}
+          userName={authorName}
+          width='35'
+          height='35'
+        />
+        <S.Comment>
+          <S.AuthorName>
+            {authorName}
+          </S.AuthorName>
+          {comment.comment}
+          <S.CreatedAt>
+            {resolveCreatedAt(comment.createdAt)}
+          </S.CreatedAt>
+          {showDeleteButton && (
+            <S.DeleteButton
+              title='Apagar mensagem?'
+              onClick={handleToggleModal}
+            >
+              <S.DeleteIcon />
+            </S.DeleteButton>
+          )}
+        </S.Comment>
+      </S.Container>
+      <ActionsModal
+        isOpen={isOpenModal}
+        handleToggleModal={handleToggleModal}
+        handleBackButton={handleToggleModal}
+        handleConfirmButton={() => mutate({ postId, commentId: comment._id })}
+        message={'Você realmente deseja excluir o comentário?\n Essa ação é irreversível!'}
+        isLoading={isLoading}
       />
-      <S.Comment>
-        <S.AuthorName>
-          {authorName}
-        </S.AuthorName>
-        {comment.comment}
-        <S.CreatedAt>
-          {resolveCreatedAt(comment.createdAt)}
-        </S.CreatedAt>
-        {showDeleteButton && (
-          <S.DeleteButton
-            title='Apagar mensagem?'
-            onClick={() => mutate({ postId, commentId: comment._id })}
-          >
-            <S.DeleteIcon />
-          </S.DeleteButton>
-        )}
-      </S.Comment>
-    </S.Container>
+    </>
   );
 };
 
