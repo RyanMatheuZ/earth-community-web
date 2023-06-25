@@ -3,12 +3,17 @@ import styled from 'styled-components';
 import { Dialog, Button } from '@mui/material';
 import { Close } from '@mui/icons-material';
 
-export const Container = styled(Dialog)`
+interface ContainerProps {
+  width: number;
+  height: number;
+}
+
+export const Container = styled(Dialog) <ContainerProps>`
   margin: 0 auto;
 
   & .MuiPaper-root {
-    max-width: 800px;
-    min-height: 600px;
+    max-width: ${({ width }) => width}px;
+    max-height: ${({ height }) => height}px;
     width: 100%;
     height: 100%;
     overflow-y: inherit;

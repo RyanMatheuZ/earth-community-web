@@ -16,7 +16,9 @@ export interface IPost {
     quantity: number;
     userIds: string[];
   };
-  createdByUser: IUser;
+  createdByUser: {
+    user: IUser;
+  };
   createdByGroup: IGroup;
   createdAt: Date;
 }
