@@ -34,7 +34,7 @@ export const Container = styled.div`
 
 export const Card = styled.div<CardProps>`
   background-color: ${({ theme }) => theme.palette.primary.main};
-  opacity: ${({ completed }) => completed ? 1 : .75};
+  opacity: ${({ completed }) => completed ? 1 : .65};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -75,6 +75,7 @@ export const Title = styled(Typography)`
   font-weight: 1.1rem;
   font-weight: 600;
   text-align: center;
+  text-transform: uppercase;
 `;
 
 export const Icon = styled(Typography)`
@@ -87,6 +88,7 @@ export const Description = styled(Typography)`
   color: ${({ theme }) => theme.palette.common.white};
   font-weight: 600;
   text-align: center;
+  white-space: pre-line;
   margin-bottom: ${({ theme }) => theme.spacing(4)};
 `;
 
