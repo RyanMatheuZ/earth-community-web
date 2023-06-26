@@ -24,7 +24,7 @@ const useGroup = () => {
           axiosInstance.interceptors.response.clear();
 
           const { data }: AxiosResponse<{ groups: IGroup[] }> = await axiosInstance.get(
-            `${ENDPOINT}/get-all`
+            `${ENDPOINT}/get-all?pageSize=30&page=0`
           );
 
           return data.groups;
