@@ -19,11 +19,16 @@ export const Container = styled.section`
 `;
 
 export const UserBackgroundProfile = styled(Image)`
+  background: linear-gradient(90deg, rgba(0,151,176,1) 0%, rgba(126,217,87,1) 100%);
   border-radius: 10px 10px 0 0;
   object-fit: cover;
   object-position: center;
   position: static !important;
   height: 200px !important;
+
+  @media ${({ theme }) => theme.breakpoints.down('tablet')} {
+    object-fit: contain;
+  }
 `;
 
 export const UserPictureProfileContainer = styled.div`
