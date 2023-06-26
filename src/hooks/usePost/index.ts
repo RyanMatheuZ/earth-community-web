@@ -74,6 +74,14 @@ const usePost = () => {
     }
   }, []);
 
+  const handleDeletePost = useCallback(async (postId: string) => {
+    try {
+      await axiosInstance.delete(`${ENDPOINT}/delete/${postId}`);
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
   const handleUserToggleLikeThePost = useCallback(async (postId: string, userId: string) => {
     try {
       await axiosInstance.post(`${ENDPOINT}/like/${postId}/${userId}`);
@@ -104,6 +112,7 @@ const usePost = () => {
     handleGetAllPosts,
     handleGetAllPostsByGroupId,
     handleCreatePost,
+    handleDeletePost,
     handleUserToggleLikeThePost,
     handleUserSendComment,
     handleUserDeleteComment

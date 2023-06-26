@@ -1,6 +1,6 @@
 import { useState, type FC } from 'react';
 
-import { useQueryClient, useMutation } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import type { IPost, IUser } from '@ts/interfaces';
 
@@ -8,10 +8,14 @@ import { useAuth } from '@context/auth';
 
 import { usePost } from '@hooks/index';
 
+import { queryClient } from '@services/tanstackQuery';
+
 import { UserPictureProfile } from '@components/elements';
 import { PostComments } from '@components/modules';
 
 import { resolveCreatedAt, resolveUserLikePost } from '@utils/post';
+
+import PostOptions from './PostOptions';
 
 import * as S from './styles';
 
@@ -33,7 +37,7 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
 
   const userName = `${postItems.createdByUser.user.info.firstName} ${postItems.createdByUser.user.info.surname}`;
 
-  const queryClient = useQueryClient();
+  const isPostOwner = postItems.createdByUser.user._id === user?._id;
 
   const { handleUserToggleLikeThePost } = usePost();
 
@@ -83,6 +87,15 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
               {resolveCreatedAt(postItems.createdAt)}
             </span>
           </S.AdditionalInformation>
+          {isPostOwner && (
+            <S.MenuItemContainer>
+              <PostOptions
+                createdByGroupId={postItems.createdByGroup._id}
+                postId={postItems._id}
+                isPostOwner={isPostOwner}
+              />
+            </S.MenuItemContainer>
+          )}
         </S.Header>
         <S.Content>
           <S.Text>

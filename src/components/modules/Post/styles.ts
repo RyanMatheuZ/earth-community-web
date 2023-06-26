@@ -81,8 +81,11 @@ export const StyledBadge = styled(Badge).attrs({ color: 'secondary' })`
   }
 `;
 
+export const MenuItemContainer = styled.div`
+  margin-left: auto;
+`;
+
 export const CommentIcon = styled(Comment)`
-  fill: ${({ theme }) => theme.palette.primary.main};
   ${iconBaseStyles}
 `;
 
