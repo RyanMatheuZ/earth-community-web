@@ -11,12 +11,11 @@ import { queryClient } from '@services/tanstackQuery';
 import * as S from './styles';
 
 interface PostOptionsProps {
-  createdByGroupId: string;
   postId: string;
   isPostOwner: boolean;
 }
 
-const PostOptions: FC<PostOptionsProps> = ({ createdByGroupId, postId, isPostOwner }) => {
+const PostOptions: FC<PostOptionsProps> = ({ postId, isPostOwner }) => {
   const { handleDeletePost } = usePost();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -37,7 +36,7 @@ const PostOptions: FC<PostOptionsProps> = ({ createdByGroupId, postId, isPostOwn
       onSuccess: async () => {
         await Promise.all([
           queryClient.invalidateQueries(['all-posts']),
-          queryClient.invalidateQueries(['all-posts-by-group-id', createdByGroupId])
+          queryClient.invalidateQueries(['all-posts-by-group-id'])
         ]);
         handleClose();
       }

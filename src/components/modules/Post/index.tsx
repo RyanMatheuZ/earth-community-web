@@ -90,7 +90,6 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
           {isPostOwner && (
             <S.MenuItemContainer>
               <PostOptions
-                createdByGroupId={postItems.createdByGroup._id}
                 postId={postItems._id}
                 isPostOwner={isPostOwner}
               />

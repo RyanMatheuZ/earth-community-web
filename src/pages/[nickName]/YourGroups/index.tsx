@@ -21,7 +21,7 @@ const YourGroups: FC<YourGroupsProps> = ({ groups, isLoading }) => {
 
   return (
     <TopicSection
-      topic={`Seus grupos • (${groups?.length ?? '...'})`}
+      topic={`Grupos • (${groups?.length ?? '...'})`}
       topicIcon={<S.YourGroupsIcon />}
     >
       <S.Container>

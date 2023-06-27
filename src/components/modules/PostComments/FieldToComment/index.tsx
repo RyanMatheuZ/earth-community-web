@@ -31,9 +31,11 @@ const FieldToComment: FC<FieldToCommentProps> = ({ postId }) => {
   const { mutate } = useMutation(
     ({ postId, userId, comment }: SendCommentParams) => handleUserSendComment({ postId, userId, comment }),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['all-posts']);
-        queryClient.invalidateQueries(['all-posts-by-group-id']);
+      onSuccess: async () => {
+        await Promise.all([
+          queryClient.invalidateQueries(['all-posts']),
+          queryClient.invalidateQueries(['all-posts-by-group-id'])
+        ]);
         setComment('');
       }
     }
