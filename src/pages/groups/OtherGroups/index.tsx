@@ -32,13 +32,12 @@ const OtherGroups: FC<OtherGroupsProps> = ({ groups, isLoading, handleToggleModa
             visitGroupLink={`/groups/${_id}`}
           />
         ))}
-        {(!isLoading && !groups?.length) && Array.from({ length: initialGroupsAmount }).map((_, index) => (
+        {(!isLoading && !groups?.length) && (
           <EmptyGroupCard
-            key={`empty-group-card-${index}`}
             message='Não há grupos até o momento, seja o primeiro a criar!'
             handleClick={handleToggleModal}
           />
-        ))}
+        )}
         {isLoading && Array.from({ length: initialGroupsAmount }).map((_, index) => (
           <GroupCardSkeleton key={`group-skeleton-${index}`} />
         ))}

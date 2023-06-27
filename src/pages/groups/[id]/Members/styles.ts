@@ -18,7 +18,7 @@ export const CardContainer = styled.div`
 `;
 
 export const Card = styled.div`
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, .16) 0px 1px 4px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@ export const Card = styled.div`
 export const CardSkeleton = styled(Skeleton).attrs({
   variant: 'rectangular'
 })`
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, .16) 0px 1px 4px;
   border-radius: 10px;
   padding: ${({ theme }) => theme.spacing(2)};
   width: 100%;

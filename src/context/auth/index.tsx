@@ -12,7 +12,7 @@ import axiosInstance from '@services/axios';
 
 import useUserStore from '@services/zustand';
 
-import { authContextDefaultValues, unauthenticatedRoutes } from './utils';
+import { authContextDefaultValues } from './utils';
 
 const AuthContext = createContext<IAuthContext>(authContextDefaultValues);
 
@@ -84,7 +84,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       user,
-      unauthenticatedRoutes,
       isLoadingSignUp,
       isLoadingSignIn,
       handleSignUp,

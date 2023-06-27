@@ -8,7 +8,7 @@ import { resolveContrastTheme } from '@utils/theme';
 
 export const Container = styled(Button) <ITheme>`
   background-color: ${({ $themeColor }) => resolveContrastTheme({ $themeColor })};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
   border-radius: 50%;
   padding: ${({ theme }) => theme.spacing(.5)};
   width: 60px;

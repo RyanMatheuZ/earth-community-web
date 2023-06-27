@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: [
-    'page.ts',
-    'page.tsx'
+    'page.tsx',
+    'api.ts'
   ],
 
   images: {

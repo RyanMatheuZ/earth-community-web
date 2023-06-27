@@ -24,7 +24,7 @@ export const Container = styled.div`
 export const ActionButton = styled(Button) <ActionButtonProps>`
   color: ${({ theme }) => theme.palette.common.white};
   background-color: ${({ actionBackgroundColor }) => actionBackgroundColor};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
   font-weight: 600;
   display: flex;
   align-items: center;

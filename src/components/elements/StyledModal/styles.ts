@@ -27,7 +27,7 @@ export const Container = styled(Dialog) <ContainerProps>`
 
 export const CloseModalButton = styled(Button)`
   background-color: ${({ theme }) => theme.palette.error.main};
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, .1) 0px 4px 12px;
   position: absolute;
   top: 5px;
   right: 5px;

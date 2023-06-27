@@ -8,7 +8,7 @@ interface CardProps {
 }
 
 const cardBaseStyles = css`
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, .1) 0px 4px 12px;
   border-radius: 10px 10px 50% 50%;
   max-width: 290px;
   width: 100%;

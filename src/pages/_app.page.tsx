@@ -30,7 +30,7 @@ const App = ({
           <TanstackQueryProvider dehydratedState={pageProps.dehydratedState}>
             <NextNProgress
               color={styledComponentsTheme.palette.secondary.main}
-              startPosition={0.3}
+              startPosition={.3}
               stopDelayMs={200}
               height={5}
               showOnShallow={true}

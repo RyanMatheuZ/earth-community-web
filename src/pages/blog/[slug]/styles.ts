@@ -25,7 +25,7 @@ export const Template = styled.article`
 
   blockquote {
     background-color: ${({ theme }) => theme.palette.secondary.main};
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@ export const Template = styled.article`
 
     div:first-child {
       background-color: ${({ theme }) => theme.palette.common.white};
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -58,7 +58,7 @@ export const Template = styled.article`
   }
 
   img {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, .2) 0px 8px 24px;
     border-radius: 10px;
     width: 100%;
   }

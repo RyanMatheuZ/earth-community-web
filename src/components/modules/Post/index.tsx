@@ -32,8 +32,8 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
     postItems.likes.userIds
   );
 
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(isUserLikeThePostInitialState);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isUserLikeThePost, setIsUserLikeThePost] = useState(isUserLikeThePostInitialState);
 
   const userName = `${postItems.createdByUser.user.info.firstName} ${postItems.createdByUser.user.info.surname}`;
 

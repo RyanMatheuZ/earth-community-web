@@ -24,13 +24,13 @@ export const Container = styled(Link)`
 
 export const ArrowIcon = styled(KeyboardDoubleArrowDown)`
   fill: ${({ theme }) => theme.palette.tertiary.main};
-  opacity: 0.7;
+  opacity: .7;
   width: 40px;
   height: 40px;
 `;
 
 export const Message = styled(Typography)`
   color: ${({ theme }) => theme.palette.tertiary.main};
-  opacity: 0.7;
+  opacity: .7;
   font-weight: 600;
 `;

@@ -31,7 +31,7 @@ export const Content = styled.div`
 export const LoadingText = styled(Typography)`
   color: ${({ theme }) => theme.palette.primary.main};
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, .16) 0px 1px 4px;
   border-radius: 30px;
   font-weight: 600;
   margin: ${({ theme }) => theme.spacing(1)};

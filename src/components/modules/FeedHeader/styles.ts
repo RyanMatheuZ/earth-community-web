@@ -5,7 +5,7 @@ import { Menu } from '@mui/icons-material';
 
 export const Container = styled.header`
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, .1) 0px 1px 3px 0px, rgba(0, 0, 0, .06) 0px 1px 2px 0px;
   padding: ${({ theme }) => theme.spacing(2)};
 `;
 

@@ -10,7 +10,7 @@ import { FeedHeader } from '@components/modules';
 import UserProfileInfo from './UserProfileInfo';
 import Achievements from './Achievements';
 import MyDonations from './MyDonations';
-import YourGroups from './YourGroups';
+import MyGroups from './MyGroups';
 
 import { head } from './head';
 
@@ -63,7 +63,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
             isLoading={isLoadingAchievements || isRefetchingAchievements}
           />
           <MyDonations />
-          <YourGroups
+          <MyGroups
             groups={groups as IGroup[]}
             isLoading={isLoadingGroups || isRefetchingGroups}
           />

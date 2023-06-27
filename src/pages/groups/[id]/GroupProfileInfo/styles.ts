@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 
 export const Container = styled.section`
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, .1) 0px 4px 12px;
   border-radius: 10px;
   position: relative;
 `;

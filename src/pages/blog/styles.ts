@@ -32,7 +32,7 @@ export const Posts = styled.section`
 
 export const Card = styled.article`
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ export const Card = styled.article`
 `;
 
 export const ImagePreview = styled(Image)`
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, .2) 0px 2px 8px 0px;
   border-radius: 10px;
   object-fit: cover;
   object-position: center;
@@ -74,7 +74,7 @@ export const Description = styled(Typography)`
 export const ReadPost = styled(Link)`
   color: ${({ theme }) => theme.palette.common.white};
   background-color: ${({ theme }) => theme.palette.primary.main};
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, .2) 0px 2px 8px 0px;
   border-radius: 10px;
   font-weight: 600;
   display: flex;

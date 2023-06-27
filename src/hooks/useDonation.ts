@@ -59,18 +59,37 @@ const useDonation = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleGetDonationStatus = useCallback((donationId: string) => {
+  const handleGetDonationById = useCallback((donationId: string) => {
     return useQuery(
-      ['donation-status'],
+      ['donation-by-id', donationId],
       async () => {
         try {
           axiosInstance.interceptors.response.clear();
 
-          const { data }: AxiosResponse<{ response: IDonation }> = await axiosInstance.get(
-            `${'/payment'}/status${donationId}`
+          const { data }: AxiosResponse<{ donation: IDonation }> = await axiosInstance.get(
+            `${ENDPOINT}/get-by-id/${donationId}`
           );
 
-          return data.response;
+          return data.donation;
+        } catch (error) {
+          catchError(error);
+        }
+      }
+    );
+  }, []);
+
+  const handleGetAllDonationsByUserId = useCallback((userId: string) => {
+    return useQuery(
+      ['all-donations-by-user-id', userId],
+      async () => {
+        try {
+          axiosInstance.interceptors.response.clear();
+
+          const { data }: AxiosResponse<{ donations: IDonation[] }> = await axiosInstance.get(
+            `${ENDPOINT}/get-by-user-id/${userId}`
+          );
+
+          return data.donations;
         } catch (error) {
           catchError(error);
         }
@@ -80,7 +99,8 @@ const useDonation = () => {
 
   return {
     handleCreateDonation,
-    handleGetDonationStatus,
+    handleGetDonationById,
+    handleGetAllDonationsByUserId,
     donation,
     isLoadingDonation
   };

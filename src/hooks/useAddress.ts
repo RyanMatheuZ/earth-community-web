@@ -22,7 +22,7 @@ interface AddressResponse {
 }
 
 const useCEP = () => {
-  const [isLoadingAddress, setIsLoadingAddress] = useState<boolean>(false);
+  const [isLoadingAddress, setIsLoadingAddress] = useState(false);
 
   const handleGetAdress = useCallback(async (cep: string) => {
     const ENDPOINT = `https://viacep.com.br/ws/${cep}/json/`;
