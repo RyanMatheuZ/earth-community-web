@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: [
+    'page.ts',
     'page.tsx'
   ],
 
@@ -9,7 +10,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**',
-        pathname: '/**',
+        pathname: '/**'
       }
     ]
   },
