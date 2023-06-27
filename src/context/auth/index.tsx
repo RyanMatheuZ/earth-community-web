@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 
 import { type AxiosResponse } from 'axios';
 
+import { setCookie, deleteCookie } from 'cookies-next';
+
 import type { IAuthContext, IAuthOptions, ISignUp, ISignIn, IUser } from '@ts/interfaces';
 
 import axiosInstance from '@services/axios';
@@ -44,6 +46,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           authWith: signUpValues.authWith
         }
       });
+      setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, data.user);
       handlePersistUserDataAndRedirectToFeed(data.user);
     } catch (error) {
       console.error(error);
@@ -63,6 +66,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           password: signInValues.password
         }
       });
+      setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, data.user);
       handlePersistUserDataAndRedirectToFeed(data.user);
     } catch (error) {
       console.error(error);
@@ -73,6 +77,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const handleSignOut = () => {
     replace('/welcome');
+    deleteCookie(process.env.NEXT_PUBLIC_COOKIE_NAME);
     handleCleanUserData();
   };
 

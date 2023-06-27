@@ -37,7 +37,7 @@ const usePost = () => {
           return lastPage?.length ? allPages.length + 1 : undefined;
         },
         refetchIntervalInBackground: true,
-        refetchInterval: 60 * 1000
+        refetchInterval: 5 * 60 * 1000
       }
     );
   }, []);
@@ -61,7 +61,9 @@ const usePost = () => {
       {
         getNextPageParam: (lastPage, allPages) => {
           return lastPage?.length ? allPages.length + 1 : undefined;
-        }
+        },
+        refetchIntervalInBackground: true,
+        refetchInterval: 5 * 60 * 1000
       }
     );
   }, []);

@@ -2,6 +2,7 @@
 namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_ENV: 'dev' | 'prod';
+    NEXT_PUBLIC_COOKIE_NAME: string;
     NEXT_PUBLIC_API_BASE_URL: string;
     NEXT_PUBLIC_FIREBASE_API_KEY: string;
     NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: string;
