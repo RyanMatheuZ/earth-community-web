@@ -9,7 +9,7 @@ export const StyledMenu = styled(Menu)`
   margin-left: ${({ theme }) => theme.spacing(2.5)};
 
   & div.MuiPaper-root.MuiMenu-paper {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, .02) 0px 1px 3px 0px, rgba(27, 31, 35, .15) 0px 0px 0px 1px;
     max-width: 300px;
     width: 100%;
     left: auto !important;

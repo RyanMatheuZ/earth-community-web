@@ -47,8 +47,8 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
   const { mutate, isLoading: isUpdatingUser, isPaused: isUserUpdatedPaused } = useMutation(
     ({ userId, groupValues }: CreateGroupParams) => handleCreateGroup({ userId, groupValues }),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['all-groups']);
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(['all-groups']);
         handleToggleModal();
       }
     }

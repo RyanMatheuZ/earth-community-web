@@ -21,7 +21,7 @@ const YourGroups: FC<YourGroupsProps> = ({ groups, isLoading }) => {
 
   return (
     <TopicSection
-      topic={`Seus grupos • (${groups?.length ?? '...'})`}
+      topic={`Grupos • (${groups?.length ?? '...'})`}
       topicIcon={<S.YourGroupsIcon />}
     >
       <S.Container>
@@ -37,7 +37,7 @@ const YourGroups: FC<YourGroupsProps> = ({ groups, isLoading }) => {
         ))}
         {(!isLoading && !groups?.length) && Array.from({ length: initialGroupsAmount }).map((_, index) => (
           <EmptyGroupCard
-            key={`user-empty-group-card-${index}`}
+            key={`empty-group-card-${index}`}
             message='Você não faz parte de nenhum grupo até o momento, entre em algum!'
             handleClick={() => push('/groups')}
           />

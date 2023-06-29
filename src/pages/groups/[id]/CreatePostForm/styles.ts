@@ -15,7 +15,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const StyledImagePreview = styled(Image)`
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, .2) 0px 2px 8px 0px;
   border: 1px solid ${({ theme }) => theme.palette.secondary.main};
   border-radius: 3px;
   object-fit: cover;

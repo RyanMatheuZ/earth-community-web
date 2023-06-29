@@ -7,7 +7,7 @@ export const Container = styled(Skeleton).attrs({
 })`
   box-shadow: rgba(99, 99, 99, .2) 0px 2px 8px 0px;
   border-radius: 10px;
-  max-width: 290px;
+  max-width: 600px;
   width: 100%;
-  height: 275px;
+  height: 130px;
 `;

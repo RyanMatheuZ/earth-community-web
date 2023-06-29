@@ -17,7 +17,7 @@ const iconBaseStyles = css`
 
 export const Card = styled.div<CardProps>`
   background: url(${({ backgroundImageURL }) => backgroundImageURL}) center center / cover;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, .1) 0px 4px 12px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ export const Header = styled.header`
 export const MembersLength = styled(Typography)`
   color: ${({ theme }) => theme.palette.common.white};
   background-color: ${({ theme }) => theme.palette.primary.main};
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  box-shadow: rgba(0, 0, 0, .15) 0px 5px 15px 0px;
   border-radius: 20px;
   font-weight: 600;
   display: flex;
@@ -53,7 +53,7 @@ export const MembersIcon = styled(Group)`
 
 export const Category = styled.div`
   background-color: ${({ theme }) => theme.palette.primary.main};
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  box-shadow: rgba(0, 0, 0, .15) 0px 5px 15px 0px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -64,7 +64,7 @@ export const Category = styled.div`
 export const Title = styled(Typography)`
   color: ${({ theme }) => theme.palette.common.white};
   background-color: ${({ theme }) => theme.palette.primary.main};
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  box-shadow: rgba(0, 0, 0, .15) 0px 5px 15px 0px;
   border-radius: 20px;
   font-size: 1.2rem;
   font-weight: 600;
@@ -78,7 +78,7 @@ export const Title = styled(Typography)`
 export const VisitGroupLink = styled(Link)`
   color: ${({ theme }) => theme.palette.common.white};
   background-color:  ${({ theme }) => theme.palette.secondary.main};
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  box-shadow: rgba(0, 0, 0, .15) 0px 5px 15px 0px;
   border-radius: 20px;
   font-size: 1rem;
   font-weight: 600;

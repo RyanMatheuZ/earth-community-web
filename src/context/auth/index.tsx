@@ -12,7 +12,7 @@ import axiosInstance from '@services/axios';
 
 import useUserStore from '@services/zustand';
 
-import { authContextDefaultValues, unauthenticatedRoutes } from './utils';
+import { authContextDefaultValues } from './utils';
 
 const AuthContext = createContext<IAuthContext>(authContextDefaultValues);
 
@@ -26,7 +26,8 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
 
-  const handlePersistUserDataAndRedirectToFeed = (userData: IUser) => {
+  const handlePersistUserDataAndRedirectToFeed = async (userData: IUser) => {
+    setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, userData);
     handlePersistUserData(userData);
     push('/feed');
   };
@@ -46,7 +47,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           authWith: signUpValues.authWith
         }
       });
-      setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, data.user);
       handlePersistUserDataAndRedirectToFeed(data.user);
     } catch (error) {
       console.error(error);
@@ -66,7 +66,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           password: signInValues.password
         }
       });
-      setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, data.user);
       handlePersistUserDataAndRedirectToFeed(data.user);
     } catch (error) {
       console.error(error);
@@ -84,7 +83,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       user,
-      unauthenticatedRoutes,
       isLoadingSignUp,
       isLoadingSignIn,
       handleSignUp,

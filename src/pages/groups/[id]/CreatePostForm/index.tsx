@@ -46,8 +46,8 @@ const CreatePostForm: FC<CreatePostFormProps> = ({ groupId, handleToggleModal })
   const { mutate, isLoading: isUpdatingUser, isPaused: isUserUpdatedPaused } = useMutation(
     ({ userId, postValues }: CreatePostParams) => handleCreatePost({ userId, groupId, postValues }),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['all-posts-by-group-id']);
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(['all-posts-by-group-id']);
         handleToggleModal();
       }
     }

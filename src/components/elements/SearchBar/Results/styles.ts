@@ -6,7 +6,7 @@ import { Skeleton, Typography } from '@mui/material';
 import { WavingHand } from '@mui/icons-material';
 
 const cardBaseStyles = css`
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, .24) 0px 3px 8px;
   border-radius: 10px;
   padding: ${({ theme }) => theme.spacing(2)};
   width: 100%;
@@ -54,7 +54,7 @@ export const Identifier = styled(Typography)`
 export const VisitLink = styled(Link)`
   color: ${({ theme }) => theme.palette.primary.main};
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;
   border-radius: 10px;
   font-weight: 600;
   display: flex;

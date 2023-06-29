@@ -1,7 +1,5 @@
 import { useState, type FC } from 'react';
 
-import { useRouter } from 'next/router';
-
 import { useMutation } from '@tanstack/react-query';
 
 import type { IPost, IUser } from '@ts/interfaces';
@@ -27,7 +25,6 @@ interface PostProps {
 }
 
 const Post: FC<PostProps> = ({ postItems, postType }) => {
-  const { pathname } = useRouter();
   const { user } = useAuth();
 
   const isUserLikeThePostInitialState = resolveUserLikePost(
@@ -35,8 +32,8 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
     postItems.likes.userIds
   );
 
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const [isUserLikeThePost, setIsUserLikeThePost] = useState<boolean>(isUserLikeThePostInitialState);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isUserLikeThePost, setIsUserLikeThePost] = useState(isUserLikeThePostInitialState);
 
   const userName = `${postItems.createdByUser.user.info.firstName} ${postItems.createdByUser.user.info.surname}`;
 
@@ -53,8 +50,8 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
     {
       onMutate: () => setIsUserLikeThePost((prevState) => !prevState),
       onSuccess: () => {
-        const query = pathname === '/feed' ? 'all-posts' : 'all-posts-by-group-id';
-        queryClient.invalidateQueries([query]);
+        queryClient.invalidateQueries(['all-posts']);
+        queryClient.invalidateQueries(['all-posts-by-group-id']);
       }
     }
   );
@@ -72,8 +69,8 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
             />
             {postType === 'feed' && (
               <UserPictureProfile
-                pictureProfileSRC={postItems.createdByGroup.image}
-                userName={postItems.createdByGroup.name}
+                pictureProfileSRC={postItems.createdByGroup.group.image}
+                userName={postItems.createdByGroup.group.name}
                 width='35'
                 height='35'
               />
@@ -83,7 +80,7 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
             <div>
               <S.CreatedBy>{userName}</S.CreatedBy> {' '}
               {postType === 'feed' && (
-                <S.CreatedBy>| {postItems.createdByGroup.name}</S.CreatedBy>
+                <S.CreatedBy>| {postItems.createdByGroup.group.name}</S.CreatedBy>
               )}
             </div>
             <span>
@@ -93,7 +90,6 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
           {isPostOwner && (
             <S.MenuItemContainer>
               <PostOptions
-                createdByGroupId={postItems.createdByGroup._id}
                 postId={postItems._id}
                 isPostOwner={isPostOwner}
               />

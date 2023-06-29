@@ -88,6 +88,7 @@ export const Warning = styled.span`
   font-size: .85rem;
   font-weight: 600;
   text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
 `;
 
 export const DonationMethod = styled.div`
@@ -95,7 +96,7 @@ export const DonationMethod = styled.div`
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(1)};
-  margin-block: ${({ theme }) => theme.spacing(2, .5)};
+  margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
 export const BudIcon = styled(Spa)`

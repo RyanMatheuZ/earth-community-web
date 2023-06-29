@@ -82,10 +82,10 @@ const Posts: FC<PostsProps> = ({ posts, isLoading, fetchNextPage, group }) => {
             height='300'
             fill
           />
-          <S.NoPostsImage>
+          <S.NoPostsMessage>
             Não há publicações até o momento, <br />
             seja o primeiro a publicar!
-          </S.NoPostsImage>
+          </S.NoPostsMessage>
         </S.NoPostsContainer>
       )}
       <StyledModal

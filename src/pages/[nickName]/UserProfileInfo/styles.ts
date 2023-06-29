@@ -13,7 +13,7 @@ const iconBaseStyles = css`
 
 export const Container = styled.section`
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, .1) 0px 4px 12px;
   border-radius: 10px;
   position: relative;
 `;
@@ -70,7 +70,7 @@ export const AboutText = styled(Typography)`
 
 export const EditProfileButton = styled(Button)`
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, .2) 0px 2px 8px 0px;
   min-width: 55px;
   height: 55px;
   margin-bottom: ${({ theme }) => theme.spacing(15)};
@@ -97,7 +97,7 @@ export const CakeIcon = styled(Cake)`
 
 export const BackButton = styled(Button)`
   background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, .1) 0px 4px 12px;
   border-radius: 50%;
   width: 50px;
   height: 60px;

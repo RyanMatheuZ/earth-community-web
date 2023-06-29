@@ -30,7 +30,6 @@ const Logo: FC<LogoProps> = ({ showOnlyImage, width = 60, height = 60, $themeCol
         width={width}
         height={height}
         draggable={false}
-        priority
       />
       {!showOnlyImage && (
         <S.Title $themeColor={$themeColor}>

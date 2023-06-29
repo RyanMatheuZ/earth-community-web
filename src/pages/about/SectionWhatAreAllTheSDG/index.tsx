@@ -10,8 +10,8 @@ import * as S from './styles';
 import * as s from '../styles';
 
 const SectionWhatAreAllTheSDG: FC = () => {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const [activeSDGIndex, setIsActiveSDGIndex] = useState<number>(0);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [activeSDGIndex, setIsActiveSDGIndex] = useState(0);
 
   const handleToggleModal = () => {
     setIsOpenModal((prevState) => !prevState);

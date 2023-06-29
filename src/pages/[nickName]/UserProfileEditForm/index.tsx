@@ -53,9 +53,9 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
   const { mutate, isLoading: isUpdatingUser, isPaused: isUserUpdatedPaused } = useMutation(
     ({ userId, userUpdatedValues }: UpdatedUserParams) => handleUpdateUser({ userId, userUpdatedValues }),
     {
-      onSuccess: () => {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries();
         replace('/feed');
-        queryClient.invalidateQueries();
       }
     }
   );

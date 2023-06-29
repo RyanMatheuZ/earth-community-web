@@ -35,7 +35,6 @@ const SectionKnowOurHistory: FC = () => {
         height='400'
         fill
         loading='eager'
-        priority
       />
     </S.SectionContainer>
   );

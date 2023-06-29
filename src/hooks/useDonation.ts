@@ -1,12 +1,17 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useCallback } from 'react';
 
+import { useQuery } from '@tanstack/react-query';
+
 import { type AxiosResponse } from 'axios';
+
+import type { IDonation, IGiver } from '@ts/interfaces';
 
 import { useAuth } from '@context/auth';
 
 import axiosInstance from '@services/axios';
 
-import type { IDonation, IGiver } from '@ts/interfaces';
+import { catchError } from '@utils/requestMessages';
 
 const useDonation = () => {
   const ENDPOINT = '/donation';
@@ -54,8 +59,48 @@ const useDonation = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleGetDonationById = useCallback((donationId: string) => {
+    return useQuery(
+      ['donation-by-id', donationId],
+      async () => {
+        try {
+          axiosInstance.interceptors.response.clear();
+
+          const { data }: AxiosResponse<{ donation: IDonation }> = await axiosInstance.get(
+            `${ENDPOINT}/get-by-id/${donationId}`
+          );
+
+          return data.donation;
+        } catch (error) {
+          catchError(error);
+        }
+      }
+    );
+  }, []);
+
+  const handleGetAllDonationsByUserId = useCallback((userId: string) => {
+    return useQuery(
+      ['all-donations-by-user-id', userId],
+      async () => {
+        try {
+          axiosInstance.interceptors.response.clear();
+
+          const { data }: AxiosResponse<{ donations: Array<{ body: IDonation }> }> = await axiosInstance.get(
+            `${ENDPOINT}/get-by-user-id/${userId}`
+          );
+
+          return data.donations;
+        } catch (error) {
+          catchError(error);
+        }
+      }
+    );
+  }, []);
+
   return {
     handleCreateDonation,
+    handleGetDonationById,
+    handleGetAllDonationsByUserId,
     donation,
     isLoadingDonation
   };

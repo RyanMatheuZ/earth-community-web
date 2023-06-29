@@ -53,9 +53,11 @@ const ActionButtons: FC<ActionButtonsProps> = ({ group }) => {
   const { mutate: removeMemberGroupMutation, isLoading: isLoadingRemoveMemberGroup } = useMutation(
     ({ groupId, userId }: ActionGroupParams) => handleRemoveMemberGroup({ groupId, userId }),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['group-by-id']);
-        queryClient.invalidateQueries(['group-by-user-id']);
+      onSuccess: async () => {
+        await Promise.all([
+          queryClient.invalidateQueries(['group-by-id']),
+          queryClient.invalidateQueries(['group-by-user-id'])
+        ]);
         setIsOpenModal('closed');
       }
     }
@@ -64,9 +66,11 @@ const ActionButtons: FC<ActionButtonsProps> = ({ group }) => {
   const { mutate: deleteGroupMutation, isLoading: isLoadingDeleteGroup } = useMutation(
     ({ groupId, userId }: ActionGroupParams) => handleDeleteGroup({ groupId, userId }),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['all-groups']);
-        queryClient.invalidateQueries(['group-by-user-id']);
+      onSuccess: async () => {
+        await Promise.all([
+          queryClient.invalidateQueries(['group-by-id']),
+          queryClient.invalidateQueries(['group-by-user-id'])
+        ]);
         setIsOpenModal('closed');
         replace('/groups');
       }

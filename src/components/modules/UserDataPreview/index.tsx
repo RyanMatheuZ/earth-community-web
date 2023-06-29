@@ -11,7 +11,7 @@ const UserDataPreview: FC = () => {
 
   const userBackgroundProfileDescription = 'Foto de fundo do perfil';
 
-  const userName = `${user?.info.firstName} ${user?.info.surname}`;
+  const userName = `${user?.info.firstName ?? '...'} ${user?.info.surname ?? '...'}`;
 
   return (
     <S.Container href={String(user?.info.nickName)}>
