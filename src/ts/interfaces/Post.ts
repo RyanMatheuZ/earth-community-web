@@ -19,6 +19,8 @@ export interface IPost {
   createdByUser: {
     user: IUser;
   };
-  createdByGroup: IGroup;
+  createdByGroup: {
+    group: IGroup;
+  };
   createdAt: Date;
 }

@@ -1,12 +1,15 @@
 import AbsoluteBackButton from './AbsoluteBackButton';
-import ActionsModal from './ActionsModal';
 import AccountButton from './AccountButton';
+import ActionsModal from './ActionsModal';
 import AlreadyHaveAnAccount from './Form/AlreadyHaveAnAccount';
 import AnchorLink from './AnchorLink';
 import AnotherAuthOption from './Form/AnotherAuthOption';
 import AuthOptionsButton from './AuthOptionsButton';
 import BackIcon from './BackIcon/styles';
 import ButtonToTop from './ButtonToTop';
+import DonationCard from './DonationCard';
+import DonationCardSkeleton from './DonationCardSkeleton';
+import DoughnutChart from './DoughnutChart';
 import EmptyGroupCard from './EmptyGroupCard';
 import ErrorMessage from './Form/ErrorMessage';
 import Field from './Form/Field';
@@ -33,14 +36,17 @@ import UserPictureProfileSkeleton from './UserPictureProfileSkeleton/styles';
 
 export {
   AbsoluteBackButton,
-  ActionsModal,
   AccountButton,
-  AnchorLink,
+  ActionsModal,
   AlreadyHaveAnAccount,
+  AnchorLink,
   AnotherAuthOption,
   AuthOptionsButton,
   BackIcon,
   ButtonToTop,
+  DonationCard,
+  DonationCardSkeleton,
+  DoughnutChart,
   EmptyGroupCard,
   ErrorMessage,
   Field,

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { Button } from '@mui/material';
 import { AccountBalanceWallet } from '@mui/icons-material';
 
 export const MyDonationsIcon = styled(AccountBalanceWallet)`
@@ -9,5 +10,31 @@ export const MyDonationsIcon = styled(AccountBalanceWallet)`
 `;
 
 export const Container = styled.div`
-  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing(2)};
+
+  @media ${({ theme }) => theme.breakpoints.down('laptop')} {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const DonationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+  width: 100%;
+`;
+
+export const SeeMoreDonationsButton = styled(Button)`
+  color: ${({ theme }) => theme.palette.common.white};
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  font-weight: 600;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.main};
+    filter: brightness(.9);
+  }
 `;

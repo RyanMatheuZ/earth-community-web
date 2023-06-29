@@ -23,8 +23,8 @@ const cardIconBaseStyles = css`
 
 export const Container = styled.div`
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
 
   @media ${({ theme }) => theme.breakpoints.down('laptop')} {

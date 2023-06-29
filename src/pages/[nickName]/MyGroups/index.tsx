@@ -35,12 +35,13 @@ const YourGroups: FC<YourGroupsProps> = ({ groups, isLoading }) => {
             visitGroupLink={`/groups/${_id}`}
           />
         ))}
-        {(!isLoading && !groups?.length) && (
+        {(!isLoading && !groups?.length) && Array.from({ length: initialGroupsAmount }).map((_, index) => (
           <EmptyGroupCard
+            key={`empty-group-card-${index}`}
             message='Você não faz parte de nenhum grupo até o momento, entre em algum!'
             handleClick={() => push('/groups')}
           />
-        )}
+        ))}
         {isLoading && Array.from({ length: initialGroupsAmount }).map((_, index) => (
           <GroupCardSkeleton key={`user-group-skeleton-${index}`} />
         ))}

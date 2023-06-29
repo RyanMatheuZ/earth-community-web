@@ -62,7 +62,7 @@ export const NoPostsContainer = styled.div`
   padding: ${({ theme }) => theme.spacing(2)};
 `;
 
-export const NoPostsImage = styled(Typography)`
+export const NoPostsMessage = styled(Typography)`
   color: ${({ theme }) => theme.palette.primary.main};
   text-align: center;
   font-weight: 500;

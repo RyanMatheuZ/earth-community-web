@@ -85,7 +85,7 @@ const useDonation = () => {
         try {
           axiosInstance.interceptors.response.clear();
 
-          const { data }: AxiosResponse<{ donations: IDonation[] }> = await axiosInstance.get(
+          const { data }: AxiosResponse<{ donations: Array<{ body: IDonation }> }> = await axiosInstance.get(
             `${ENDPOINT}/get-by-user-id/${userId}`
           );
 

@@ -1,8 +1,17 @@
 import { type NextPage, type GetServerSideProps } from 'next';
 
+import { dehydrate } from '@tanstack/react-query';
+
+import { type AxiosResponse } from 'axios';
+
 import type { IUser, IAchievements, IGroup } from '@ts/interfaces';
 
+import { useAuth } from '@context/auth';
+
 import { useUser, useAchievements, useGroup } from '@hooks/index';
+
+import axiosInstance from '@services/axios';
+import { queryClient } from '@services/tanstackQuery';
 
 import { Head } from '@components/meta';
 import { FeedHeader } from '@components/modules';
@@ -21,6 +30,7 @@ interface UserProfileProps {
 }
 
 const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
+  const { user: userAuth } = useAuth();
   const { handleGetUserByNickName } = useUser();
   const { handleGetAllAchievements } = useAchievements();
   const { handleGetGroupByUserId } = useGroup();
@@ -41,6 +51,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
     isRefetching: isRefetchingGroups
   } = handleGetGroupByUserId(user?._id as string);
 
+  const isProfileOwner = userAuth?._id === user?._id;
   const userName = `${user?.info?.firstName} ${user?.info?.surname}`;
 
   const { title, description } = head(userName);
@@ -62,7 +73,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
             achievements={achievements as IAchievements['achievements']}
             isLoading={isLoadingAchievements || isRefetchingAchievements}
           />
-          <MyDonations />
+          {isProfileOwner && <MyDonations userId={user?._id as string} />}
           <MyGroups
             groups={groups as IGroup[]}
             isLoading={isLoadingGroups || isRefetchingGroups}
@@ -74,8 +85,19 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const handlePrefetchUserByNickName = async () => {
+    const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.get(
+      `/user/get-by-nickname/${query.nickName}`
+    );
+    return data.user;
+  };
+
+  await queryClient.prefetchQuery(['user-by-nick-name', query], handlePrefetchUserByNickName);
+
   return {
     props: {
+      // https://github.com/TanStack/query/issues/1458#issuecomment-788447705
+      dehydratedState: dehydrate(queryClient),
       nickName: query.nickName
     }
   };

@@ -69,8 +69,8 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
             />
             {postType === 'feed' && (
               <UserPictureProfile
-                pictureProfileSRC={postItems.createdByGroup.image}
-                userName={postItems.createdByGroup.name}
+                pictureProfileSRC={postItems.createdByGroup.group.image}
+                userName={postItems.createdByGroup.group.name}
                 width='35'
                 height='35'
               />
@@ -80,7 +80,7 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
             <div>
               <S.CreatedBy>{userName}</S.CreatedBy> {' '}
               {postType === 'feed' && (
-                <S.CreatedBy>| {postItems.createdByGroup.name}</S.CreatedBy>
+                <S.CreatedBy>| {postItems.createdByGroup.group.name}</S.CreatedBy>
               )}
             </div>
             <span>

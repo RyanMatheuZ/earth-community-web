@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useCallback } from 'react';
 
+import { useRouter } from 'next/router';
+
 import { type AxiosResponse } from 'axios';
 
 import { useQuery } from '@tanstack/react-query';
@@ -17,6 +19,7 @@ import { type UpdatedUserParams } from './utils';
 const useUser = () => {
   const ENDPOINT = '/user';
 
+  const { replace } = useRouter();
   const { handlePersistUserData } = useUseStore();
 
   const handleGetUserByNickName = useCallback((nickName: string) => {
@@ -32,10 +35,12 @@ const useUser = () => {
 
           return data.user;
         } catch (e) {
+          replace('/404');
           catchError(e);
         }
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleUpdateUser = useCallback(async ({ userId, userUpdatedValues }: UpdatedUserParams) => {
