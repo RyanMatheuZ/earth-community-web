@@ -59,14 +59,14 @@ const useDonation = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleGetDonationById = useCallback((donationId: string) => {
+  const handleGetDonationById = useCallback((donationId: number) => {
     return useQuery(
       ['donation-by-id', donationId],
       async () => {
         try {
           axiosInstance.interceptors.response.clear();
 
-          const { data }: AxiosResponse<{ donation: IDonation }> = await axiosInstance.get(
+          const { data }: AxiosResponse<{ donation: { body: IDonation } }> = await axiosInstance.get(
             `${ENDPOINT}/get-by-id/${donationId}`
           );
 
@@ -86,7 +86,7 @@ const useDonation = () => {
           axiosInstance.interceptors.response.clear();
 
           const { data }: AxiosResponse<{ donations: Array<{ body: IDonation }> }> = await axiosInstance.get(
-            `${ENDPOINT}/get-by-user-id/${userId}`
+            `${ENDPOINT}/get-by-user-id/${userId}?perPage=20&page=0`
           );
 
           return data.donations;

@@ -9,16 +9,17 @@ import * as S from './styles';
 
 interface DonationCardProps {
   donation: IDonation;
+  redirectTo: string;
 }
 
-const DonationCard: FC<DonationCardProps> = ({ donation }) => {
+const DonationCard: FC<DonationCardProps> = ({ donation, redirectTo }) => {
   const labelStatus = resolveLabelStatus(donation.status);
   const statusColor = resolveStatusColor(donation.status);
   const dateCreated = middleEndianFormat(new Date(donation.date_created), true);
   const dateApproved = middleEndianFormat(new Date(donation.date_approved as string), true);
 
   return (
-    <S.Container>
+    <S.Container href={redirectTo}>
       <S.Content>
         <S.Description donationStatusColor={statusColor}>
           {donation.description}
@@ -47,6 +48,9 @@ const DonationCard: FC<DonationCardProps> = ({ donation }) => {
         <S.DonationSymbol donationStatusColor={statusColor}>R$</S.DonationSymbol>
         {' '}{donation.transaction_amount}
       </S.DonationValue>
+      <S.ViewContainer donationStatusColor={statusColor}>
+        <S.ViewIcon donationStatusColor={statusColor} />
+      </S.ViewContainer>
     </S.Container >
   );
 };

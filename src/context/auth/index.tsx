@@ -19,17 +19,17 @@ const AuthContext = createContext<IAuthContext>(authContextDefaultValues);
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const ENDPOINT = '/auth/user';
 
-  const { push, replace } = useRouter();
+  const { replace } = useRouter();
 
   const { user, handlePersistUserData, handleCleanUserData } = useUserStore();
 
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
 
-  const handlePersistUserDataAndRedirectToFeed = async (userData: IUser) => {
+  const handlePersistUserDataAndRedirectToFeed = (userData: IUser) => {
     setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, userData);
     handlePersistUserData(userData);
-    push('/feed');
+    replace('/feed');
   };
 
   const handleSignUp = async (signUpValues: ISignUp & IAuthOptions) => {

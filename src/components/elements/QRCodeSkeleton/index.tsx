@@ -4,11 +4,11 @@ import * as S from './styles';
 
 const QRCodeSkeleton: FC = () => {
   return (
-    <>
+    <S.Container>
       <S.QRCode />
       <S.QRCodeDescription />
       <S.QRCodeInput />
-    </>
+    </S.Container>
   );
 };
 

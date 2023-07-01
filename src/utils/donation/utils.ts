@@ -38,3 +38,9 @@ export const allStatus = {
     color: ''
   }
 };
+
+export const srcQRCode = {
+  'approved': '/illustrations/qrcode/approved.svg',
+  'cancelled': '/illustrations/qrcode/cancelled.svg',
+  'in_process': '/illustrations/qrcode/in-process.svg'
+};
