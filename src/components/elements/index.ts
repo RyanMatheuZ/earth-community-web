@@ -23,6 +23,8 @@ import InputFile from './Form/InputFile';
 import Logo from './Logo';
 import LogoutButton from './LogoutButton';
 import MenuIcon from './MenuIcon/styles';
+import QRCode from './QRCode';
+import QRCodeSkeleton from './QRCodeSkeleton';
 import RadioButton from './Form/RadioButton';
 import RedirectLinkForDonation from './RedirectLinkForDonation';
 import SearchBar from './SearchBar';
@@ -60,6 +62,8 @@ export {
   Logo,
   LogoutButton,
   MenuIcon,
+  QRCode,
+  QRCodeSkeleton,
   RadioButton,
   RedirectLinkForDonation,
   SearchBar,

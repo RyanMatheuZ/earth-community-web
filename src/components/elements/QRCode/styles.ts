@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import Image from 'next/image';
 
-import { StyledTextField } from '@components/elements';
-
 import { ContentCopy } from '@mui/icons-material';
 
 export const Container = styled.div`
@@ -21,12 +19,6 @@ export const QRCodeDescription = styled.span`
   color: ${({ theme }) => theme.palette.primary.main};
   font-weight: 600;
   margin-block: ${({ theme }) => theme.spacing(1, 2)};
-`;
-
-export const QRCodeInput = styled(StyledTextField)`
-  input {
-    color: ${({ theme }) => theme.palette.tertiary.main};
-  }
 `;
 
 export const CopyIcon = styled(ContentCopy)`

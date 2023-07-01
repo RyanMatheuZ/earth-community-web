@@ -4,7 +4,7 @@ const pagesToNotAccessAuth = ['/welcome', '/sign-in', '/sign-up', '/about'];
 const pagesToAuthAccess = ['/feed', '/groups'];
 
 export const middleware: NextMiddleware = (req: NextRequest) => {
-  const authUser = req.cookies.get(process.env.NEXT_PUBLIC_COOKIE_NAME);
+  const authUser = req.cookies.get(process.env.NEXT_PUBLIC_COOKIE_NAME)?.value;
 
   const checkURL = (page: string) => req.url.includes(page);
 

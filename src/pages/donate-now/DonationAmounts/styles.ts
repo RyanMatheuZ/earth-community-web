@@ -88,7 +88,7 @@ export const Warning = styled.span`
   font-size: .85rem;
   font-weight: 600;
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing(1)};
+  margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
 export const DonationMethod = styled.div`

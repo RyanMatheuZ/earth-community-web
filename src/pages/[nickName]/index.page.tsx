@@ -73,7 +73,12 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
             achievements={achievements as IAchievements['achievements']}
             isLoading={isLoadingAchievements || isRefetchingAchievements}
           />
-          {isProfileOwner && <MyDonations userId={user?._id as string} />}
+          {isProfileOwner && (
+            <MyDonations
+              userId={user?._id as string}
+              nickNameUser={nickName}
+            />
+          )}
           <MyGroups
             groups={groups as IGroup[]}
             isLoading={isLoadingGroups || isRefetchingGroups}

@@ -15,9 +15,10 @@ import * as S from './styles';
 
 interface MyDonationsProps {
   userId: string;
+  nickNameUser: string;
 }
 
-const MyDonations: FC<MyDonationsProps> = ({ userId }) => {
+const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
   const { palette } = useTheme();
   const { handleGetAllDonationsByUserId } = useDonation();
   const { data, isLoading, isRefetching } = handleGetAllDonationsByUserId(userId);
@@ -65,6 +66,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId }) => {
                 <DonationCard
                   key={`donation-card-${index}`}
                   donation={body}
+                  redirectTo={`/${nickNameUser}/donations/${body.id}`}
                 />
               ))}
               {(!firstDonations?.length && isLoadingDonations) && (
@@ -90,6 +92,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId }) => {
               <DonationCard
                 key={`remaining-donation-card-${index}`}
                 donation={body}
+                redirectTo={`/${nickNameUser}/donations/${body.id}`}
               />
             ))}
             {(!remainingDonations?.length && isLoadingDonations) && (

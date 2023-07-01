@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
+import Link from 'next/link';
+
 import { Typography } from '@mui/material';
+import { Visibility } from '@mui/icons-material';
 
 interface DonationStatusColor {
   donationStatusColor: string;
 }
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   background-color: ${({ theme }) => theme.palette.common.white};
   box-shadow: rgba(99, 99, 99, .2) 0px 2px 8px 0px;
   border-radius: 10px;
@@ -15,6 +18,7 @@ export const Container = styled.div`
   padding: ${({ theme }) => theme.spacing(2)};
   max-width: 600px;
   width: 100%;
+  position: relative;
 `;
 
 export const Content = styled.div`
@@ -31,6 +35,7 @@ export const Description = styled(Typography) <DonationStatusColor>`
 export const DateContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(.5)};
 `;
 
 export const DateValue = styled.span`
@@ -61,4 +66,28 @@ export const Status = styled(Typography) <DonationStatusColor>`
   font-weight: 500;
   padding: ${({ theme }) => theme.spacing(1)};
   width: fit-content;
+`;
+
+export const ViewContainer = styled.div<DonationStatusColor>`
+  background-color: ${({ theme }) => theme.palette.common.white};
+  border: 1px solid ${({ donationStatusColor }) => donationStatusColor};
+  border-radius: 50%;
+  padding: ${({ theme }) => theme.spacing(.5)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+
+  @media ${({ theme }) => theme.breakpoints.down('laptop')} {
+    top: -5px;
+    right: -5px;
+  }
+`;
+
+export const ViewIcon = styled(Visibility) <DonationStatusColor>`
+  fill: ${({ donationStatusColor }) => donationStatusColor};
+  width: 15px;
+  height: 15px;
 `;
