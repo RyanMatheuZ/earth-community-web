@@ -27,7 +27,9 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
 
   const handlePersistUserDataAndRedirectToFeed = (userData: IUser) => {
-    setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, userData);
+    setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, userData, {
+      sameSite: 'lax'
+    });
     handlePersistUserData(userData);
     replace('/feed');
   };

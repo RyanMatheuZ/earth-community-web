@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-import { Dialog, Button } from '@mui/material';
+import { Dialog, Button, DialogContent, DialogTitle, DialogActions } from '@mui/material';
 import { Close } from '@mui/icons-material';
+
+import { scrollbarBaseStyles } from '@styles/constants/scrollbar';
 
 interface ContainerProps {
   width: number;
@@ -23,6 +25,22 @@ export const Container = styled(Dialog) <ContainerProps>`
       margin: 0;
     }
   }
+`;
+
+export const StyledHeader = styled(DialogTitle)`
+  color: ${({ theme }) => theme.palette.tertiary.main};
+  text-align: center;
+  font-weight: 600;
+`;
+
+export const StyledDialogContent = styled(DialogContent)`
+  ${scrollbarBaseStyles}
+`;
+
+export const StyledActions = styled(DialogActions)`
+  display: flex;
+  align-items: start;
+  padding: ${({ theme }) => theme.spacing(2, 3)};
 `;
 
 export const CloseModalButton = styled(Button)`

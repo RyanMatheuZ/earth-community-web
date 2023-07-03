@@ -1,5 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 
+import { scrollbarBaseStyles } from '@styles/constants/scrollbar';
+
 export default createGlobalStyle(
   ({ theme }) => css`
     * {
@@ -15,6 +17,7 @@ export default createGlobalStyle(
       scroll-behavior: smooth;
       margin: 0;
       padding: 0;
+      ${scrollbarBaseStyles}
 
       @media ${({ theme }) => theme.breakpoints.down('desktop')} {
         font-size: 12px;

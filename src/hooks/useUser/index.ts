@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 
 import { type AxiosResponse } from 'axios';
 
+import { setCookie } from 'cookies-next';
+
 import { useQuery } from '@tanstack/react-query';
 
 import type { IUser } from '@ts/interfaces';
@@ -49,6 +51,9 @@ const useUser = () => {
         `${ENDPOINT}/update-by-id/${userId}`, userUpdatedValues
       );
 
+      setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, data.user, {
+        sameSite: 'lax'
+      });
       handlePersistUserData(data.user);
     } catch (error) {
       console.log(error);
