@@ -11,7 +11,7 @@ const Head: FC<IHead> = ({ title, description }) => {
   const pathName = usePathname();
   const { palette } = useTheme();
 
-  const canonicalURL = 'https://earth-community.vercel.app';
+  const canonicalURL = 'https://www.earthcommunity.com.br';
   const currentURL = `${canonicalURL}${pathName}`;
 
   return (

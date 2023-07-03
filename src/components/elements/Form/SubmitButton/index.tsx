@@ -9,7 +9,7 @@ interface SubmitButtonProps extends ITheme {
   isLoadingAction?: boolean;
 }
 
-const SubmitButton: FC<SubmitButtonProps> = ({ label, isLoadingAction, $themeColor }) => {
+const SubmitButton: FC<SubmitButtonProps> = ({ label, isLoadingAction, $themeColor = 'green' }) => {
   return (
     <S.Container>
       <S.StyledButton

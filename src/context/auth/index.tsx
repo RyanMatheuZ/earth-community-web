@@ -39,7 +39,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         info: {
           firstName: signUpValues.firstName,
           surname: signUpValues.surname,
-          email: signUpValues.email,
+          email: signUpValues.email
         },
         security: {
           password: signUpValues.password,
@@ -60,7 +60,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       setIsLoadingSignIn(true);
       const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.post(`${ENDPOINT}/sign-in`, {
         info: {
-          email: signInValues.email,
+          email: signInValues.email
         },
         security: {
           password: signInValues.password

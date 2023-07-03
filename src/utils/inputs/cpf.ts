@@ -5,7 +5,7 @@ export const formatCPF = (cpf: string): string => {
     .replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
 };
 
-export const validateCPF = (cpf: string) => {
+export const validateCPF = (cpf: string): boolean => {
   // https://www.geradorcpf.com/javascript-validar-cpf.htm
   cpf = cpf.replace(/[^\d]+/g, '');
   if (cpf.length !== 11 || /^(.)\1+$/.test(cpf)) return false;

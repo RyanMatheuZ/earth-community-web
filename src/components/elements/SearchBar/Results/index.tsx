@@ -35,7 +35,7 @@ const Results: FC<Results> = ({ results, isLoading, handleToggleModal, children 
               href={info ? `${info.nickName}` : `/groups/${_id}`}
               onClick={handleToggleModal}
             >
-              <S.VisitIcon />  Visitar
+              <S.VisitIcon /> Visitar
             </S.VisitLink>
           </S.Info>
         </S.Card>

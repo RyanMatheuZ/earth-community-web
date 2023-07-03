@@ -18,7 +18,7 @@ const schema = {
     .nonempty('A cidade é obrigatória!'),
   state: z
     .string()
-    .nonempty('O estado é obrigatório!'),
+    .nonempty('O estado é obrigatório!')
 };
 
 export const {

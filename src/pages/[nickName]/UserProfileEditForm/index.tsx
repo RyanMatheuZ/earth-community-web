@@ -110,7 +110,7 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
         </S.EditIconContainer>
       </S.PictureContainer>
       <S.PictureErrorMessage>
-        <ErrorMessage name='pictureProfile' errors={errors} $themeColor='green' />
+        <ErrorMessage name='pictureProfile' errors={errors} />
       </S.PictureErrorMessage>
       {!!imageUploadProgress && (
         <S.ImageUploadingMessage>
@@ -125,7 +125,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='firstName'
           label='Nome:'
-          $themeColor='green'
         />
         <Field
           control={control}
@@ -133,7 +132,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='surname'
           label='Sobrenome:'
-          $themeColor='green'
         />
       </HalfToHalfContainer>
       <HalfToHalfContainer>
@@ -143,14 +141,12 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='nickName'
           label='Nome de usuário:'
-          $themeColor='green'
         />
         <InputDate
           control={control}
           errors={errors}
           name='dateOfBirth'
           label='Data de Nascimento:'
-          $themeColor='green'
         />
       </HalfToHalfContainer>
       <Field
@@ -162,7 +158,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
         type='text'
         name='about'
         label='Sobre:'
-        $themeColor='green'
       />
       <S.SectionLabel>Contatos</S.SectionLabel>
       <HalfToHalfContainer>
@@ -172,7 +167,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='email'
           label='E-mail:'
-          $themeColor='green'
         />
         <Field
           control={control}
@@ -180,7 +174,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='phone'
           label='Celular:'
-          $themeColor='green'
           onChange={({ target: { value } }) => setValue('phone', formatPhoneNumber(value))}
         />
       </HalfToHalfContainer>
@@ -192,7 +185,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='city'
           label='Cidade:'
-          $themeColor='green'
         />
         <Select
           control={control}
@@ -200,7 +192,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='state'
           label='Estado:'
-          $themeColor='green'
         >
           {states.map((state, index) => (
             <MenuItem
@@ -215,7 +206,6 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
       <SubmitButton
         label='Atualizar'
         isLoadingAction={isLoadingAction}
-        $themeColor='green'
       />
     </form>
   );
