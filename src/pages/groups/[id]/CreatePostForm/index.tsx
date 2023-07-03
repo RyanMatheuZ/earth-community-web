@@ -83,7 +83,6 @@ const CreatePostForm: FC<CreatePostFormProps> = ({ groupId, handleToggleModal })
         type='text'
         name='text'
         label='Escreva algo aqui:'
-        $themeColor='green'
       />
       <S.ImageContainer>
         <S.StyledImagePreview
@@ -101,7 +100,7 @@ const CreatePostForm: FC<CreatePostFormProps> = ({ groupId, handleToggleModal })
         </S.IconContainer>
       </S.ImageContainer>
       <S.ImageErrorMessage>
-        <ErrorMessage name='image' errors={errors} $themeColor='green' />
+        <ErrorMessage name='image' errors={errors} />
       </S.ImageErrorMessage>
       {!!imageUploadProgress && (
         <S.ImageUploadingMessage>
@@ -111,7 +110,6 @@ const CreatePostForm: FC<CreatePostFormProps> = ({ groupId, handleToggleModal })
       <SubmitButton
         label='Publicar'
         isLoadingAction={isLoadingAction}
-        $themeColor='green'
       />
     </form>
   );

@@ -21,7 +21,7 @@ const Field: FC<FieldProps> = ({
   errors,
   name = '',
   variant = 'outlined',
-  $themeColor,
+  $themeColor = 'green',
   ...props
 }) => {
   return (

@@ -27,7 +27,7 @@ const DonationPersonalDataFields: FC = () => {
           type='text'
           name='firstName'
           label='Nome:'
-          $themeColor='green'
+
         />
         <Field
           control={control}
@@ -35,7 +35,7 @@ const DonationPersonalDataFields: FC = () => {
           type='text'
           name='surname'
           label='Sobrenome:'
-          $themeColor='green'
+
         />
       </HalfToHalfContainer>
       <Field
@@ -44,7 +44,6 @@ const DonationPersonalDataFields: FC = () => {
         type='email'
         name='email'
         label='E-mail:'
-        $themeColor='green'
       />
       <Field
         control={control}
@@ -52,7 +51,6 @@ const DonationPersonalDataFields: FC = () => {
         type='text'
         name='cpf'
         label='CPF:'
-        $themeColor='green'
         onChange={({ target: { value } }) => {
           setValue('cpf', formatCPF(value));
           if (!validateCPF(value)) {

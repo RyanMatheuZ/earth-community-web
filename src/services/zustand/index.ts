@@ -5,7 +5,26 @@ import { persist, type PersistOptions } from 'zustand/middleware';
 import type { IState, IActions } from '@ts/interfaces';
 
 const initialState: IState = {
-  user: null
+  user: {
+    _id: '',
+    info: {
+      nickName: '',
+      firstName: '',
+      surname: '',
+      email: '',
+      dateOfBirth: null as unknown as Date,
+      phone: '',
+      pictureProfile: '',
+      about: ''
+    },
+    address: {
+      city: '',
+      state: ''
+    },
+    groups: [],
+    donationIds: [],
+    createdAt: ''
+  }
 };
 
 const persistOptions: PersistOptions<IState & IActions> = {

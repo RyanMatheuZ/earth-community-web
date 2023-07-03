@@ -96,7 +96,7 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
         </S.EditIconContainer>
       </S.ImageContainer>
       <S.ImageErrorMessage>
-        <ErrorMessage name='image' errors={errors} $themeColor='green' />
+        <ErrorMessage name='image' errors={errors} />
       </S.ImageErrorMessage>
       {!!imageUploadProgress && (
         <S.ImageUploadingMessage>
@@ -111,7 +111,6 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
           type='text'
           name='name'
           label='Nome:'
-          $themeColor='green'
         />
         <Select
           control={control}
@@ -119,7 +118,6 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
           type='text'
           name='category'
           label='Categorias:'
-          $themeColor='green'
         >
           {categories.map(({ label, icon }, index) => (
             <S.StyledMenuItem
@@ -140,7 +138,6 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
         type='text'
         name='description'
         label='Descrição:'
-        $themeColor='green'
       />
       <S.SectionLabel>Localidade</S.SectionLabel>
       <TwoThirdContainer>
@@ -150,7 +147,6 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
           type='text'
           name='city'
           label='Cidade:'
-          $themeColor='green'
         />
         <Select
           control={control}
@@ -158,7 +154,6 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
           type='text'
           name='state'
           label='Estado:'
-          $themeColor='green'
         >
           {states.map((state, index) => (
             <MenuItem
@@ -173,7 +168,6 @@ const CreateGroupForm: FC<CreateGroupFormProps> = ({ handleToggleModal }) => {
       <SubmitButton
         label='Criar'
         isLoadingAction={isLoadingAction}
-        $themeColor='green'
       />
     </form>
   );

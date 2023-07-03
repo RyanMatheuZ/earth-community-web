@@ -59,7 +59,6 @@ const SignUp: NextPage = () => {
                 type='text'
                 name='firstName'
                 label='Nome:'
-                $themeColor='green'
               />
               <Field
                 control={control}
@@ -67,7 +66,6 @@ const SignUp: NextPage = () => {
                 type='text'
                 name='surname'
                 label='Sobrenome:'
-                $themeColor='green'
               />
             </HalfToHalfContainer>
             <Field
@@ -76,7 +74,6 @@ const SignUp: NextPage = () => {
               type='email'
               name='email'
               label='E-mail:'
-              $themeColor='green'
             />
             <Field
               control={control}
@@ -84,7 +81,6 @@ const SignUp: NextPage = () => {
               type='password'
               name='password'
               label='Senha:'
-              $themeColor='green'
             />
             <Field
               control={control}
@@ -92,12 +88,10 @@ const SignUp: NextPage = () => {
               type='password'
               name='confirmPassword'
               label='Confirmar senha:'
-              $themeColor='green'
             />
             <SubmitButton
               label='Enviar'
               isLoadingAction={isLoadingSignUp}
-              $themeColor='green'
             />
           </form>
           <AnotherAuthOption $themeColor='green' />

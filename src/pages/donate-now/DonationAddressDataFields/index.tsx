@@ -48,7 +48,6 @@ const DonationAddressDataFields: FC = () => {
         type='text'
         name='zipCode'
         label='CEP:'
-        $themeColor='green'
         onChange={({ target: { value } }) => {
           setValue('zipCode', formatCEP(value));
           handleCEPAutoComplete(value);
@@ -61,7 +60,6 @@ const DonationAddressDataFields: FC = () => {
         type='text'
         name='streetName'
         label='Endereço:'
-        $themeColor='green'
         disabled={isLoadingAddress}
       />
       <TwoThirdContainer>
@@ -71,7 +69,6 @@ const DonationAddressDataFields: FC = () => {
           type='text'
           name='district'
           label='Bairro:'
-          $themeColor='green'
           disabled={isLoadingAddress}
         />
         <Field
@@ -80,7 +77,6 @@ const DonationAddressDataFields: FC = () => {
           type='text'
           name='streetNumber'
           label='Número:'
-          $themeColor='green'
           disabled={isLoadingAddress}
         />
       </TwoThirdContainer>
@@ -91,7 +87,6 @@ const DonationAddressDataFields: FC = () => {
           type='text'
           name='city'
           label='Cidade:'
-          $themeColor='green'
           disabled={isLoadingAddress}
         />
         <Select
@@ -100,7 +95,6 @@ const DonationAddressDataFields: FC = () => {
           type='text'
           name='state'
           label='Estado:'
-          $themeColor='green'
           disabled={isLoadingAddress}
         >
           {states.map((state, index) => (
