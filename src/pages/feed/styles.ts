@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 import { Typography } from '@mui/material';
 
+import { scrollbarBaseStyles } from '@styles/constants/scrollbar';
+
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.lightGray.main};
   display: flex;
   flex-direction: column;
+  overflow-y: clip;
   height: 100vh;
 `;
 
@@ -18,6 +21,7 @@ export const PostContainer = styled.div`
   padding-inline: ${({ theme }) => theme.spacing(1)};
   height: 88vh;
   width: 100%;
+  ${scrollbarBaseStyles}
 `;
 
 export const Content = styled.div`

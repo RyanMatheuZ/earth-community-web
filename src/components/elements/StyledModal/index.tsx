@@ -1,10 +1,5 @@
 import { type FC, type ReactNode } from 'react';
 
-import { DialogContent } from '@mui/material';
-
-import Header from './Header';
-import Actions from './Actions';
-
 import * as S from './styles';
 
 interface StyledModalProps {
@@ -35,14 +30,16 @@ const StyledModal: FC<StyledModalProps> = ({
       width={width}
       height={height}
     >
-      <Header title={modalTitle} />
-      <DialogContent dividers={true}>
+      <S.StyledHeader>
+        {modalTitle}
+      </S.StyledHeader>
+      <S.StyledDialogContent dividers={true}>
         {content}
-      </DialogContent>
+      </S.StyledDialogContent>
       {!!actions && (
-        <Actions>
+        <S.StyledActions>
           {actions}
-        </Actions>
+        </S.StyledActions>
       )}
       {showCloseIcon && (
         <S.CloseModalButton onClick={handleToggleModal}>

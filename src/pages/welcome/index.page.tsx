@@ -1,4 +1,4 @@
-import { type NextPage } from 'next';
+import { type NextPage, type GetServerSideProps } from 'next';
 
 import { AccountButton, AnchorLink, Image } from '@components/elements';
 import { Head } from '@components/meta';
@@ -53,6 +53,23 @@ const Welcome: NextPage = () => {
       </S.Container>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const authUser = req.cookies[process.env.NEXT_PUBLIC_COOKIE_NAME];
+
+  if (authUser) {
+    return {
+      redirect: {
+        destination: '/feed',
+        permanent: false
+      }
+    };
+  }
+
+  return {
+    props: {}
+  };
 };
 
 export default Welcome;
