@@ -28,6 +28,7 @@ export const config = {
     '/sign-in',
     '/sign-up',
     '/donate-now',
+    '/transparency',
     '/about',
     '/blog',
     '/blog/[slug]',

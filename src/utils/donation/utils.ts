@@ -26,7 +26,7 @@ export const allStatus = {
     color: ''
   },
   'cancelled': {
-    label: 'Cancelado',
+    label: 'Expirado',
     color: theme.palette.error.main
   },
   'refunded': {

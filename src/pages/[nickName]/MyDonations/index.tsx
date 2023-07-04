@@ -7,9 +7,8 @@ import { type ChartData } from 'chart.js';
 import { useDonation } from '@hooks/index';
 
 import { TopicSection } from '@components/modules';
-import { DonationCard, DonationCardSkeleton, DoughnutChart, StyledModal } from '@components/elements';
+import { DonationCard, DonationCardSkeleton, DoughnutChart, NoDonations, StyledModal } from '@components/elements';
 
-import NoDonations from './NoDonations';
 
 import * as S from './styles';
 
@@ -43,7 +42,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
   const firstDonations = data?.slice(0, initialDonationsAmount);
 
   const doughnutChartData: ChartData<'doughnut'> = {
-    labels: ['Aprovado', 'Processando', 'Pendente', 'Cancelado'],
+    labels: ['Aprovado', 'Processando', 'Pendente', 'Expirado'],
     datasets: [{
       label: 'Doações',
       data: [approved, inProcess, pending, cancelled],
@@ -80,7 +79,11 @@ const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
             </S.DonationContainer>
           </S.Container>
         )}
-        {!data?.length && <NoDonations />}
+        {!data?.length && (
+          <NoDonations
+            message={'Não há doações até o momento,\n faça sua primeira doação!'}
+          />
+        )}
       </TopicSection >
       <StyledModal
         isOpen={isOpenModal}

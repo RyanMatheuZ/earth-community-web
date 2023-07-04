@@ -10,6 +10,7 @@ import { usePost } from '@hooks/index';
 
 import { Head } from '@components/meta';
 import { FeedAsideNav, FeedHeader, Post } from '@components/modules';
+import { LoadingText } from '@components/elements';
 
 import { title, description } from './head';
 
@@ -57,15 +58,17 @@ const Feed: NextPage = () => {
                 postType='feed'
               />
             ))}
-            <S.LoadingText ref={ref}>
-              {(isFetchingNextPage || isLoading) ? 'Carregando publicações...' : 'Não há mais publicações até o momento :)'}
-            </S.LoadingText>
+            <LoadingText
+              ref={ref}
+              isLoading={isFetchingNextPage || isLoading}
+              loadingText='Carregando publicações...'
+              notLoadingText='Não há mais publicações até o momento :)'
+            />
           </S.PostContainer>
         </S.Content>
       </S.Container>
     </>
   );
 };
-
 
 export default Feed;

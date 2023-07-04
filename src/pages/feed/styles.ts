@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Typography } from '@mui/material';
-
 import { scrollbarBaseStyles } from '@styles/constants/scrollbar';
 
 export const Container = styled.div`
@@ -30,14 +28,4 @@ export const Content = styled.div`
   max-width: 1800px;
   width: 100%;
   height: 100%;
-`;
-
-export const LoadingText = styled(Typography)`
-  color: ${({ theme }) => theme.palette.primary.main};
-  background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(0, 0, 0, .16) 0px 1px 4px;
-  border-radius: 30px;
-  font-weight: 600;
-  margin: ${({ theme }) => theme.spacing(1)};
-  padding: ${({ theme }) => theme.spacing(2)};
 `;
