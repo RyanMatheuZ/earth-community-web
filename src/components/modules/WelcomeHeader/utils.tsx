@@ -6,6 +6,12 @@ import * as S from './styles';
 
 export const dropdownItems: ReadonlyArray<IMediaItems> = [
   {
+    icon: <S.TransparencyIcon />,
+    label: 'Transparência',
+    path: '/transparency',
+    target: '_self'
+  },
+  {
     icon: <S.AboutIcon />,
     label: 'Sobre',
     path: '/about',

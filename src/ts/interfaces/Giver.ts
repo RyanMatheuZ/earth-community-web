@@ -8,11 +8,11 @@ interface IGiver {
     last_name: string;
     identification: {
       type: 'CPF';
-      number: string
+      number: number
     };
   },
   address: {
-    zip_code: string;
+    zip_code: number;
     street_name: string;
     street_number: string;
     neighborhood: string;

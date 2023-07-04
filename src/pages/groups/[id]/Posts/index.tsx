@@ -7,7 +7,7 @@ import type { IGroup, IPost } from '@ts/interfaces';
 import { useAuth } from '@context/auth';
 
 import { TopicSection, Post } from '@components/modules';
-import { Image, StyledModal } from '@components/elements';
+import { Image, LoadingText, StyledModal } from '@components/elements';
 
 import { isUserGroupMember } from '@utils/group';
 
@@ -67,9 +67,12 @@ const Posts: FC<PostsProps> = ({ posts, isLoading, fetchNextPage, group }) => {
               postType='group'
             />
           ))}
-          <S.LoadingText ref={ref}>
-            {isLoading ? 'Carregando publicações...' : 'Não há mais publicações até o momento :)'}
-          </S.LoadingText>
+          <LoadingText
+            ref={ref}
+            isLoading={isLoading}
+            loadingText='Carregando publicações...'
+            notLoadingText='Não há mais publicações até o momento :)'
+          />
         </S.PostsContainer>
       )}
       {!allPosts?.length && (

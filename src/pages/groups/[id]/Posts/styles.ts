@@ -41,16 +41,6 @@ export const PostsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const LoadingText = styled(Typography)`
-  color: ${({ theme }) => theme.palette.primary.main};
-  background-color: ${({ theme }) => theme.palette.common.white};
-  box-shadow: rgba(0, 0, 0, .16) 0px 1px 4px;
-  border-radius: 30px;
-  font-weight: 600;
-  margin: ${({ theme }) => theme.spacing(1)};
-  padding: ${({ theme }) => theme.spacing(2)};
-`;
-
 export const NoPostsContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.common.white};
   box-shadow: rgba(100, 100, 111, .2) 0px 7px 29px 0px;

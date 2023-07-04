@@ -20,9 +20,11 @@ import GroupCardSkeleton from './GroupCardSkeleton';
 import Image from './Image';
 import InputDate from './Form/InputDate';
 import InputFile from './Form/InputFile';
+import LoadingText from './LoadingText';
 import Logo from './Logo';
 import LogoutButton from './LogoutButton';
 import MenuIcon from './MenuIcon/styles';
+import NoDonations from './NoDonations';
 import QRCode from './QRCode';
 import QRCodeSkeleton from './QRCodeSkeleton';
 import RadioButton from './Form/RadioButton';
@@ -59,9 +61,11 @@ export {
   Image,
   InputDate,
   InputFile,
+  LoadingText,
   Logo,
   LogoutButton,
   MenuIcon,
+  NoDonations,
   QRCode,
   QRCodeSkeleton,
   RadioButton,

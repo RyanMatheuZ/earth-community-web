@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { MaxWidthContainer } from '@components/modules';
-import { Info, LockOpen, HowToReg, Newspaper } from '@mui/icons-material';
+import { Visibility, Info, LockOpen, HowToReg, Newspaper } from '@mui/icons-material';
 
 import { baseIconStyles } from '@utils/datas/styles';
 
@@ -19,6 +19,10 @@ export const Container = styled(MaxWidthContainer)`
 export const ElementsOnTheRight = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const TransparencyIcon = styled(Visibility)`
+  ${baseIconStyles};
 `;
 
 export const AboutIcon = styled(Info)`

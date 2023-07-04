@@ -10,6 +10,8 @@ import { useDonation } from '@hooks/index';
 import { Head } from '@components/meta';
 import { HeaderWithBackButton } from '@components/modules';
 
+import { unformat } from '@utils/inputs/unformat';
+
 import DonationAddressDataFields from './DonationAddressDataFields';
 import DonationAmounts from './DonationAmounts';
 import DonationFinalStep from './DonationFinalStep';
@@ -54,11 +56,11 @@ const DonateNow: NextPage = () => {
         last_name: giverValues.surname,
         identification: {
           type: 'CPF',
-          number: giverValues.cpf
+          number: unformat(giverValues.cpf as string)
         }
       },
       address: {
-        zip_code: giverValues.zipCode,
+        zip_code: unformat(giverValues.zipCode as string),
         street_name: giverValues.streetName,
         street_number: giverValues.streetNumber,
         neighborhood: giverValues.district,

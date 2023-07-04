@@ -12,8 +12,8 @@ export interface GiverDefaultValues {
   email: IGiver['payer']['email'];
   firstName: IGiver['payer']['first_name'];
   surname: IGiver['payer']['first_name'];
-  cpf: IGiver['payer']['identification']['number'];
-  zipCode: IGiver['address']['zip_code'];
+  cpf: IGiver['payer']['identification']['number'] | string;
+  zipCode: IGiver['address']['zip_code'] | string;
   streetName: IGiver['address']['street_name'];
   streetNumber: IGiver['address']['street_number'];
   district: IGiver['address']['neighborhood'];

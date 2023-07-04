@@ -4,11 +4,16 @@ import { Image } from '@components/elements';
 
 import * as S from './styles';
 
-const NoDonations: FC = () => {
+interface NoDonationsProps {
+  isBackgroundWhite?: boolean;
+  message: string;
+}
+
+const NoDonations: FC<NoDonationsProps> = ({ isBackgroundWhite = true, message }) => {
   const descriptionImage = 'Homem fazendo caridade - illustration by @Storyset';
 
   return (
-    <S.NoDonationsContainer>
+    <S.Container isBackgroundWhite={isBackgroundWhite}>
       <Image
         src='/illustrations/donation/charity.svg'
         alt={descriptionImage}
@@ -17,11 +22,10 @@ const NoDonations: FC = () => {
         height='300'
         fill
       />
-      <S.NoDonationsMessage>
-        Não há doações até o momento, <br />
-        faça sua primeira doação!
-      </S.NoDonationsMessage>
-    </S.NoDonationsContainer>
+      <S.Message>
+        {message}
+      </S.Message>
+    </S.Container>
   );
 };
 

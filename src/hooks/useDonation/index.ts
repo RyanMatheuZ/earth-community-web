@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useCallback } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 
 import { type AxiosResponse } from 'axios';
 
@@ -12,6 +12,8 @@ import { useAuth } from '@context/auth';
 import axiosInstance from '@services/axios';
 
 import { catchError } from '@utils/requestMessages';
+
+import type { ResponseGetAllDonations } from './utils';
 
 const useDonation = () => {
   const ENDPOINT = '/donation';
@@ -59,6 +61,30 @@ const useDonation = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleGetAllDonations = useCallback(() => {
+    return useInfiniteQuery(
+      ['all-donations'],
+      async ({ pageParam = 1 }) => {
+        try {
+          axiosInstance.interceptors.response.clear();
+
+          const { data }: AxiosResponse<ResponseGetAllDonations> = await axiosInstance.get(
+            `${ENDPOINT}/get-all?perPage=10&page=${pageParam}`
+          );
+
+          return data.donations;
+        } catch (error) {
+          catchError(error);
+        }
+      },
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          return lastPage?.length ? allPages.length + 1 : undefined;
+        }
+      }
+    );
+  }, []);
+
   const handleGetDonationById = useCallback((donationId: number) => {
     return useQuery(
       ['donation-by-id', donationId],
@@ -99,6 +125,7 @@ const useDonation = () => {
 
   return {
     handleCreateDonation,
+    handleGetAllDonations,
     handleGetDonationById,
     handleGetAllDonationsByUserId,
     donation,
