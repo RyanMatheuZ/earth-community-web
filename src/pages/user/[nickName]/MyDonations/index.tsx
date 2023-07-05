@@ -96,7 +96,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
               <DonationCard
                 key={`remaining-donation-card-${index}`}
                 donation={body}
-                redirectTo={`/${nickNameUser}/donations/${body.id}`}
+                redirectTo={`/user/${nickNameUser}/donations/${body.id}`}
               />
             ))}
             {(!remainingDonations?.length && isLoadingDonations) && (
