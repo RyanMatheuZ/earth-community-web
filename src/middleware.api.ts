@@ -1,6 +1,6 @@
 import { type NextMiddleware, type NextRequest, NextResponse } from 'next/server';
 
-const pagesToAuthAccess = ['/feed', '/groups'];
+const pagesToAuthAccess = ['/feed', '/groups', '/user'];
 const pagesToNotAccessAuth = ['/welcome', '/sign-in', '/sign-up', '/about'];
 
 export const middleware: NextMiddleware = (req: NextRequest) => {
@@ -24,17 +24,18 @@ export const middleware: NextMiddleware = (req: NextRequest) => {
 
 export const config = {
   matcher: [
-    '/welcome',
-    '/sign-in',
-    '/sign-up',
-    '/donate-now',
-    '/transparency',
     '/about',
     '/blog',
     '/blog/[slug]',
+    '/donate-now',
     '/feed',
     '/groups',
     '/groups/[id]',
-    '/[nickName]'
+    '/sign-in',
+    '/sign-up',
+    '/transparency',
+    '/user',
+    '/user/[nickName]',
+    '/welcome'
   ]
 };

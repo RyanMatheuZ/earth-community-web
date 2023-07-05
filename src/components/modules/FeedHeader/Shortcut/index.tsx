@@ -21,7 +21,7 @@ const Shortcuts: FC<ShortcutsProps> = ({ isOpenMenu, handleToggleMenu }) => {
       open={isOpenMenu}
       onClose={handleToggleMenu}
     >
-      <Link href={`/${user?.info.nickName}`}>
+      <Link href={`/user/${user?.info.nickName}`}>
         <S.StyledMenuItem onClick={handleToggleMenu}>
           <S.MenuContent>
             <S.ViewProfileIcon /> Ver perfil

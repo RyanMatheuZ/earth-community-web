@@ -36,7 +36,7 @@ const Members: FC<MembersProps> = ({ members }) => {
                 {`${info.firstName} ${info.surname}`}
               </S.Name>
             </S.PhotoAndName>
-            <S.NickName href={`/${info.nickName}`}>
+            <S.NickName href={`/user/${info.nickName}`}>
               @{info.nickName}
             </S.NickName>
             {index === 0 && (
