@@ -141,6 +141,7 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='nickName'
           label='Nome de usuário:'
+          disabled
         />
         <InputDate
           control={control}
@@ -167,6 +168,7 @@ const UserProfileEditForm: FC<UserProfileEditFormProps> = ({ userDefaultValues }
           type='text'
           name='email'
           label='E-mail:'
+          disabled
         />
         <Field
           control={control}
