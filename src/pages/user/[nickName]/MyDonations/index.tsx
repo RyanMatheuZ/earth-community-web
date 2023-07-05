@@ -40,6 +40,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
   const remainingDonationsAmount = donationsAmount - initialDonationsAmount;
   const remainingDonations = data?.slice(initialDonationsAmount);
   const firstDonations = data?.slice(0, initialDonationsAmount);
+  const remainingDonationText = `doaç${remainingDonationsAmount > 1 ? 'ões' : 'ão'}...`;
 
   const doughnutChartData: ChartData<'doughnut'> = {
     labels: ['Aprovado', 'Processando', 'Pendente', 'Expirado'],
@@ -65,7 +66,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
                 <DonationCard
                   key={`donation-card-${index}`}
                   donation={body}
-                  redirectTo={`/${nickNameUser}/donations/${body.id}`}
+                  redirectTo={`/user/${nickNameUser}/donations/${body.id}`}
                 />
               ))}
               {(!firstDonations?.length && isLoadingDonations) && (
@@ -73,7 +74,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
               )}
               {donationsAmount > initialDonationsAmount && (
                 <S.SeeMoreDonationsButton onClick={handleToggleModal}>
-                  Ver mais {remainingDonationsAmount} doaç{remainingDonationsAmount > 1 ? 'ões' : 'ão'}...
+                  Ver mais {remainingDonationsAmount} {remainingDonationText}
                 </S.SeeMoreDonationsButton>
               )}
             </S.DonationContainer>
@@ -88,7 +89,7 @@ const MyDonations: FC<MyDonationsProps> = ({ userId, nickNameUser }) => {
       <StyledModal
         isOpen={isOpenModal}
         handleToggleModal={handleToggleModal}
-        modalTitle={`Outras ${remainingDonationsAmount} doações`}
+        modalTitle={`Outras ${remainingDonationsAmount} ${remainingDonationText}`}
         content={
           <S.DonationContainer>
             {remainingDonations?.map(({ body }, index) => (

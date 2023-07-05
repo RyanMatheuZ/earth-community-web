@@ -89,7 +89,18 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
+  const authUser = req.cookies[process.env.NEXT_PUBLIC_COOKIE_NAME];
+
+  if (!authUser) {
+    return {
+      redirect: {
+        destination: '/welcome',
+        permanent: false
+      }
+    };
+  }
+
   const handlePrefetchUserByNickName = async () => {
     const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.get(
       `/user/get-by-nickname/${query.nickName}`

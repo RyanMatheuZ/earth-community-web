@@ -32,7 +32,7 @@ const Results: FC<Results> = ({ results, isLoading, handleToggleModal, children 
               <S.Identifier>{info ? 'Pessoa' : 'Grupo'}</S.Identifier>
             </div>
             <S.VisitLink
-              href={info ? `${info.nickName}` : `/groups/${_id}`}
+              href={info ? `/user/${info.nickName}` : `/groups/${_id}`}
               onClick={handleToggleModal}
             >
               <S.VisitIcon /> Visitar
