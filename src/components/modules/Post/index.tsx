@@ -11,9 +11,10 @@ import { usePost } from '@hooks/index';
 import { queryClient } from '@services/tanstackQuery';
 
 import { UserPictureProfile } from '@components/elements';
-import { PostComments } from '@components/modules';
 
 import { resolveCreatedAt, resolveUserLikePost } from '@utils/post';
+
+import PostComments from './PostComments';
 
 import PostOptions from './PostOptions';
 
@@ -113,7 +114,7 @@ const Post: FC<PostProps> = ({ postItems, postType }) => {
             onClick={() => mutate({ postId: postItems._id, userId: user?._id as string })}
           >
             <S.StyledBadge badgeContent={postItems.likes.quantity}>
-              {isUserLikeThePost ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
+              {isUserLikeThePostInitialState ? <S.EnabledLikeIcon /> : <S.DisabledLikeIcon />}
             </S.StyledBadge>
             Apoiar
           </S.StyledToggleButton>
