@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Menu, MenuItem } from '@mui/material';
 import { Person, Logout, KeyboardArrowRight } from '@mui/icons-material';
 
-import { baseIconStyles } from '@utils/datas/styles';
+import { baseIconStyles } from '@styles/constants/baseIconStyles';
 
 export const StyledMenu = styled(Menu)`
   margin-left: ${({ theme }) => theme.spacing(2.5)};
