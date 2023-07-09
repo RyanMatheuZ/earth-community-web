@@ -15,13 +15,11 @@ const LogoAndSocialMedias: FC = () => {
           Earth Community
         </FooterS.ListTitle>
       </li>
-      <li>
-        {phrases.map((phrase, index) => (
-          <FooterS.ListText key={`phrase-${index}`}>
-            {phrase}
-          </FooterS.ListText>
-        ))}
-      </li>
+      {phrases.map((phrase, index) => (
+        <FooterS.ListText key={`phrase-${index}`}>
+          {phrase}
+        </FooterS.ListText>
+      ))}
       <li>
         {socialMedias.map(({ label, icon, path, target }, index) => (
           <S.SocialMediaContainer

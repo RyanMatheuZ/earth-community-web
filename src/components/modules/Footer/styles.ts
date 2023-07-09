@@ -14,14 +14,14 @@ export const Container = styled.div`
   box-shadow: ${({ theme }) => theme.palette.secondary.main} 10px 10px;
   border-radius: 25px;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing(6)};
   max-width: 1200px;
   width: 100%;
 
-  @media ${({ theme }) => theme.breakpoints.down('mobile')} {
+  @media ${({ theme }) => theme.breakpoints.down('tablet')} {
     flex-direction: column;
     align-items: start;
     padding: ${({ theme }) => theme.spacing(2)};
@@ -35,8 +35,9 @@ export const ListTitle = styled(Typography)`
   margin-bottom: ${({ theme }) => theme.spacing(.5)};
 `;
 
-export const ListText = styled(Typography)`
+export const ListText = styled.li`
   color: ${({ theme }) => theme.palette.common.white};
   font-size: 1.1rem;
   font-weight: 500;
+  margin-bottom: ${({ theme }) => theme.spacing(.5)};
 `;
