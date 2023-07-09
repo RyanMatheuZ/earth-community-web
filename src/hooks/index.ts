@@ -9,6 +9,7 @@ import useImageUpload from './useImageUpload';
 import usePost from './usePost';
 import useSearch from './useSearch';
 import useUser from './useUser';
+import useSendEmail from './useSendEmail';
 
 export {
   useAchievements,
@@ -21,5 +22,6 @@ export {
   useImageUpload,
   usePost,
   useSearch,
-  useUser
+  useUser,
+  useSendEmail
 };

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MenuItem } from '@mui/material';
 import { MoreVert, Delete } from '@mui/icons-material';
 
-import { baseIconStyles } from '@utils/datas/styles';
+import { baseIconStyles } from '@styles/constants/baseIconStyles';
 
 export const StyledMenuItem = styled(MenuItem)`
   color: ${({ theme }) => theme.palette.primary.main};

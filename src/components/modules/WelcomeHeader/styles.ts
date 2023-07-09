@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 import { MaxWidthContainer } from '@components/modules';
-import { Visibility, Info, LockOpen, HowToReg, Newspaper } from '@mui/icons-material';
+import { Visibility, Info, LockOpen, HowToReg, Email, Newspaper } from '@mui/icons-material';
 
-import { baseIconStyles } from '@utils/datas/styles';
+import { baseIconStyles } from '@styles/constants/baseIconStyles';
 
 export const Container = styled(MaxWidthContainer)`
   display: flex;
@@ -34,6 +34,10 @@ export const SignInIcon = styled(LockOpen)`
 `;
 
 export const SignUpIcon = styled(HowToReg)`
+  ${baseIconStyles};
+`;
+
+export const ContactIcon = styled(Email)`
   ${baseIconStyles};
 `;
 

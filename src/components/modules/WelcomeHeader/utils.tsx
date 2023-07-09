@@ -31,6 +31,12 @@ export const dropdownItems: ReadonlyArray<IMediaItems> = [
   },
   ...socialMedias,
   {
+    icon: <S.ContactIcon />,
+    label: 'Contato',
+    path: '/contact',
+    target: '_self'
+  },
+  {
     icon: <S.BlogIcon />,
     label: 'Blog',
     path: '/blog',

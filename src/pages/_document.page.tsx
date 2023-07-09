@@ -8,6 +8,7 @@ import Document,
   NextScript,
   type DocumentContext
 } from 'next/document';
+import Script from 'next/script';
 
 import { ServerStyleSheet } from 'styled-components';
 
@@ -96,6 +97,15 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`} />
+          <Script id="google-analytics">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', ${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID});
+            `}
+          </Script>
         </body>
       </Html>
     );

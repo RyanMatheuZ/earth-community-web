@@ -3,6 +3,7 @@ import type IAchievements from './Achievements';
 import type IAppProps from './AppProps';
 import type IAuthContext from './AuthContext';
 import type IAuthOptions from './AuthOptions';
+import type IContact from './Contact';
 import type IDonation from './Donation';
 import type IGiver from './Giver';
 import type IGroup from './Group';
@@ -24,6 +25,7 @@ export type {
   IAuthContext,
   IAuthOptions,
   IComment,
+  IContact,
   IDonation,
   IGiver,
   IGroup,

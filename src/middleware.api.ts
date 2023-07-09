@@ -1,7 +1,7 @@
 import { type NextMiddleware, type NextRequest, NextResponse } from 'next/server';
 
 const pagesToAuthAccess = ['/feed', '/groups', '/user'];
-const pagesToNotAccessAuth = ['/welcome', '/sign-in', '/sign-up', '/about'];
+const pagesToNotAccessAuth = ['/welcome', '/transparency', '/sign-in', '/sign-up', '/about', '/contact'];
 
 export const middleware: NextMiddleware = (req: NextRequest) => {
   const authUser = req.cookies.get(process.env.NEXT_PUBLIC_COOKIE_NAME)?.value;
@@ -27,6 +27,7 @@ export const config = {
     '/about',
     '/blog',
     '/blog/[slug]',
+    '/contact',
     '/donate-now',
     '/feed',
     '/groups',
