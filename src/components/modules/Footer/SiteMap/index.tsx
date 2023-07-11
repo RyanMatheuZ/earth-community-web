@@ -1,7 +1,5 @@
 import { type FC } from 'react';
 
-import Link from 'next/link';
-
 import { siteMapItems } from './utils';
 
 import * as S from '../styles';
@@ -16,9 +14,9 @@ const SiteMap: FC = () => {
       </li>
       {siteMapItems.map(({ label, path }, index) => (
         <S.ListText key={`site-map-item-${index}`}>
-          <Link href={path}>
+          <S.StyledLink href={path}>
             {label}
-          </Link>
+          </S.StyledLink>
         </S.ListText>
       ))}
     </ul>

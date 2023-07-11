@@ -37,6 +37,8 @@ export const config = {
     '/transparency',
     '/user',
     '/user/[nickName]',
+    '/user/[nickName]/donations',
+    '/user/[nickName]/donations/[id]',
     '/welcome'
   ]
 };

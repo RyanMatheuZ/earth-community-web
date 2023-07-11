@@ -2,6 +2,8 @@ import { create } from 'zustand';
 
 import { persist, type PersistOptions } from 'zustand/middleware';
 
+import { setCookie } from 'cookies-next';
+
 import type { IState, IActions } from '@ts/interfaces';
 
 const initialState: IState = {
@@ -28,7 +30,7 @@ const initialState: IState = {
 };
 
 const persistOptions: PersistOptions<IState & IActions> = {
-  name: '@user_data',
+  name: process.env.NEXT_PUBLIC_COOKIE_NAME,
   version: 1
 };
 
@@ -36,7 +38,12 @@ const useUserStore = create<IState & IActions>()(
   persist(
     (set) => ({
       ...initialState,
-      handlePersistUserData: (user) => set({ user }),
+      handlePersistUserData: (user) => {
+        setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, user, {
+          sameSite: 'lax'
+        });
+        set({ user });
+      },
       handleCleanUserData: () => set(initialState)
     }),
     persistOptions
