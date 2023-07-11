@@ -13,7 +13,7 @@ import axiosInstance from '@services/axios';
 
 import { catchError } from '@utils/requestMessages';
 
-import type { ResponseGetAllDonations } from './utils';
+import type { ResponseGetAllDonations, ResponseGetAllDonationsByUserId } from './utils';
 
 const useDonation = () => {
   const ENDPOINT = '/donation';
@@ -111,11 +111,11 @@ const useDonation = () => {
         try {
           axiosInstance.interceptors.response.clear();
 
-          const { data }: AxiosResponse<{ donations: Array<{ body: IDonation }> }> = await axiosInstance.get(
+          const { data }: AxiosResponse<ResponseGetAllDonationsByUserId> = await axiosInstance.get(
             `${ENDPOINT}/get-by-user-id/${userId}?perPage=20&page=0`
           );
 
-          return data.donations;
+          return data;
         } catch (error) {
           catchError(error);
         }
