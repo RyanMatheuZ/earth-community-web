@@ -8,7 +8,6 @@ import { useAuth } from '@context/auth';
 
 import {
   AlreadyHaveAnAccount,
-  AnotherAuthOption,
   Field,
   FormSection,
   FormTitle,
@@ -94,7 +93,6 @@ const SignUp: NextPage = () => {
               isLoadingAction={isLoadingSignUp}
             />
           </form>
-          <AnotherAuthOption $themeColor='green' />
           <AlreadyHaveAnAccount $themeColor='green' />
         </FormSection>
       </S.Container>

@@ -3,8 +3,6 @@ import AccountButton from './AccountButton';
 import ActionsModal from './ActionsModal';
 import AlreadyHaveAnAccount from './Form/AlreadyHaveAnAccount';
 import AnchorLink from './AnchorLink';
-import AnotherAuthOption from './Form/AnotherAuthOption';
-import AuthOptionsButton from './AuthOptionsButton';
 import BackIcon from './BackIcon/styles';
 import ButtonToTop from './ButtonToTop';
 import DonationCard from './DonationCard';
@@ -44,8 +42,6 @@ export {
   ActionsModal,
   AlreadyHaveAnAccount,
   AnchorLink,
-  AnotherAuthOption,
-  AuthOptionsButton,
   BackIcon,
   ButtonToTop,
   DonationCard,

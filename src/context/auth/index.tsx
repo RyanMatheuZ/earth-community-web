@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { type AxiosResponse } from 'axios';
 
-import { setCookie, deleteCookie } from 'cookies-next';
+import { deleteCookie } from 'cookies-next';
 
 import type { IAuthContext, IAuthOptions, ISignUp, ISignIn, IUser } from '@ts/interfaces';
 
@@ -19,19 +19,18 @@ const AuthContext = createContext<IAuthContext>(authContextDefaultValues);
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const ENDPOINT = '/auth/user';
 
-  const { replace } = useRouter();
+  const { push, replace } = useRouter();
 
   const { user, handlePersistUserData, handleCleanUserData } = useUserStore();
 
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
 
-  const handlePersistUserDataAndRedirectToFeed = (userData: IUser) => {
-    setCookie(process.env.NEXT_PUBLIC_COOKIE_NAME, userData, {
-      sameSite: 'lax'
+  const handlePersistUserDataAsync = (user: IUser) => {
+    return new Promise((resolve) => {
+      handlePersistUserData(user);
+      resolve(user);
     });
-    handlePersistUserData(userData);
-    replace('/feed');
   };
 
   const handleSignUp = async (signUpValues: ISignUp & IAuthOptions) => {
@@ -49,7 +48,8 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           authWith: signUpValues.authWith
         }
       });
-      handlePersistUserDataAndRedirectToFeed(data.user);
+      await handlePersistUserDataAsync(data.user);
+      push('/feed');
     } catch (error) {
       console.error(error);
     } finally {
@@ -68,7 +68,8 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           password: signInValues.password
         }
       });
-      handlePersistUserDataAndRedirectToFeed(data.user);
+      await handlePersistUserDataAsync(data.user);
+      push('/feed');
     } catch (error) {
       console.error(error);
     } finally {

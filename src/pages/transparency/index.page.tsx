@@ -63,14 +63,16 @@ const Transparency: NextPage = () => {
           {isLoadingAllDonations && (
             <DonationCardSkeleton length={10} />
           )}
-          <LoadingText
-            ref={ref}
-            isLoading={isLoadingAllDonations}
-            loadingText='Carregando doações...'
-            notLoadingText='Não há mais doações até o momento :)'
-          />
+          {!!data?.pages[0]?.length && (
+            <LoadingText
+              ref={ref}
+              isLoading={isLoadingAllDonations}
+              loadingText='Carregando doações...'
+              notLoadingText='Não há mais doações até o momento :)'
+            />
+          )}
         </S.Content>
-        {(!data?.pages.length && !isLoadingAllDonations) && (
+        {(!data?.pages[0]?.length && !isLoadingAllDonations) && (
           <NoDonations
             isBackgroundWhite={false}
             message={'Não há doações até o momento,\n seja o primeiro a doar!'}

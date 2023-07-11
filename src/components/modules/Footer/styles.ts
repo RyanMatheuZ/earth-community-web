@@ -1,6 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import Link from 'next/link';
 
 import { Typography } from '@mui/material';
+
+const listTextBaseStyles = css`
+  color: ${({ theme }) => theme.palette.common.white};
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: ${({ theme }) => theme.spacing(.5)};
+`;
 
 export const StyledFooter = styled.footer`
   display: flex;
@@ -36,8 +45,13 @@ export const ListTitle = styled(Typography)`
 `;
 
 export const ListText = styled.li`
-  color: ${({ theme }) => theme.palette.common.white};
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: ${({ theme }) => theme.spacing(.5)};
+  ${listTextBaseStyles}
+`;
+
+export const StyledLink = styled(Link)`
+  ${listTextBaseStyles}
+
+  &:visited {
+    color: ${({ theme }) => theme.palette.common.white};
+  }
 `;
