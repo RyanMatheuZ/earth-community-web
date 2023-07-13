@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { type AxiosResponse } from 'axios';
 
-import { deleteCookie, hasCookie } from 'cookies-next';
+import { deleteCookie } from 'cookies-next';
 
 import type { IAuthContext, IAuthOptions, ISignUp, ISignIn, IUser } from '@ts/interfaces';
 
@@ -43,9 +43,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       });
       handlePersistUserData(data.user);
 
-      const isAuthUser = hasCookie(process.env.NEXT_PUBLIC_COOKIE_NAME);
-
-      if (isAuthUser) push('/feed');
+      push('/feed');
     } catch (error) {
       console.error(error);
     } finally {
@@ -66,9 +64,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       });
       handlePersistUserData(data.user);
 
-      const isAuthUser = hasCookie(process.env.NEXT_PUBLIC_COOKIE_NAME);
-
-      if (isAuthUser) push('/feed');
+      push('/feed');
     } catch (error) {
       console.error(error);
     } finally {
