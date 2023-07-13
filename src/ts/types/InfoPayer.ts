@@ -1,7 +1,7 @@
 type InfoPayer = {
   payer: {
     user_id: string;
-    email: string;
+    partialEmail: string;
     first_name: string;
     last_name: string;
     identification: {
