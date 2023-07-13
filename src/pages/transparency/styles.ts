@@ -27,6 +27,35 @@ export const Description = styled(Typography)`
   width: 100%;
 `;
 
+export const TotalDonationsContainer = styled.div`
+  margin-block: ${({ theme }) => theme.spacing(4)};
+`;
+
+export const MonetaryContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const MonetaryValue = styled.span`
+  font-size: 2.5rem;
+  font-weight: 500;
+`;
+
+export const MonetarySymbol = styled.span`
+  color: ${({ theme }) => theme.palette.primary.main};
+  font-size: 2rem;
+  font-weight: 500;
+  margin-right: ${({ theme }) => theme.spacing(1)};
+`;
+
+export const Observation = styled(Typography)`
+  color: ${({ theme }) => theme.palette.primary.main};
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 500;
+`;
+
 export const UnderlinedText = styled.span`
   text-decoration: wavy underline ${({ theme }) => theme.palette.primary.main} 2.5px;
 `;
@@ -41,5 +70,4 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
-  margin-top: ${({ theme }) => theme.spacing(4)};
 `;
