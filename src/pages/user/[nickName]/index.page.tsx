@@ -89,18 +89,7 @@ const UserProfile: NextPage<UserProfileProps> = ({ nickName }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
-  const authUser = req.cookies[process.env.NEXT_PUBLIC_COOKIE_NAME];
-
-  if (!authUser) {
-    return {
-      redirect: {
-        destination: '/welcome',
-        permanent: false
-      }
-    };
-  }
-
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const handlePrefetchUserByNickName = async () => {
     const { data }: AxiosResponse<{ user: IUser }> = await axiosInstance.get(
       `/user/get-by-nickname/${query.nickName}`
@@ -108,7 +97,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }) => 
     return data.user;
   };
 
-  await queryClient.prefetchQuery(['user-by-nick-name', query], handlePrefetchUserByNickName);
+  await queryClient.prefetchQuery(['user-by-nick-name', query.nickName], handlePrefetchUserByNickName);
 
   return {
     props: {
