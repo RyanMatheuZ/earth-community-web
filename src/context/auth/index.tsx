@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { type AxiosResponse } from 'axios';
 
-import { deleteCookie } from 'cookies-next';
+import { deleteCookie, hasCookie } from 'cookies-next';
 
 import type { IAuthContext, IAuthOptions, ISignUp, ISignIn, IUser } from '@ts/interfaces';
 
@@ -19,19 +19,12 @@ const AuthContext = createContext<IAuthContext>(authContextDefaultValues);
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const ENDPOINT = '/auth/user';
 
-  const { push, replace } = useRouter();
+  const { push } = useRouter();
 
   const { user, handlePersistUserData, handleCleanUserData } = useUserStore();
 
   const [isLoadingSignUp, setIsLoadingSignUp] = useState(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState(false);
-
-  const handlePersistUserDataAsync = (user: IUser) => {
-    return new Promise((resolve) => {
-      handlePersistUserData(user);
-      resolve(user);
-    });
-  };
 
   const handleSignUp = async (signUpValues: ISignUp & IAuthOptions) => {
     try {
@@ -48,8 +41,11 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           authWith: signUpValues.authWith
         }
       });
-      await handlePersistUserDataAsync(data.user);
-      push('/feed');
+      handlePersistUserData(data.user);
+
+      const isAuthUser = hasCookie(process.env.NEXT_PUBLIC_COOKIE_NAME);
+
+      if (isAuthUser) push('/feed');
     } catch (error) {
       console.error(error);
     } finally {
@@ -68,8 +64,11 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
           password: signInValues.password
         }
       });
-      await handlePersistUserDataAsync(data.user);
-      push('/feed');
+      handlePersistUserData(data.user);
+
+      const isAuthUser = hasCookie(process.env.NEXT_PUBLIC_COOKIE_NAME);
+
+      if (isAuthUser) push('/feed');
     } catch (error) {
       console.error(error);
     } finally {
@@ -78,9 +77,9 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const handleSignOut = () => {
-    replace('/welcome');
     deleteCookie(process.env.NEXT_PUBLIC_COOKIE_NAME);
     handleCleanUserData();
+    push('/welcome');
   };
 
   return (
