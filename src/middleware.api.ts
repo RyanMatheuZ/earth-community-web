@@ -1,22 +1,36 @@
 import { type NextMiddleware, type NextRequest, NextResponse } from 'next/server';
 
-const pagesToAuthAccess = ['/feed', '/groups', '/user'];
-const pagesToNotAccessAuth = ['/welcome', '/transparency', '/sign-in', '/sign-up', '/about', '/contact'];
+interface PagesAccess {
+  [key: string]: boolean;
+}
+
+const pagesToAuthAccess: PagesAccess = {
+  '/feed': true,
+  '/groups': true,
+  '/user': true
+};
+
+const pagesToNotAccessAuth: PagesAccess = {
+  '/welcome': true,
+  '/transparency': true,
+  '/sign-in': true,
+  '/sign-up': true,
+  '/about': true,
+  '/contact': true
+};
 
 export const middleware: NextMiddleware = (req: NextRequest) => {
-  const authUser = req.cookies.get(process.env.NEXT_PUBLIC_COOKIE_NAME)?.value;
+  const pathname = req.nextUrl.pathname;
+  const isAuthUser = req.cookies.has(process.env.NEXT_PUBLIC_COOKIE_NAME);
+  const isAuthUserOnPagesToAuthAccess = pagesToAuthAccess[pathname] || false;
+  const isAuthUserOnPagesToNotAccessAuth = pagesToNotAccessAuth[pathname] || false;
 
-  const checkURL = (page: string) => req.url.includes(page);
-
-  const isAuthUserOnPagesToAuthAccess = pagesToAuthAccess.some(page => checkURL(page));
-  const isAuthUserOnPagesToNotAccessAuth = pagesToNotAccessAuth.some(page => checkURL(page));
-
-  if (!authUser && isAuthUserOnPagesToAuthAccess) {
-    return NextResponse.redirect(new URL('/welcome', req.url));
+  if (isAuthUser && isAuthUserOnPagesToNotAccessAuth) {
+    return NextResponse.redirect(new URL('/feed', req.url));
   }
 
-  if (authUser && isAuthUserOnPagesToNotAccessAuth) {
-    return NextResponse.redirect(new URL('/feed', req.url));
+  if (!isAuthUser && isAuthUserOnPagesToAuthAccess) {
+    return NextResponse.redirect(new URL('/welcome', req.url));
   }
 
   return NextResponse.next();
