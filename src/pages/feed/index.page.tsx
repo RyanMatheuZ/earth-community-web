@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 
-import { type NextPage } from 'next';
+import { type NextPage, type GetServerSideProps } from 'next';
 
 import { useInView } from 'react-intersection-observer';
 
@@ -69,6 +69,23 @@ const Feed: NextPage = () => {
       </S.Container>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const isAuthUser = req.cookies[process.env.NEXT_PUBLIC_COOKIE_NAME];
+
+  if (!isAuthUser) {
+    return {
+      redirect: {
+        destination: '/welcome',
+        permanent: false
+      }
+    };
+  }
+
+  return {
+    props: {}
+  };
 };
 
 export default Feed;

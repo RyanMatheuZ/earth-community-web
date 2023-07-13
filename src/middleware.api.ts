@@ -5,7 +5,6 @@ interface PagesAccess {
 }
 
 const pagesToAuthAccess: PagesAccess = {
-  '/feed': true,
   '/groups': true,
   '/user': true
 };
@@ -43,7 +42,6 @@ export const config = {
     '/blog/[slug]',
     '/contact',
     '/donate-now',
-    '/feed',
     '/groups',
     '/groups/[id]',
     '/sign-in',
