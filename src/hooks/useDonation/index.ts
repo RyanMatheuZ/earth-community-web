@@ -21,7 +21,8 @@ const useDonation = () => {
   const { user } = useAuth();
 
   const [donation, setDonation] = useState<IDonation>();
-  const [isLoadingDonation, setIsLoadingDonation] = useState<boolean>(false);
+  const [isLoadingDonation, setIsLoadingDonation] = useState(false);
+  const [totalAmountDonated, setTotalDonatedAmount] = useState(0);
 
   const handleCreateDonation = useCallback(async (giverValues: IGiver) => {
     const FORMATTED_ENDPOINT = user?._id ? `${ENDPOINT}/${user?._id}` : ENDPOINT;
@@ -71,6 +72,8 @@ const useDonation = () => {
           const { data }: AxiosResponse<ResponseGetAllDonations> = await axiosInstance.get(
             `${ENDPOINT}/get-all?perPage=10&page=${pageParam}`
           );
+
+          setTotalDonatedAmount(data.info.totalAmountDonated);
 
           return data.donations;
         } catch (error) {
@@ -129,6 +132,7 @@ const useDonation = () => {
     handleGetDonationById,
     handleGetAllDonationsByUserId,
     donation,
+    totalAmountDonated,
     isLoadingDonation
   };
 };

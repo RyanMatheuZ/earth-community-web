@@ -32,7 +32,7 @@ const DonationCard: FC<DonationCardProps> = ({ donation, infoPayer }) => {
             <S.Label>CPF:</S.Label> {infoPayer.identification.partialCPF}
           </S.Value>
           <S.Value>
-            <S.Label>E-mail:</S.Label> {infoPayer.email}
+            <S.Label>E-mail:</S.Label> {infoPayer.partialEmail}
           </S.Value>
         </S.ItemsContainer>
       </S.Content>
