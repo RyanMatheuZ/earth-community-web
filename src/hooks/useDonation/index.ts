@@ -77,7 +77,7 @@ const useDonation = () => {
 
           return data.donations;
         } catch (error) {
-          catchError(error);
+          console.error(error);
         }
       },
       {
