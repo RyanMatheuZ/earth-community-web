@@ -31,7 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Run install, build, lint, and test
+      - name: Run install, build, lint and test
         run: |
           yarn install
           yarn build
