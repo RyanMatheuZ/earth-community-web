@@ -26,18 +26,19 @@ const Transparency: NextPage = () => {
 
   const isLoadingAllDonations = isLoading || isRefetching;
 
+  const hasDonations = !!data?.pages[0]?.length;
+
   const allDonations = useMemo(() => {
+    if (!hasDonations) return [] as ResponseGetAllDonations['donations'];
     return data?.pages.reduce((acc, page) => [
       ...acc as ResponseGetAllDonations['donations'],
       ...page as ResponseGetAllDonations['donations']
     ], []);
-  }, [data]);
+  }, [data?.pages, hasDonations]);
 
   const formattedTotalDonationsAmount = useMemo(() => {
     return formatCurrencyBRL(Number(totalAmountDonated), false);
   }, [totalAmountDonated]);
-
-  const hasDonations = !!data?.pages[0]?.length;
 
   useEffect(() => {
     if (inView) fetchNextPage();
