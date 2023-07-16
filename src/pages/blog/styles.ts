@@ -71,6 +71,13 @@ export const Description = styled(Typography)`
   color: ${({ theme }) => theme.palette.tertiary.main};
 `;
 
+export const ActionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 export const ReadPost = styled(Link)`
   color: ${({ theme }) => theme.palette.common.white};
   background-color: ${({ theme }) => theme.palette.primary.main};

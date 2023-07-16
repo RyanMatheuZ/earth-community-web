@@ -58,8 +58,8 @@ const Feed: NextPage = () => {
                 postType='feed'
               />
             ))}
+            <div ref={ref} />
             <LoadingText
-              ref={ref}
               isLoading={isFetchingNextPage || isLoading}
               loadingText='Carregando publicações...'
               notLoadingText='Não há mais publicações até o momento :)'

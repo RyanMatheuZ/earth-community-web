@@ -84,12 +84,14 @@ const Transparency: NextPage = () => {
             <DonationCardSkeleton length={10} />
           )}
           {hasDonations && (
-            <LoadingText
-              ref={ref}
-              isLoading={isLoadingAllDonations}
-              loadingText='Carregando doações...'
-              notLoadingText='Não há mais doações até o momento :)'
-            />
+            <>
+              <div ref={ref} />
+              <LoadingText
+                isLoading={isLoadingAllDonations}
+                loadingText='Carregando doações...'
+                notLoadingText='Não há mais doações até o momento :)'
+              />
+            </>
           )}
         </S.Content>
         {(!hasDonations && !isLoadingAllDonations) && (

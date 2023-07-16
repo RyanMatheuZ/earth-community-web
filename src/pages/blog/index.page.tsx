@@ -3,6 +3,7 @@ import { type NextPage, type GetServerSideProps } from 'next';
 
 import { Head } from '@components/meta';
 import { Footer, HeaderWithBackButton } from '@components/modules';
+import { ShareBlogPostButton } from '@components/elements';
 
 import { fetchPages } from '@services/notion';
 
@@ -12,7 +13,7 @@ import * as S from './styles';
 
 interface DataFromNotion {
   pages: {
-    results: any[]
+    results: any[];
   };
 }
 
@@ -48,9 +49,14 @@ const Blog: NextPage<DataFromNotion> = ({ pages }) => {
                   </S.Description>
                 </S.Content>
               </div>
-              <S.ReadPost href={`/blog/${page.properties.slug.rich_text[0].plain_text}`}>
-                <S.ReadIcon />  Ler
-              </S.ReadPost>
+              <S.ActionsContainer>
+                <S.ReadPost href={`/blog/${page.properties.slug.rich_text[0].plain_text}`}>
+                  <S.ReadIcon />  Ler
+                </S.ReadPost>
+                <ShareBlogPostButton
+                  link={`${location.host}/blog/${page.properties.slug.rich_text[0].plain_text}`}
+                />
+              </S.ActionsContainer>
             </S.Card>
           ))}
         </S.Posts>

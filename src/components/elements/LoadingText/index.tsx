@@ -1,9 +1,8 @@
-import { type FC, type RefObject } from 'react';
+import { type FC } from 'react';
 
 import * as S from './styles';
 
 interface LoadingTextProps {
-  ref?: ((instance: HTMLSpanElement | null) => void) | RefObject<HTMLSpanElement> | null | undefined;
   isLoading: boolean;
   loadingText: string;
   notLoadingText: string;

@@ -67,8 +67,8 @@ const Posts: FC<PostsProps> = ({ posts, isLoading, fetchNextPage, group }) => {
               postType='group'
             />
           ))}
+          <div ref={ref} />
           <LoadingText
-            ref={ref}
             isLoading={isLoading}
             loadingText='Carregando publicações...'
             notLoadingText='Não há mais publicações até o momento :)'

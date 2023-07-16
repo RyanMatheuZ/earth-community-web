@@ -29,6 +29,7 @@ import RadioButton from './Form/RadioButton';
 import RedirectLinkForDonation from './RedirectLinkForDonation';
 import SearchBar from './SearchBar';
 import Select from './Form/Select';
+import ShareBlogPostButton from './ShareBlogPostButton';
 import StyledModal from './StyledModal';
 import StyledTextField from './StyledTextField/styles';
 import SubmitButton from './Form/SubmitButton';
@@ -68,6 +69,7 @@ export {
   RedirectLinkForDonation,
   SearchBar,
   Select,
+  ShareBlogPostButton,
   StyledModal,
   StyledTextField,
   SubmitButton,
