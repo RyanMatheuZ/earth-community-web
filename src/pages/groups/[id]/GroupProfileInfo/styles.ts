@@ -29,14 +29,21 @@ export const GroupImageProfileContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translateY(-40%);
+  transform: translateY(-35%);
 `;
 
-export const UserName = styled(Typography).attrs({ variant: 'h1' })`
+export const GroupName = styled(Typography).attrs({ variant: 'h1' })`
   color: ${({ theme }) => theme.palette.tertiary.main};
   font-size: 2rem;
   font-weight: 600;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   margin-top: ${({ theme }) => theme.spacing(1)};
+`;
+
+export const GroupHeadOffice = styled.span`
+  font-size: 1rem;
 `;
 
 export const Description = styled(Typography)`
@@ -45,6 +52,7 @@ export const Description = styled(Typography)`
   white-space: pre-line;
   margin-top: ${({ theme }) => theme.spacing(1)};
   margin-inline: auto;
+  padding: ${({ theme }) => theme.spacing(1)};
   max-width: 800px;
   width: 100%;
   transform: translateY(-50px);

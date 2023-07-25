@@ -22,7 +22,7 @@ import { isGroupOwner, isUserGroupMember } from '@utils/group';
 import * as S from './styles';
 
 interface ActionButtonsProps {
-  group: IGroup;
+  group?: IGroup;
 }
 
 type OpenModal = 'closed' | 'remove' | 'delete';
@@ -39,6 +39,14 @@ const ActionButtons: FC<ActionButtonsProps> = ({ group }) => {
   const groupId = group?._id as string;
   const groupOwnerId = group?.createdByUser.user._id as string;
   const groupMembers = group?.members as IGroup['members'];
+
+  const modalMessage = isOpenModal === 'remove'
+    ? 'Você realmente quer sair do grupo?\n Você poderá entrar novamente!'
+    : 'Você realmente deseja excluir o grupo?\n Essa ação é irreversível!';
+
+  const modalHandleConfirmButton = isOpenModal === 'remove'
+    ? () => removeMemberGroupMutation({ groupId, userId })
+    : () => deleteGroupMutation({ groupId, userId });
 
   const { mutate: addMemberGroupMutation } = useMutation(
     ({ groupId, userId }: ActionGroupParams) => handleAddMemberGroup({ groupId, userId }),
@@ -116,16 +124,8 @@ const ActionButtons: FC<ActionButtonsProps> = ({ group }) => {
         isOpen={isOpenModal !== 'closed'}
         handleToggleModal={() => setIsOpenModal('closed')}
         handleBackButton={() => setIsOpenModal('closed')}
-        handleConfirmButton={
-          isOpenModal === 'remove'
-            ? () => removeMemberGroupMutation({ groupId, userId })
-            : () => deleteGroupMutation({ groupId, userId })
-        }
-        message={
-          isOpenModal === 'remove'
-            ? 'Você realmente quer sair do grupo?\n Você poderá entrar novamente!'
-            : 'Você realmente deseja excluir o grupo?\n Essa ação é irreversível!'
-        }
+        handleConfirmButton={modalHandleConfirmButton}
+        message={modalMessage}
         isLoading={isOpenModal === 'remove' ? isLoadingRemoveMemberGroup : isLoadingDeleteGroup}
       />
     </>

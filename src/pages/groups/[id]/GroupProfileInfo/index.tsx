@@ -2,7 +2,12 @@ import { type FC } from 'react';
 
 import type { IGroup } from '@ts/interfaces';
 
-import { AbsoluteBackButton, UserNameSkeleton, UserPictureProfileSkeleton, UserPictureProfile } from '@components/elements';
+import {
+  AbsoluteBackButton,
+  UserNameSkeleton as GroupNameSkeleton,
+  UserPictureProfileSkeleton,
+  UserPictureProfile
+} from '@components/elements';
 
 import ActionButtons from '../ActionButons';
 import GroupDescriptionSkeleton from '../GroupDescriptionSkeleton';
@@ -10,12 +15,14 @@ import GroupDescriptionSkeleton from '../GroupDescriptionSkeleton';
 import * as S from './styles';
 
 interface GroupProfileInfoProps {
-  group: IGroup;
+  group?: IGroup;
   isLoading: boolean;
 }
 
 const GroupProfileInfo: FC<GroupProfileInfoProps> = ({ group, isLoading }) => {
   const userBackgroundProfileDescription = 'Foto de fundo do perfil';
+
+  const groupHeadOffice = `${group?.headOffice.city}, ${group?.headOffice.state}`;
 
   return (
     <S.Container>
@@ -30,15 +37,22 @@ const GroupProfileInfo: FC<GroupProfileInfoProps> = ({ group, isLoading }) => {
         {isLoading
           ? <UserPictureProfileSkeleton />
           : <UserPictureProfile
-            userName={group?.name}
+            userName={group?.name as string}
             pictureProfileSRC={group?.image}
             width='115'
             height='115'
             $themeColor='white'
           />}
-        <S.UserName>
-          {isLoading ? <UserNameSkeleton /> : group?.name}
-        </S.UserName>
+        <S.GroupName>
+          {isLoading
+            ? <GroupNameSkeleton />
+            : <>
+              {group?.name}
+              <S.GroupHeadOffice>
+                ({groupHeadOffice})
+              </S.GroupHeadOffice>
+            </>}
+        </S.GroupName>
       </S.GroupImageProfileContainer>
       <S.Description>
         {isLoading ? <GroupDescriptionSkeleton /> : group?.description}
