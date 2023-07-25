@@ -66,11 +66,7 @@ const ActionButtons: FC<ActionButtonsProps> = ({ group }) => {
   const { mutate: deleteGroupMutation, isLoading: isLoadingDeleteGroup } = useMutation(
     ({ groupId, userId }: ActionGroupParams) => handleDeleteGroup({ groupId, userId }),
     {
-      onSuccess: async () => {
-        await Promise.all([
-          queryClient.invalidateQueries(['group-by-id']),
-          queryClient.invalidateQueries(['group-by-user-id'])
-        ]);
+      onSuccess: () => {
         setIsOpenModal('closed');
         replace('/groups');
       }
