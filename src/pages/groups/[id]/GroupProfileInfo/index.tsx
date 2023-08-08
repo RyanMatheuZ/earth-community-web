@@ -24,6 +24,8 @@ const GroupProfileInfo: FC<GroupProfileInfoProps> = ({ group, isLoading }) => {
 
   const groupHeadOffice = `${group?.headOffice.city}, ${group?.headOffice.state}`;
 
+  const ecOfficialGroupId = '64d19c20c18e7774edf5efbc';
+
   return (
     <S.Container>
       <S.GroupBackgroundProfile
@@ -58,7 +60,7 @@ const GroupProfileInfo: FC<GroupProfileInfoProps> = ({ group, isLoading }) => {
         {isLoading ? <GroupDescriptionSkeleton /> : group?.description}
       </S.Description>
       <AbsoluteBackButton $themeColor='green' />
-      <ActionButtons group={group} />
+      {group?._id !== ecOfficialGroupId && <ActionButtons group={group} />}
     </S.Container >
   );
 };
